@@ -33,39 +33,39 @@ export function DrawerDemo() {
             </DrawerDescription>
           </DrawerHeader>
         </div>
-        <div className="flex flex-col items-center gap-4 font-sans text-[14px] text-nav-text px-16">
+        <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 ">
           <Link
-            className="bg-secondary py-1 w-full flex justify-center rounded-sm"
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/"
           >
             Home
           </Link>
           <Link
-            className="bg-secondary py-1 w-full flex justify-center"
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/profile"
           >
             Your Profile
           </Link>
           <Link
-            className="bg-secondary py-1 w-full flex justify-center"
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/pyqs"
           >
             Pyqs
           </Link>
           <Link
-            className="bg-secondary py-1 w-full flex justify-center"
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/notes"
           >
             Notes
           </Link>
           <Link
-            className="bg-secondary py-1 w-full flex justify-center"
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/analytics"
           >
             Analytics
           </Link>
         </div>
-        <DrawerFooter className="w-full flex justify-center">
+        <DrawerFooter className="w-full flex justify-center mt-10">
           <DrawerClose
             asChild
             className="flex justify-center hover:text-destructive"
