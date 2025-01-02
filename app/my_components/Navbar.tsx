@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import ThemeToggler from "./ThemeToggler";
 import { Profile } from "./Profile";
-
+import { LogOut } from "lucide-react";
 
 import { DrawerDemo } from "./Drawer";
 

@@ -12,7 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
+import { LogOut } from "lucide-react";
 
 export function DrawerDemo() {
   return (
@@ -66,7 +66,7 @@ export function DrawerDemo() {
             asChild
             className="flex justify-center hover:text-destructive"
           >
-            <Link href="/" >Sign Up</Link>
+            <Link href="/" className="flex gap-2" >Signout  <LogOut/></Link>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
