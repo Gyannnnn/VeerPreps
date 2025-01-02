@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/my_components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,30 +18,33 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "IIT Kirba",
-  description: "A website for vssut which contains all the previous year question papers and notes ",
+  description:
+    "A website for vssut which contains all the previous year question papers and notes ",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
+    <SessionProvider session={session}>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-           <Navbar/>
-           {children}
+            <Navbar />
+            {children}
           </ThemeProvider>
-        
-      </body>
-    </html>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

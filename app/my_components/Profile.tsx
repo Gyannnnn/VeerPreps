@@ -1,3 +1,4 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogIn, LogOut } from 'lucide-react';
 import {
@@ -9,25 +10,35 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { auth } from "@/auth";
 
-export function Profile() {
-  const signin = true
+import Logout from "./Logout";
+
+
+export async function Profile() {
+  const session = await auth();
+  
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src="https://github.com/account" alt="@shadcn" />
+          <AvatarImage src={`${session?.user?.image}`} alt="@shadcn" />
           <AvatarFallback>GR</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem><Link href="/profile">View Profile</Link></DropdownMenuItem>      
+        <DropdownMenuItem><Link href="/profile">View Profile</Link></DropdownMenuItem>
         
         <DropdownMenuItem>
           {
-            signin?<Link href="/" className="flex gap-2" >Signout  <LogOut/></Link>:<Link href="/" className="flex gap-2">Signin<LogIn/> </Link>  
+            session?.user ? (
+              <Logout/>
+            ) : (
+              <Link className="flex gap-2 items-center" href="/sign-in">Sign in <LogIn/></Link> 
+            )
           }
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -12,11 +12,14 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { LogOut } from "lucide-react";
-import { LogIn } from 'lucide-react';
 
-export function DrawerDemo() {
-  const signin = false
+import { LogIn } from "lucide-react";
+import { auth } from "@/auth";
+import Logout from "./Logout";
+
+export async function DrawerDemo() {
+  const session = await auth();
+  const signin = false;
   return (
     <Drawer>
       <DrawerTrigger>
@@ -63,12 +66,18 @@ export function DrawerDemo() {
             Analytics
           </Link>
         </div>
-        <DrawerFooter className="w-full flex justify-center  mt-5">
+        <DrawerFooter className="w-full flex justify-center items-center  mt-5">
           <DrawerClose
             asChild
             className="flex justify-center hover:text-destructive"
           >
-            {signin?<Link href="/" className="flex gap-2" >Signout  <LogOut/></Link>:<Link href="/" className="flex gap-2">Signin<LogIn/> </Link>}
+            {session?.user ? (
+              <Logout />
+            ) : (
+              <Link className="flex gap-2" href="/sign-in">
+                Sign in <LogIn />
+              </Link>
+            )}
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
