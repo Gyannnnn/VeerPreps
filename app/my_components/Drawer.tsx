@@ -13,8 +13,10 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { LogOut } from "lucide-react";
+import { LogIn } from 'lucide-react';
 
 export function DrawerDemo() {
+  const signin = false
   return (
     <Drawer>
       <DrawerTrigger>
@@ -66,7 +68,7 @@ export function DrawerDemo() {
             asChild
             className="flex justify-center hover:text-destructive"
           >
-            <Link href="/" className="flex gap-2" >Signout  <LogOut/></Link>
+            {signin?<Link href="/" className="flex gap-2" >Signout  <LogOut/></Link>:<Link href="/" className="flex gap-2">Signin<LogIn/> </Link>}
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
