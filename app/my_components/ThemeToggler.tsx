@@ -8,7 +8,7 @@ export default function ThemeToggler() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="hover:cursor-pointer">
+    <div className="hover:cursor-pointer flex items-center justify-center">
       {theme === "dark" ? (
         <Sun size={20} onClick={() => setTheme("light")} />
       ) : (

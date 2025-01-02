@@ -1,5 +1,3 @@
-
-
 import * as React from "react";
 import Link from "next/link";
 import { Logs } from "lucide-react";
@@ -15,10 +13,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+
 export function DrawerDemo() {
-  
-
-
   return (
     <Drawer>
       <DrawerTrigger>
@@ -27,13 +23,13 @@ export function DrawerDemo() {
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle className="font-mono">IIT KIRBA</DrawerTitle>
+            <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
             <DrawerDescription>
               Lets get rid from the google drive link
             </DrawerDescription>
           </DrawerHeader>
         </div>
-        <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 ">
+        <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 mt-8 ">
           <Link
             className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/"
@@ -65,12 +61,12 @@ export function DrawerDemo() {
             Analytics
           </Link>
         </div>
-        <DrawerFooter className="w-full flex justify-center mt-10">
+        <DrawerFooter className="w-full flex justify-center  mt-5">
           <DrawerClose
             asChild
             className="flex justify-center hover:text-destructive"
           >
-            <h1>Close</h1>
+            <Link href="/" >Sign Up</Link>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
