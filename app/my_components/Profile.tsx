@@ -1,6 +1,6 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogIn, LogOut } from 'lucide-react';
+import { LogIn } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,

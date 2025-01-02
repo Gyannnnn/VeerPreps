@@ -19,7 +19,7 @@ import Logout from "./Logout";
 
 export async function DrawerDemo() {
   const session = await auth();
-  const signin = false;
+
   return (
     <Drawer>
       <DrawerTrigger>
