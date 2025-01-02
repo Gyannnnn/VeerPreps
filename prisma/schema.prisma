@@ -15,13 +15,23 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  Authenticator Authenticator[] // Optional for WebAuthn support
+
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  savedLinks    Saved[]         // Relation field to `Saved` model
 }
- 
+
+model Saved {
+  id     String @id @default(cuid())
+  link   String
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
 model Account {
   userId            String
   type              String
