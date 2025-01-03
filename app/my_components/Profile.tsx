@@ -13,10 +13,12 @@ import Link from "next/link";
 import { auth } from "@/auth";
 
 import Logout from "./Logout";
+import getFallBack from "@/utils/fallback";
 
 
 export async function Profile() {
   const session = await auth();
+  const name = session?.user?.name
   
   
   return (
@@ -24,7 +26,12 @@ export async function Profile() {
       <DropdownMenuTrigger>
         <Avatar>
           <AvatarImage src={`${session?.user?.image}`} alt="@shadcn" />
-          <AvatarFallback>GR</AvatarFallback>
+          <AvatarFallback className="text-2xl flex items-center justify-center font-sans font-light ">
+            {
+              name ? name[0] : getFallBack(session?.user?.email as string)
+
+            }
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

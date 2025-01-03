@@ -5,6 +5,8 @@ import Navbar from "@/app/my_components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { Playwrite_AR } from "next/font/google";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
