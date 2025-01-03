@@ -3,7 +3,7 @@ import getName from "@/utils/Name";
 import React from "react";
 
 import { Playwrite_AR } from "next/font/google";
-const playwright = Playwrite_AR({ subsets: ["latin"] });
+const playwright = Playwrite_AR();
 
 export default async function page() {
   const session = await auth();
@@ -14,7 +14,7 @@ export default async function page() {
       <div className=" w-[90vw] h-screen  mt-16">
         <div className="pt-5 pl-2 ">
           {session?.user ? (
-            <h1  className="text-2xl text-white flex items-center justify-start gap-2">
+            <h1  className="text-2xl text-white flex items-center justify-start gap-5">
               <span className={playwright.className}>hello </span>
               {name ? name : getName(session?.user?.email as string)?.toUpperCase()}
             </h1>
