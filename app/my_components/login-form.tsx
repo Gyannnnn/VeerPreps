@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +10,9 @@ import {
 } from "@/components/ui/card";
 
 import LoginWithGithub from "./LoginWithGithub";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { loginWithCreds } from "@/actions/auth";
 
 export default function LoginForm({
   className,
@@ -24,7 +28,7 @@ export default function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={(formData) => loginWithCreds(formData).then(() => {})}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <LoginWithGithub />
@@ -43,7 +47,7 @@ export default function LoginForm({
                   Or continue with
                 </span>
               </div>
-              {/* <div className="grid gap-6">
+              <div className="grid gap-6">
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -51,6 +55,7 @@ export default function LoginForm({
                     type="email"
                     placeholder="m@example.com"
                     required
+                    name="email"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -58,12 +63,12 @@ export default function LoginForm({
                     <Label htmlFor="password">Password</Label>
                     
                   </div>
-                  <Input id="password" placeholder="******" type="password" required />
+                  <Input name="password" id="password" placeholder="******" type="password" required />
                 </div>
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-              </div> */}
+              </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account? Still you can Sign in
               </div>
