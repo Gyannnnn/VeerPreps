@@ -19,13 +19,17 @@ import getFallBack from "@/utils/fallback";
 export async function Profile() {
   const session = await auth();
   const name = session?.user?.name
+
+  const avatarurl = session?.user?.image
+  const defaultavatar = "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+ 
   
   
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src={`${session?.user?.image}`} alt="@shadcn" />
+          <AvatarImage src={`${avatarurl ? avatarurl :defaultavatar }`} alt="@shadcn" />
           <AvatarFallback className="text-2xl flex items-center justify-center font-sans font-light ">
             {
               name ? name[0] : getFallBack(session?.user?.email as string)
