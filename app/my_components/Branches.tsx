@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-export default function () {
+export default function Branches() {
   return (
     <Link href="/pyqs" className="hover:cursor-pointer">
       <Card className="w-56 h-60 flex flex-col items-center justify-between py-2 max-sm:w-64">
