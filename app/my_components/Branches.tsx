@@ -5,12 +5,10 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 
 interface branch {
-  branches: [
-    branch_id: string,
-    userid: null | number,
-    displayimage: string,
-    branchname: string
-  ];
+  branch_id: string;
+  userid: null | number;
+  displayimage: string;
+  branchname: string;
 }
 
 export default async function Branches() {
@@ -18,8 +16,6 @@ export default async function Branches() {
     "https://iitkirba-api.vercel.app/api/branch/"
   );
   const requiredbranches = branches.data.branches;
-  console.log(requiredbranches);
-  console.log(requiredbranches);
 
   return (
     <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-10">
