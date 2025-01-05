@@ -25,7 +25,7 @@ export default async function Branches() {
           href="/pyqs"
           className="hover:cursor-pointer"
         >
-          <Card className="w-80 h-[48vh] flex gap-3 flex-col drop-shadow-lg items-center justify-around py-2 max-sm:w-72 max-sm:h-72 px-2 rounded-md ">
+          <Card className="w-80 h-[48vh] flex  flex-col drop-shadow-lg items-center justify-around py-2 max-sm:w-72 max-sm:h-72 px-2 rounded-md ">
             <Image
               className="rounded-md"
               height={250}
