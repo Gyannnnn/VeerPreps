@@ -2,23 +2,51 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-export default function Branches() {
-  return (
-    <Link href="/pyqs" className="hover:cursor-pointer">
-      <Card className="w-80 h-74 flex gap-3 flex-col items-center justify-between py-2 max-sm:w-72 max-sm:h-72 px-2 rounded-md">
-        <Image
-          className="rounded-md"
-          height={250}
-          width={350}
-          src="/images/informationTechnology.png"
-          alt="pyqs"
-        />
+import axios from "axios";
 
-       <div className="flex flex-col gap-2">
-       <h1 className="font-sans text-xl text-center">Computer science and engineering(cse)</h1>
-       <Button>View Content</Button>
-       </div>
-      </Card>
-    </Link>
+interface branch {
+  branches: [
+    branch_id: string,
+    userid: null | number,
+    displayimage: string,
+    branchname: string
+  ];
+}
+
+export default async function Branches() {
+  const branches = await axios.get<{ branches: branch[] }>(
+    "https://iitkirba-api.vercel.app/api/branch/"
+  );
+  const requiredbranches = branches.data.branches;
+  console.log(requiredbranches);
+  console.log(requiredbranches);
+
+  return (
+    <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-10">
+      {requiredbranches.map((branch) => (
+        <Link
+          key={branch.branch_id}
+          href="/pyqs"
+          className="hover:cursor-pointer"
+        >
+          <Card className="w-80 h-[48vh] flex gap-3 flex-col drop-shadow-lg items-center justify-around py-2 max-sm:w-72 max-sm:h-72 px-2 rounded-md ">
+            <Image
+              className="rounded-md"
+              height={250}
+              width={350}
+              src={branch.displayimage}
+              alt="information technology"
+              priority
+            />
+            <div className="flex flex-col  gap-2 items-start  w-full">
+              <h1 className="font-sans text-xl text-center tracking-tighter  ">
+                {branch.branchname}
+              </h1>
+              <Button className="w-full">View Content</Button>
+            </div>
+          </Card>
+        </Link>
+      ))}
+    </div>
   );
 }

@@ -15,7 +15,7 @@ export default async function page() {
       <div className=" w-[90vw] min-h-screen  mt-16">
         <div className="pt-5 pl-2 ">
           {session?.user ? (
-            <h1 className="sm:text-2xl text-white flex items-center justify-start gap-2 hover:cursor-context-menu">
+            <h1 className="sm:text-2xl text-black flex items-center justify-start gap-2 hover:cursor-context-menu dark:text-white ">
               <span className={playwright.className}>hello </span>
               {name
                 ? name
@@ -26,17 +26,9 @@ export default async function page() {
           )}
         </div>
         <div className="w-[90vw] min-h-screen  flex items-center justify-center mt-10 pb-10 ">
-          <div className="  md:w-[80vw] min-h-screen grid grid-cols-3 gap-10  max-lg:grid-cols-2 max-md:grid-cols-1 max-sm:grid-cols-1  content-center">
+          <div className="flex items-center justify-center  pb-10 w-[90vw] ">
           <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
-          <Branches />
+          
           </div>
         </div>
       </div>
