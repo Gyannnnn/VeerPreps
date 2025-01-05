@@ -15,7 +15,7 @@ export default async function page() {
       <div className=" w-[90vw] min-h-screen  mt-16">
         <div className="pt-5 pl-2 ">
           {session?.user ? (
-            <h1 className="sm:text-2xl text-black flex items-center justify-start gap-2 hover:cursor-context-menu dark:text-white ">
+            <h1 className="sm:text-2xl max-sm:text-xl text-black flex items-center justify-start gap-2 hover:cursor-context-menu dark:text-white ">
               <span className={playwright.className}>hello </span>
               {name
                 ? name
