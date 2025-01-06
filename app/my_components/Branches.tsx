@@ -16,13 +16,14 @@ export default async function Branches() {
     "https://iitkirba-api.vercel.app/api/branch/"
   );
   const requiredbranches = branches.data.branches;
+  console.log(requiredbranches[0].branch_id);
 
   return (
     <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-10">
       {requiredbranches.map((branch) => (
         <Link
           key={branch.branch_id}
-          href="/pyqs"
+          href={`/year/${branch.branch_id}`}
           className="hover:cursor-pointer"
         >
           <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex  flex-col drop-shadow-lg items-center justify-around py-2 max-sm:w-72  px-2 rounded-md ">
