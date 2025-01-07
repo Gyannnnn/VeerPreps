@@ -1,12 +1,6 @@
 import Subjects from "@/app/my_components/pages/Subjectspage";
 import Yearpage from "@/app/my_components/pages/Yearpage";
 
-interface year {
-  year_id: number;
-  branchId: number;
-  yearName: string;
-}
-
 export default async function page({
   params,
 }: {
