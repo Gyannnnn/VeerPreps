@@ -6,7 +6,7 @@ interface pageprops{
 }
 
 
-export default async function page({ params }: { params: pageprops }) {
+export default function page({ params }: { params: pageprops }) {
   const branchId = params.ids[0];
   const ids = params.ids;
   console.log(ids.length);
