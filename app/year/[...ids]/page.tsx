@@ -1,7 +1,5 @@
-import React from "react";
-import axios from "axios";
-import Link from "next/link";
-import { Card } from "@/components/ui/card";
+import Subjects from "@/app/my_components/pages/Subjectspage";
+import Yearpage from "@/app/my_components/pages/Yearpage";
 
 interface year {
   year_id: number;
@@ -16,26 +14,20 @@ export default async function page({
     ids: string[];
   };
 }) {
+  const branchId = params.ids[0];
   const ids = params.ids;
-  const branchId = ids[0];
-  const years = await axios.get<{ requiredyear: year[] }>(
-    `https://iitkirba-api.vercel.app/api/year/${branchId}`
-  );
-  console.log(years.data);
-  const requiredyears = years.data.requiredyear;
+  console.log(ids.length);
+  const page = ids.length;
+  switch (page) {
+    case 1:
+      return <Yearpage branchId={branchId} />;
+    case 3:
+      return (
+        <div className="h-screen w-screen flex items-center justify-center">
+          <h1>Subjects</h1>
+        </div>
+      );
+  }
 
-  return (
-    <div className="w-screen min-h-screen flex justify-center bg-secondary dark:bg-zinc-950">
-      <div className="sm:w-[50vw] w-[90vw] min-h-screen flex flex-col gap-4 items-center justify-center ">
-        {requiredyears.map((year) => (
-          <Link  href="/subjects">
-            <Card className="h-[10vh] sm:w-[50vw] w-[90vw] flex gap-2 items-center justify-center sm:text-2xl text-xl">
-              <h1>IIT KIRBA /</h1>
-              <h1>{year.yearName}</h1>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+  return <Subjects />;
 }
