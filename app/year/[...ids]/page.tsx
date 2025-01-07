@@ -1,13 +1,12 @@
 import Subjects from "@/app/my_components/pages/Subjectspage";
 import Yearpage from "@/app/my_components/pages/Yearpage";
 
-export default async function page({
-  params,
-}: {
-  params: {
-    ids: string[];
-  };
-}) {
+interface pageprops{
+  ids: string[];
+}
+
+
+export default async function page({ params }: { params: pageprops }) {
   const branchId = params.ids[0];
   const ids = params.ids;
   console.log(ids.length);
