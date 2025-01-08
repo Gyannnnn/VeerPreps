@@ -1,4 +1,6 @@
+import Contents from "@/app/my_components/pages/Contents";
 import Subjects from "@/app/my_components/pages/Subjectspage";
+import Viewer from "@/app/my_components/pages/Viewer";
 import Yearpage from "@/app/my_components/pages/Yearpage";
 
 interface pageprops{
@@ -16,10 +18,16 @@ export default function page({ params }: { params: pageprops }) {
       return <Yearpage branchId={branchId} />;
     case 3:
       return (
-        <div className="h-screen w-screen flex items-center justify-center">
-          <h1>Subjects</h1>
-        </div>
+        <Subjects/>
       );
+    case 4:
+      return (
+        <Contents/>
+      )
+    case 5:
+      return (
+        <Viewer/>
+      )
   }
 
   return <Subjects />;
