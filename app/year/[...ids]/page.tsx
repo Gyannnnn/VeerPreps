@@ -2,13 +2,14 @@ import Contents from "@/app/my_components/pages/Contents";
 import Subjects from "@/app/my_components/pages/Subjectspage";
 import Viewer from "@/app/my_components/pages/Viewer";
 import Yearpage from "@/app/my_components/pages/Yearpage";
-import { GetServerSideProps } from 'next';
 
 interface PageProps {
-  ids: string[];
+  params: {
+    ids: string[];
+  };
 }
 
-export default function Page({ params }: { params: PageProps }) {
+export default function Page({ params }: PageProps) {
   const branchId = params.ids[0];
   const parsedBranchId = parseInt(branchId, 10);
   const ids = params.ids;
@@ -26,17 +27,6 @@ export default function Page({ params }: { params: PageProps }) {
     case 5:
       return <Viewer />;
     default:
-      return <div>Page not found</div>;
+      return <div>Page not found</div>; // Handle unexpected cases
   }
 }
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params } = context;
-  return {
-    props: {
-      params: {
-        ids: params?.ids || [],
-      },
-    },
-  };
-};
