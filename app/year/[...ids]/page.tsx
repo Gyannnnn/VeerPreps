@@ -3,34 +3,30 @@ import Subjects from "@/app/my_components/pages/Subjectspage";
 import Viewer from "@/app/my_components/pages/Viewer";
 import Yearpage from "@/app/my_components/pages/Yearpage";
 
-interface pageprops{
-  ids: string[];
+interface PageProps {
+  params: {
+    ids: string[];
+  };
 }
 
-
-export default function page({ params }: { params: pageprops }) {
+export default function Page({ params }: PageProps) {
   const branchId = params.ids[0];
-  const parsedbranchid = parseInt(branchId)
+  const parsedBranchId = parseInt(branchId, 10);
   const ids = params.ids;
-  console.log(ids)
+
+  console.log(ids);
   console.log(ids.length);
-  const page = ids.length;
-  switch (page) {
+
+  switch (ids.length) {
     case 1:
-      return <Yearpage branchId={parsedbranchid} />;
+      return <Yearpage branchId={parsedBranchId} />;
     case 3:
-      return (
-        <Subjects ids={ids} />
-      );
+      return <Subjects ids={ids} />;
     case 4:
-      return (
-        <Contents/>
-      )
+      return <Contents />;
     case 5:
-      return (
-        <Viewer/>
-      )
+      return <Viewer />;
+    default:
+      return <div>Page not found</div>; // Handle unexpected cases
   }
-
-
 }
