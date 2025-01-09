@@ -11,6 +11,7 @@ interface pageprops{
 export default function page({ params }: { params: pageprops }) {
   const branchId = params.ids[0];
   const ids = params.ids;
+  console.log(ids)
   console.log(ids.length);
   const page = ids.length;
   switch (page) {
@@ -18,7 +19,7 @@ export default function page({ params }: { params: pageprops }) {
       return <Yearpage branchId={branchId} />;
     case 3:
       return (
-        <Subjects/>
+        <Subjects ids={ids} />
       );
     case 4:
       return (
@@ -30,5 +31,5 @@ export default function page({ params }: { params: pageprops }) {
       )
   }
 
-  return <Subjects />;
+
 }
