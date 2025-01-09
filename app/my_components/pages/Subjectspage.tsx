@@ -20,14 +20,32 @@ export default async function Subjects({ ids }: pageprops) {
   const yearid = ids[2];
 
   let data: Subject[] = [];
-
-  try {
+  if (
+    yearid === "1" ||
+    yearid === "5" ||
+    yearid === "6" ||
+    yearid === "16" ||
+    yearid === "20" ||
+    yearid === "24" ||
+    yearid === "28" ||
+    yearid === "32" ||
+    yearid === "36" ||
+    yearid === "40"
+  ) {
     const response = await axios.get<{ subjects: Subject[] }>(
-      `https://iitkirba-api.vercel.app/api/subject/${branchId}/${yearid}`
+      `https://iitkirba-api.vercel.app/api/subject/common`
     );
     data = response.data.subjects;
-  } catch (error) {
-    console.log(error);
+    console.log(data);
+  } else {
+    try {
+      const response = await axios.get<{ subjects: Subject[] }>(
+        `https://iitkirba-api.vercel.app/api/subject/${branchId}/${yearid}`
+      );
+      data = response.data.subjects;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (!data || data.length === 0) {
@@ -40,15 +58,14 @@ export default async function Subjects({ ids }: pageprops) {
   }
 
   return (
-    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center">
+    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pb-10">
       <div className="w-[90vw] min-h-screen mt-16 flex items-center flex-col gap-4 pt-10">
         {data.map((subject) => (
           <Link
-            href={`/year/${branchId}/subjects/${yearid}/contents`}
+            href={`/year/${branchId}/subjects/${yearid}/contents/${subject.subject_id}`}
             key={subject.subject_id}
           >
             <Card className="w-[50vw] h-16 flex items-center justify-center">
-              <h1>dj</h1>
               <h1 className="text-xl">{subject.subjectname}</h1>
             </Card>
           </Link>
