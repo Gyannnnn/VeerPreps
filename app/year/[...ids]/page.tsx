@@ -10,13 +10,14 @@ interface pageprops{
 
 export default function page({ params }: { params: pageprops }) {
   const branchId = params.ids[0];
+  const parsedbranchid = parseInt(branchId)
   const ids = params.ids;
   console.log(ids)
   console.log(ids.length);
   const page = ids.length;
   switch (page) {
     case 1:
-      return <Yearpage branchId={branchId} />;
+      return <Yearpage branchId={parsedbranchid} />;
     case 3:
       return (
         <Subjects ids={ids} />

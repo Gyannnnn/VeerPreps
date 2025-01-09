@@ -11,7 +11,7 @@ interface year {
   }
   
 
-export default async function Yearpage({branchId}: {branchId: string}) {
+export default async function Yearpage({branchId}: {branchId: number}) {
     const years = await axios.get<{ requiredyear: year[] }>(
         `https://iitkirba-api.vercel.app/api/year/${branchId}`
       );
