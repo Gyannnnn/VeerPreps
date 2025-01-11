@@ -1,5 +1,3 @@
-//@ts-nocheck
-
 import Contents from "@/app/my_components/pages/Contents";
 import Subjects from "@/app/my_components/pages/Subjectspage";
 import Viewer from "@/app/my_components/pages/Viewer";
