@@ -1,11 +1,10 @@
-// next.config.js
 const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "github.com",
-        pathname: "/Gyannnnn/iitkirba.io/blob/main/db/pyq/branch/**/logo/**",
+        pathname: "/Gyannnnn/iitkirba.io/raw/main/db/pyq/branch/**/logo/**",
       },
       {
         protocol: "https",
@@ -16,4 +15,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

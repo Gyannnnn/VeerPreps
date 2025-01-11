@@ -2,9 +2,9 @@ import { auth } from "@/auth";
 import getName from "@/utils/Name";
 import React from "react";
 
-import { Playwrite_AR } from "next/font/google";
+// import { Playwrite_AR } from "next/font/google";
 import Branches from "./my_components/Branches";
-const playwright = Playwrite_AR();
+// const playwright = Playwrite_AR();
 
 export default async function page() {
   const session = await auth();
@@ -16,7 +16,7 @@ export default async function page() {
         <div className="pt-5 pl-2 ">
           {session?.user ? (
             <h1 className="sm:text-2xl max-sm:text-xl text-black flex items-center justify-start gap-2 hover:cursor-context-menu dark:text-white ">
-              <span className={playwright.className}>hello </span>
+              <span >hello </span>
               {name
                 ? name
                 : getName(session?.user?.email as string)?.toUpperCase()}
