@@ -5,6 +5,7 @@ import Navbar from "@/app/my_components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { Toaster } from "@/components/ui/toaster"
 
 
 
@@ -44,6 +45,7 @@ export default async function RootLayout({
           >
             <Navbar />
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

@@ -22,9 +22,9 @@ export default function Page({ params }: PageProps) {
       return <Yearpage branchId={parsedBranchId} />;
     case 3:
       return <Subjects ids={ids} />;
-    case 4:
-      return <Contents />;
     case 5:
+      return <Contents ids={ids} />;
+    case 6:
       return <Viewer />;
     default:
       return <div>Page not found</div>; 
