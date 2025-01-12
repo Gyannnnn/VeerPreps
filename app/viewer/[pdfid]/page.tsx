@@ -1,3 +1,4 @@
+//@ts-nocheck
 import axios from "axios";
 import PdfRenderer from "./pdfviewer";
 
@@ -10,7 +11,7 @@ interface PageProps {
 interface Pyq {
   pyq_id: number;
   subjectId: number;
-  links: string;
+  links: string ;
   pyqtype: string;
   pyqname: string;
 }
@@ -22,7 +23,7 @@ export default async function Page({ params }: PageProps) {
       `https://iitkirba-api.vercel.app/api/pyq/id/${pdfid}`
     );
     const data = response.data;
-    console.log(data);
+    console.log(data.links);
     return (
       
         <PdfRenderer links={data.links}/>
