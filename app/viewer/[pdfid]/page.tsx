@@ -21,7 +21,7 @@ export default async function Page({ params }: PageProps) {
     const response = await axios.get<{ pyq: Pyq }>(
       `https://iitkirba-api.vercel.app/api/pyq/id/${pdfid}`
     );
-    const data = response.data.pyq;
+    const data = response.data;
     console.log(data);
     return (
       
