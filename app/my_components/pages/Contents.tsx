@@ -52,14 +52,14 @@ export default async function Contents({ ids }: PageProps) {
 
     return (
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <div className="min-h-screen w-[90vw] bg-red-900">
-          <h1>PYQs</h1>
+        <div className="min-h-screen w-[90vw] pt-10">
+          <h1 className="text-2xl">Previous Year Questions</h1>
           <div>
-            <h1>End</h1>
-            <div>
+            
+            <div className="flex gap-2 pt-4">
               {pyqs.map((pyq) => (
-                <div>
-                  <h1>{pyq.pyq_id}</h1>
+                <div >
+                 
                   <Pdf pyqid={pyq.pyq_id} pyqname={pyq.pyqname} links={pyq.links}/>
                 </div>
               ))}
