@@ -60,15 +60,15 @@ export default async function Subjects({ ids }: pageprops) {
 
   return (
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pb-10">
-      <div className="w-[90vw] min-h-screen mt-16 flex   flex-col gap-4 pt-10 ">
+      <div className="w-[90vw] max-sm:w-[99vw] min-h-screen mt-16 flex    flex-col items-center justify-center gap-2 pt-5 ">
         {data.map((subject) => (
           <Link
-          className="w-[90vw] flex items-center justify-center "
+          className="w-[96vw] flex items-center justify-center "
             href={`/year/${branchId}/subjects/${yearid}/contents/${subject.subject_id}`}
             key={subject.subject_id}
           >
-            <Card className="sm:w-[50vw] w-[90vw] h-16 flex items-center justify-center">
-              <h1 className="text-xl text-center">{subject.subjectname}</h1>
+            <Card className="sm:w-[50vw] max-sm:w-[96vw] h-16 flex bg-primary-foreground  items-center justify-center">
+              <h1 className="text-xl text-center leading-tight">{subject.subjectname}</h1>
             </Card>
           </Link>
         ))}

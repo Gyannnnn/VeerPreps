@@ -27,7 +27,7 @@ export async function DrawerDemo() {
       <DrawerTrigger>
         <Menu />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="">
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
@@ -36,7 +36,7 @@ export async function DrawerDemo() {
             </DrawerDescription>
           </DrawerHeader>
         </div>
-        <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 mt-8 ">
+        <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 mt-4 ">
           <Link
             className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="/"

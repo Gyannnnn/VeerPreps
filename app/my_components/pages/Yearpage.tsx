@@ -30,8 +30,8 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
             key={year.year_id}
             href={`/year/${branchId}/subjects/${year.year_id}`}
           >
-            <Card className="h-[10vh] sm:w-[50vw] w-[90vw] flex items-center justify-center sm:text-2xl text-xl">
-              <h1>{year.yearName}</h1>
+            <Card className="h-[10vh] sm:w-[50vw] w-[96vw] bg-primary-foreground flex items-center justify-center sm:text-2xl text-xl">
+              <h1 className="text-2xl">{year.yearName}</h1>
             </Card>
           </Link>
         ))}
