@@ -21,7 +21,7 @@ export async function Profile() {
   const name = session?.user?.name
 
   const avatarurl = session?.user?.image
-  const defaultavatar = "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+  const defaultavatar = "https://github.com/shadcn.png"
  
   
   

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Logs } from "lucide-react";
+import { Menu } from 'lucide-react';
 
 import {
   Drawer,
@@ -25,7 +25,7 @@ export async function DrawerDemo() {
   return (
     <Drawer>
       <DrawerTrigger>
-        <Logs />
+        <Menu />
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
