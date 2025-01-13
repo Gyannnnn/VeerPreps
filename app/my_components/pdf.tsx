@@ -10,7 +10,7 @@ export default function Pdf({pyqname,links,pyqid}:{pyqname:string,links:string,p
   return (
     <Link className="flex" href={`/viewer/${pyqid}`}>
     <Card className="flex flex-col py-2  w-40 bg-transparent dark:bg-secondary border-none gap-2 items-center justify-center">
-        <Image src={"/images/file.png"} width={100} height={100} alt="icon"/>
+        <Image priority src={"/images/file.png"} width={100} height={100} alt="icon"/>
         <h1 className="text-center text-sm">{pyqname}</h1>
     </Card>
     

@@ -60,7 +60,7 @@ export default async function Subjects({ ids }: pageprops) {
 
   return (
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pb-10">
-      <div className="w-[90vw] min-h-screen mt-16 flex  flex-col gap-4 pt-10 ">
+      <div className="w-[90vw] min-h-screen mt-16 flex   flex-col gap-4 pt-10 ">
         {data.map((subject) => (
           <Link
           className="w-[90vw] flex items-center justify-center "
