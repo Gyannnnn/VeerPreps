@@ -56,7 +56,7 @@ export default async function Contents({ ids }: PageProps) {
           <h1 className="text-2xl">Previous Year Questions</h1>
           <div>
             
-            <div className="flex gap-2 pt-4">
+            <div className="flex flex-wrap gap-2 pt-4">
               {pyqs.map((pyq) => (
                 <div >
                  
