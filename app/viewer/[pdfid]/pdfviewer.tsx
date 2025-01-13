@@ -42,15 +42,26 @@ export default function PdfRenderer({ links }: {links:string}) {
   };
 
   const increaseWidth = () => {
-    setWidth((prevWidth) => prevWidth + 150);
+    if(width === 1150){
+      toast({
+        variant: "destructive",
+        title: "You reached the maximum width !",
+        description: "You cannot increase the width of the PDF more.",
+        action: <ToastAction altText="Try again">Decrease</ToastAction>,
+      });
+      return;
+
+    }
+    setWidth((prevWidth) => prevWidth + 50);
+    
   };
 
   const decreaseWidth = () => {
     if (width <= 400) {
       toast({
         variant: "destructive",
-        title: "Uh oh! You reached the minimum width.",
-        description: "You cannot decrease the width of the PDF further.",
+        title: "You reached the minimum width !",
+        description: "You cannot decrease the width of the PDF more.",
         action: <ToastAction altText="Try again">Increase</ToastAction>,
       });
       return;
@@ -76,7 +87,7 @@ export default function PdfRenderer({ links }: {links:string}) {
           {Array.from({ length: numPages }, (_, index) => (
             <Page
               key={index}
-              width={isSmallScreen ? 400 : width}
+              width={isSmallScreen ? 400 : width}            
               pageNumber={index + 1}
             />
           ))}

@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import axios from "axios";
+import { Metadata } from "next";
 
 interface Subject {
   subject_id: number | undefined;
@@ -74,4 +75,10 @@ export default async function Subjects({ ids }: pageprops) {
       </div>
     </div>
   );
+}
+
+
+export const metadata:Metadata={
+  title:"subjects",
+  description:"All the subjects of vssut burla"
 }

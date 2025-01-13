@@ -4,6 +4,7 @@ import React from "react";
 
 // import { Playwrite_AR } from "next/font/google";
 import Branches from "./my_components/Branches";
+import { Metadata } from "next";
 // const playwright = Playwrite_AR();
 
 export default async function page() {
@@ -27,11 +28,16 @@ export default async function page() {
         </div>
         <div className="w-[90vw] min-h-screen  flex items-center justify-center mt-10 pb-10 ">
           <div className="flex items-center justify-center  pb-10 w-[90vw] ">
-          <Branches />
-          
+          <Branches />          
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+
+export const metadata:Metadata={
+  title:"Branches",
+  description:"A page where all branches of vssut burla are listed , the only previous year question paper site for veer surendra sai university of technlogy burla samablpur formely university collage of engineering burla sambalpur"
 }
