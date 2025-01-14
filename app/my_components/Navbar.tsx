@@ -19,7 +19,7 @@ export default function Navbar() {
           <Link className="hover:underline underline-offset-2" href="/profile">Your Profile</Link>
           <Link className="hover:underline underline-offset-2" href="/pyqs">Pyqs</Link>
           <Link className="hover:underline underline-offset-2" href="/notes">Notes</Link>
-          <Link className="hover:underline underline-offset-2" href="/analytics">Analytics</Link>
+          <Link className="hover:underline underline-offset-2" href="https://forms.gle/RZQEFb9Y4a9yQnYNA">Send Pyq</Link>
         </div>
       </div>
       <div className="flex items-center justify-center gap-6"> 

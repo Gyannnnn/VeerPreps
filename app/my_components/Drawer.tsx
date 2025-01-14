@@ -63,9 +63,9 @@ export async function DrawerDemo() {
           </Link>
           <Link
             className="bg-secondary py-2 w-full flex justify-center rounded-md"
-            href="/analytics"
+            href="https://forms.gle/RZQEFb9Y4a9yQnYNA"
           >
-            Analytics
+           Send pyq
           </Link>
         </div>
         <DrawerFooter className="w-full flex justify-center items-center  mt-5">
