@@ -12,6 +12,7 @@ const nextConfig = {
         pathname: "/iitkirba.io/db/pyq/branch/**/logo/**",
       },
     ],
+    domains:['res.cloudinary.com'],
   },
 };
 
