@@ -17,7 +17,7 @@ export default async function Branches() {
       "https://iitkirba-api.vercel.app/api/branch/"
     );
     const requiredbranches = branches.data.branches;
-    console.log(requiredbranches[0].branch_id);
+  
 
     return (
       <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-5">

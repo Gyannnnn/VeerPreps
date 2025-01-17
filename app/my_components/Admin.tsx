@@ -18,7 +18,7 @@ import {
 
 export default function Admincard({}) {
   return (
-    <div className="flex flex-wrap gap-10   justify-center">
+    <div className="flex flex-wrap sm:gap-10 gap-4   justify-center">
       <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
           Super Admin
@@ -32,7 +32,7 @@ export default function Admincard({}) {
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="text-2xl">Gyanaranjan Patra</h1>
+            <h1 className="sm:text-2xl text-3xl">Gyanaranjan Patra</h1>
             <h1 className="text-sm">Information Technology (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -102,7 +102,7 @@ export default function Admincard({}) {
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="text-2xl">Shibananda Bhatora</h1>
+            <h1 className="sm:text-2xl text-3xl">Shibananda Bhatora</h1>
             <h1 className="text-sm">Information Technology (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -159,7 +159,7 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative">
+      <Card className="w-72  h-96 flex flex-col items-center  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
@@ -170,7 +170,7 @@ export default function Admincard({}) {
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="text-2xl">Nitish Kumar Subudhi</h1>
+            <h1 className="sm:text-2xl text-3xl text-center">Nitishkumar Subudhi</h1>
             <h1 className="text-sm">Electrical Engineering (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
