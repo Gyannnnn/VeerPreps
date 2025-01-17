@@ -21,7 +21,7 @@ export default async function page() {
           <h1 className="pl-4 py-10 text-3xl"> All Previous Year Questions</h1>
           <div className="flex flex-wrap gap-2">
             {pyqs.map((pyq) => (
-              <Pdf pyqid={pyq.pyq_id} pyqname={pyq.pyqname} links={""} />
+              <Pdf key={pyq.pyq_id} notes={false} pyqid={pyq.pyq_id} pyqname={pyq.pyqname} links={""} />
             ))}
           </div>
         </div>

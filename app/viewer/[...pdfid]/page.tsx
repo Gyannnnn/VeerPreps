@@ -3,9 +3,9 @@ import axios from "axios";
 import PdfRenderer from "./pdfviewer";
 
 interface PageProps {
-  params: {
-    pdfid: string;
-  };
+  params: [
+    pdfid: string
+];
 }
 
 interface Pyq {
@@ -17,7 +17,30 @@ interface Pyq {
 }
 
 export default async function Page({ params }: PageProps) {
-  const pdfid = params.pdfid;
+ 
+  if(params.pdfid.length==2){
+   
+    const notesid = params.pdfid[1];
+   
+    try {
+      const response = await axios.get<{ pyq: Pyq }>(
+        `https://iitkirba-api.vercel.app/api/notes/getone/${notesid}`
+      );
+      const data = response.data.note;
+  
+      return (
+        
+          <PdfRenderer links={data.link}/>
+       
+      );
+    } catch (error) {
+      <div>
+        <h1>Not Found</h1>
+      </div>;
+    }
+
+  }else{
+    const pdfid = params.pdfid;
   try {
     const response = await axios.get<{ pyq: Pyq }>(
       `https://iitkirba-api.vercel.app/api/pyq/id/${pdfid}`
@@ -34,4 +57,7 @@ export default async function Page({ params }: PageProps) {
       <h1>Not Found</h1>
     </div>;
   }
+
+  }
+  
 }

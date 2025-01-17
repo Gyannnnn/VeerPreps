@@ -60,7 +60,7 @@ export default async function Contents({ ids }: PageProps) {
               {pyqs.map((pyq) => (
                 <div >
                  
-                  <Pdf pyqid={pyq.pyq_id} pyqname={pyq.pyqname} links={pyq.links}/>
+                  <Pdf notes={false} pyqid={pyq.pyq_id} pyqname={pyq.pyqname} links={pyq.links}/>
                 </div>
               ))}
             </div>
