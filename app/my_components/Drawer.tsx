@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from 'lucide-react';
+import { Menu } from "lucide-react";
 
 import {
   Drawer,
@@ -17,8 +17,6 @@ import { LogIn } from "lucide-react";
 import { auth } from "@/auth";
 import Logout from "./Logout";
 
-
-
 export async function DrawerDemo() {
   const session = await auth();
 
@@ -31,7 +29,7 @@ export async function DrawerDemo() {
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
-            <DrawerDescription >
+            <DrawerDescription>
               Lets get rid from the google drive link
             </DrawerDescription>
           </DrawerHeader>
@@ -65,7 +63,13 @@ export async function DrawerDemo() {
             className="bg-secondary py-2 w-full flex justify-center rounded-md"
             href="https://forms.gle/RZQEFb9Y4a9yQnYNA"
           >
-           Send pyq
+            Send pyq
+          </Link>
+          <Link
+            className="bg-secondary py-2 w-full flex justify-center rounded-md"
+            href="/admin"
+          >
+            Admins
           </Link>
         </div>
         <DrawerFooter className="w-full flex justify-center items-center  mt-5">
