@@ -18,7 +18,7 @@ import {
 
 export default function Admincard({}) {
   return (
-    <div className="flex gap-10">
+    <div className="flex flex-wrap gap-10   justify-center">
       <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
           Super Admin
