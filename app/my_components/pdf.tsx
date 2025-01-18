@@ -16,7 +16,7 @@ export default function Pdf({
   return (
     <Link
       className="flex"
-      href={notes ? `viewer/notes/${pyqid}` : `/viewer/${pyqid}`}
+      href={notes ? `/viewer/notes/${pyqid}` : `/viewer/${pyqid}`}
     >
       <Card className="flex flex-col py-2  w-36 bg-transparent dark:bg-secondary border-none gap-2 items-center justify-center">
         <Image
