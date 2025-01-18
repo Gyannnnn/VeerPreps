@@ -159,12 +159,13 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
+      
       <Card className="w-72  h-96 flex flex-col items-center  justify-center gap-6 relative hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
-          src="/images/nimtish.jpg"
-          width={100}
+          src="/images/nimtish.jpeg"
+          width={150}
           height={200}
           alt="shiba"
         />
@@ -172,6 +173,74 @@ export default function Admincard({}) {
           <div className="flex flex-col items-center justify-center ">
             <h1 className="sm:text-2xl text-3xl text-center">Nitishkumar Subudhi</h1>
             <h1 className="text-sm">Electrical Engineering (2027)</h1>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
+            <TooltipProvider>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      className="flex gap-2 items-center "
+                      href="mailto:shibanandabhatora@gmail.com"
+                    >
+                      <BiLogoGmail />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      className="flex gap-2 items-center "
+                      href="mailto:shibanandabhatora@gmail.com"
+                    >
+                      <FaTelegramPlane />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      className="flex gap-2 items-center "
+                      href="mailto:shibanandabhatora@gmail.com"
+                    >
+                      <FaDiscord />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
+          </div>
+        </div>
+      </Card>
+      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative hover:cursor-pointer">
+        <Badge className="absolute top-1 right-1">Admin</Badge>
+        <Image
+          className="rounded-full"
+          src="/images/ujjwal.jpg"
+          width={150}
+          height={200}
+          alt="shiba"
+        />
+        <div className="pt-2 flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center ">
+            <h1 className="sm:text-2xl text-3xl">Ujjwal Barik</h1>
+            <h1 className="text-sm">Information Technology (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
