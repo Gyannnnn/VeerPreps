@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import axios from "axios";
 import { Metadata } from "next";
+import SomethingWentWrong from "../SomethingWentWrong";
 
 interface Subject {
   subject_id: number | undefined;
@@ -16,11 +17,12 @@ interface pageprops {
 }
 
 export default async function Subjects({ ids }: pageprops) {
-  console.log(ids);
+  
   const branchId = ids[0];
   const yearid = ids[2];
 
-  let data: Subject[] = [];
+  try {
+    let data: Subject[] = [];
   if (
     yearid === "1" ||
     yearid === "5" ||
@@ -59,8 +61,8 @@ export default async function Subjects({ ids }: pageprops) {
   }
 
   return (
-    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pb-10">
-      <div className="w-[90vw] max-sm:w-[99vw] min-h-screen mt-16 flex    flex-col items-center justify-center gap-2 pt-5 ">
+    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center items-center pb-10">
+      <div className="w-[90vw] max-sm:w-[99vw] min-h-screen mt-16 flex    flex-col items-center justify-start gap-2 pt-5 ">
         {data.map((subject) => (
           <Link
           className="w-[96vw] flex items-center justify-center "
@@ -75,6 +77,14 @@ export default async function Subjects({ ids }: pageprops) {
       </div>
     </div>
   );
+  } catch (error) {
+    let err = error as Error;
+    console.log(err.message);
+    return (
+      <SomethingWentWrong/>
+    )
+    
+  }
 }
 
 

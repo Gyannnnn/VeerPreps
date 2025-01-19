@@ -1,6 +1,8 @@
 import React from "react";
 import Pdf from "../my_components/pdf";
 import axios from "axios";
+import NothingFound from "../my_components/NothingFound";
+import SomethingWentWrong from "../my_components/SomethingWentWrong";
 
 interface Notes {
   "notes_id": number;
@@ -11,7 +13,8 @@ interface Notes {
 }
 
 export default async function page() {
-  const response = await axios.get<{notes: Notes[]}>("https://iitkirba-api.vercel.app/api/notes/");
+  try {
+    const response = await axios.get<{notes: Notes[]}>("https://iitkirba-api.vercel.app/api/notes/");
   const data = response.data.notes
  
   return (
@@ -29,4 +32,14 @@ export default async function page() {
       </div>
     </div>
   );
+    
+  } catch (error) {
+    return(
+      <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pt-32">
+        <SomethingWentWrong/>
+      </div>
+    )
+    
+  }
+  
 }

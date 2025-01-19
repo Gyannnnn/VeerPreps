@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import SomethingWentWrong from "./SomethingWentWrong";
 
 interface branch {
   branch_id: string;
@@ -20,7 +21,7 @@ export default async function Branches() {
   
 
     return (
-      <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-5">
+      <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-20 sm:gap-10">
         {requiredbranches.map((branch) => (
           <Link
             key={branch.branch_id}
@@ -49,9 +50,7 @@ export default async function Branches() {
     );
   } catch (error) {
     return (
-      <div className="w-screen bg-secondary dark:bg-zinc-950 flex items-center justify-center">
-        <h1>Something Went Wrong</h1>
-      </div>
+      <SomethingWentWrong/>
     );
   }
 }

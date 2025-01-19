@@ -26,6 +26,7 @@ export default function MyApp() {
   const [width,Setwidth] = useState(1000)
   const { toast } = useToast()
 
+ try {
   useEffect(() => {
    
     const handleResize = () => {
@@ -45,7 +46,7 @@ export default function MyApp() {
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
   };
-  console.log(width)
+ 
   function increasewidth(){
     Setwidth(width+150)
     console.log(width)
@@ -66,7 +67,7 @@ export default function MyApp() {
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative ">
-        <Link className=" py-2 rounded-full bg-blue-500 flex items-center justify-center  w-10 z-10 text-white fixed top-20 sm:right-10 right-2" href="/dld_end_2024.pdf"><Download/> </Link>
+        <Link className=" py-2 rounded-full bg-blue-500 hover:bg-blue-400 flex items-center justify-center  w-10 z-10 text-white fixed top-20 sm:right-10 right-2" href="/dld_end_2024.pdf"><Download/> </Link>
         <Document
           className="flex flex-col items-center justify-center gap-2 "
           renderMode="canvas"
@@ -81,8 +82,14 @@ export default function MyApp() {
             />
           ))}
         </Document>
-        <div className="min-w-28 min-h-10 rounded-xl bg-blue-500 fixed bottom-4 right-4 flex gap-2 items-center justify-around text-4xl text-white max-sm:hidden "><CirclePlus onClick={increasewidth} className=" hover:cursor-pointer"  /><CircleMinus onClick={decreasewidth} className="text-4xl hover:cursor-pointer"  /></div>
+        <div className="max-sm:hidden "><CirclePlus onClick={increasewidth} className=" hover:cursor-pointer"  /><CircleMinus onClick={decreasewidth} className="text-4xl hover:cursor-pointer"  /></div>
       </div>
     </div>
   );
+ } catch (error) {
+  const err  =error as Error;
+  console.log(err.message);
+  return <div>Something went wrong</div>;
+  
+ }
 }

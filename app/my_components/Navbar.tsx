@@ -21,6 +21,7 @@ export default function Navbar() {
           <Link className="hover:underline underline-offset-2" href="/notes">Notes</Link>
           <Link className="hover:underline underline-offset-2" target="_blank" href="https://forms.gle/RZQEFb9Y4a9yQnYNA">Send Pyq</Link>
           <Link className="hover:underline underline-offset-2" href="/admin">Admins</Link>
+          <Link className="hover:underline underline-offset-2" target="_blank" href="https://iitkirba-api.vercel.app/api/branch">Report issue</Link>
         </div>
       </div>
       <div className="flex items-center justify-center gap-6"> 

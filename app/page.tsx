@@ -26,7 +26,7 @@ export default async function page() {
             <h1></h1>
           )}
         </div>
-        <div className="w-[90vw] min-h-screen  flex items-center justify-center mt-10 pb-10 ">
+        <div className="w-[90vw] flex items-center justify-center mt-10 pb-10 ">
           <div className="flex items-center justify-center  pb-10 w-[90vw] ">
           <Branches />          
           </div>

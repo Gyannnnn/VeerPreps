@@ -1,5 +1,8 @@
 import axios from "axios";
 import Pdf from "../pdf";
+import Image from "next/image";
+import Link from "next/link";
+import NothingFound from "../NothingFound";
 
 interface Subject {
   subject_id: number;
@@ -59,8 +62,8 @@ export default async function Contents({ ids }: PageProps) {
 
     if (!pyqs || pyqs.length === 0) {
       return (
-        <div className="h-screen w-screen flex items-center justify-center text-4xl">
-          Nothing Found
+        <div className="h-screen w-screen flex items-center justify-center text-2xl">
+          No Contents found
         </div>
       );
     }
@@ -85,7 +88,7 @@ export default async function Contents({ ids }: PageProps) {
           </div>
           <div className="pt-10">
             <h1 className="text-3xl">Subject Notes</h1>
-            <div className="flex flex-wrap gap-2 pt-4">
+            <div className="flex flex-wrap gap-2 pt-4 items-center justify-center">
               {notes.length > 0 ? (
                 notes.map((note: Notes) => (
                   <div key={note.notes_id}>
@@ -98,7 +101,23 @@ export default async function Contents({ ids }: PageProps) {
                   </div>
                 ))
               ) : (
-                <h1>No notes found</h1>
+                <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
+                  <div className="w-screen h-full text-3xl flex flex-col  items-center justify-center">
+                    <Link
+                      className="text-xl text-blue-600  flex flex-col items-center justify-center "
+                      href={"https://forms.gle/RZQEFb9Y4a9yQnYNA"}
+                    >
+                      {" "}
+                      <Image
+                        src="/loader/alert.gif"
+                        height={30}
+                        width={50}
+                        alt="alert"
+                      ></Image>
+                      <h1> Send Your Notes</h1>
+                    </Link>
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -106,12 +125,6 @@ export default async function Contents({ ids }: PageProps) {
       </div>
     );
   } catch (error) {
-    return (
-      <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <div className="w-[90vw] text-4xl flex items-center justify-center">
-          <h1>Error fetching data</h1>
-        </div>
-      </div>
-    );
+    return <NothingFound />;
   }
 }
