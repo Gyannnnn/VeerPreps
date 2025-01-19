@@ -22,28 +22,22 @@ export default function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [isloading, setloading] = useState(false)
+  const [isloading, setloading] = useState(false);
   const submithandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setloading(true)
+    setloading(true);
     try {
       const formData = new FormData(e.currentTarget);
       const result = await loginWithCreds(formData);
-      console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-      console.log(result)
-      
       if (result?.error) {
-        toast.error(result.error);
+        toast.error("Invalid Credentials");
       } else {
         toast.success("Login Successful!");
-      
       }
     } catch (error) {
-      console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-      console.log(error);
-      toast.error("Invalid Credentials !");
-    }finally{
-      setloading(false)
+      toast.error("Something went wrong");
+    } finally {
+      setloading(false);
     }
   };
 
@@ -90,18 +84,16 @@ export default function LoginForm({
                   />
                 </div>
                 <Button type="submit" className="w-full">
-                  {isloading ? "Logging in ...": "Login"}
+                  {isloading ? "Logging in ..." : "Login"}
                 </Button>
               </div>
-              <div className="text-center text-sm">
-                You can directly login!
-              </div>
+              <div className="text-center text-sm">You can directly login! 🙃</div>
             </div>
           </form>
         </CardContent>
       </Card>
       <ToastContainer
-        position="bottom-right"
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

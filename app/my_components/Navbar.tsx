@@ -12,16 +12,16 @@ export default function Navbar() {
       <div className="md:hidden flex justify-center items-center">
       <DrawerDemo/>
       </div>
-      <div className="md:flex  justify-center items-center gap-10 hidden ">
+      <div className="md:flex  justify-center items-center gap-2 hidden ">
         <Link href="/" className="font-sans text-2xl font-bold cursor-pointer" >IIT KIRBA</Link>
-        <div className="flex items-center gap-4 font-sans text-[14px] text-nav-text">
-          <Link className="hover:underline underline-offset-2" href="/">Home</Link>
-          <Link className="hover:underline underline-offset-2" href="/profile">Your Profile</Link>
-          <Link className="hover:underline underline-offset-2" href="/pyqs">Pyqs</Link>
-          <Link className="hover:underline underline-offset-2" href="/notes">Notes</Link>
-          <Link className="hover:underline underline-offset-2" target="_blank" href="https://forms.gle/RZQEFb9Y4a9yQnYNA">Send Pyq</Link>
-          <Link className="hover:underline underline-offset-2" href="/admin">Admins</Link>
-          <Link className="hover:underline underline-offset-2" target="_blank" href="">Report issue</Link>
+        <div className="flex items-center text-[14px] text-nav-text font-sans">
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" href="/">Home</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" href="/profile">Your Profile</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" href="/pyqs">Pyqs</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" href="/notes">Notes</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" target="_blank" href="https://forms.gle/RZQEFb9Y4a9yQnYNA">Send Pyq</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" href="/admin">Admins</Link>
+          <Link className="hover:bg-primary-foreground  px-2 py-1 rounded-xl underline-offset-2" target="_blank" href="">Report issue</Link>
         </div>
       </div>
       <div className="flex items-center justify-center gap-6"> 
