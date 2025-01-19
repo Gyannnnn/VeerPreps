@@ -1,25 +1,67 @@
+"use client";
+
 import axios from "axios";
+import { useState, useEffect } from "react";
 import Pdf from "../my_components/pdf";
 import SomethingWentWrong from "../my_components/SomethingWentWrong";
+import { CiSearch } from "react-icons/ci";
 
 interface Allpyqs {
   pyqname: string;
   pyq_id: number;
 }
 
-export default async function page() {
-  try {
-    const response = await axios.get<{ allpyqs: Allpyqs[] }>(
-      "https://iitkirba-api.vercel.app/api/pyq/"
-    );
-    const pyqs = response.data.allpyqs;
+export default function Page() {
+  const [pyqs, setPyqs] = useState<Allpyqs[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
+  useEffect(() => {
+    const fetchPyqs = async () => {
+      try {
+        const response = await axios.get<{ allpyqs: Allpyqs[] }>(
+          "https://iitkirba-api.vercel.app/api/pyq/"
+        );
+        setPyqs(response.data.allpyqs);
+      } catch (err) {
+        setError(true);
+      }
+    };
+
+    fetchPyqs();
+  }, []);
+
+  const filteredPyqs = pyqs.filter((pyq) =>
+    pyq.pyqname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (error) {
     return (
-      <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
-        <div className="w-[90vw] min-h-screen ">
-          <h1 className="pl-4 py-10 text-3xl"> All Previous Year Questions</h1>
-          <div className="flex flex-wrap gap-2">
-            {pyqs.map((pyq) => (
+      <div className="h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950">
+        <SomethingWentWrong />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
+      <div className="w-[95vw] min-h-screen">
+        <h1 className="sm:pl-4 pt-10 pb-5 sm:text-3xl text-2xl">
+          All Previous Year Questions
+        </h1>
+        <div className="flex justify-start items-center sm:w-1/3 w-full    mb-6  border rounded-md px-2">
+          <input
+            type="text"
+            placeholder="Search PYQs...."
+            className=" w-full  border-gray-300 rounded-md outline-none border-none text-sm py-3   bg-transparent"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <CiSearch className="text-2xl" />
+        </div>
+        <div className="flex flex-wrap gap-2  items-start justify-center">
+          {filteredPyqs.length > 0 ? (
+            filteredPyqs.map((pyq) => (
               <Pdf
                 key={pyq.pyq_id}
                 notes={false}
@@ -27,16 +69,12 @@ export default async function page() {
                 pyqname={pyq.pyqname}
                 links={""}
               />
-            ))}
-          </div>
+            ))
+          ) : (
+            <p>No results found ! :)  </p>
+          )}
         </div>
       </div>
-    );
-  } catch (error) {
-    return (
-      <div className="h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950">
-        <SomethingWentWrong />
-      </div>
-    );
-  }
+    </div>
+  );
 }
