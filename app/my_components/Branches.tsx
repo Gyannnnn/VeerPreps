@@ -21,14 +21,14 @@ export default async function Branches() {
   
 
     return (
-      <div className="w-[90vw] min-h-screen flex  justify-center flex-wrap gap-20 sm:gap-10">
+      <div className="sm:w-[90vw] w-screen min-h-screen flex  justify-center flex-wrap gap-10 sm:gap-10">
         {requiredbranches.map((branch) => (
           <Link
             key={branch.branch_id}
             href={`/year/${branch.branch_id}`}
-            className="hover:cursor-pointer"
+            className="hover:cursor-pointer max-sm:px-2"
           >
-            <Card className="w-80 sm:h-[48vh] max-sm:h-[44vh] flex bg-primary-foreground  flex-col drop-shadow-lg items-center justify-around  max-sm:w-80 px-2   rounded-md ">
+            <Card className="w-86 sm:h-[48vh] max-sm:h-[48vh] flex   flex-col drop-shadow-lg items-center justify-around  max-sm:w-86 px-2   rounded-md ">
               <Image
                 className="rounded-xl "
                 height={250}

@@ -101,10 +101,10 @@ export default async function Contents({ ids }: PageProps) {
                   </div>
                 ))
               ) : (
-                <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-                  <div className="w-screen h-full text-3xl flex flex-col  items-center justify-center">
+                <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950  pb-10">
+                  <div className="w-screen h-full  flex flex-col  items-center justify-center">
                     <Link
-                      className="text-xl text-blue-600  flex flex-col items-center justify-center "
+                      className="text-xl  flex flex-col items-center justify-center "
                       href={"https://forms.gle/RZQEFb9Y4a9yQnYNA"}
                     >
                       {" "}
@@ -114,7 +114,8 @@ export default async function Contents({ ids }: PageProps) {
                         width={50}
                         alt="alert"
                       ></Image>
-                      <h1> Send Your Notes</h1>
+                      <h1 className="text-2xl">No Notes Found !</h1>
+                      <h1 className="text-sm text-blue-500"> Send Your Notes</h1>
                     </Link>
                   </div>
                 </div>

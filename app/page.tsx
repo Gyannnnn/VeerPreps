@@ -12,8 +12,8 @@ export default async function page() {
   const name = session?.user?.name;
 
   return (
-    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center">
-      <div className=" w-[90vw] min-h-screen  mt-16">
+    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex items-center justify-center">
+      <div className=" sm:w-[90vw] w-screen min-h-screen  mt-16">
         <div className="pt-5 pl-2 ">
           {session?.user ? (
             <h1 className="sm:text-2xl max-sm:text-xl text-black flex items-center justify-start gap-2 hover:cursor-context-menu dark:text-white ">
@@ -26,10 +26,10 @@ export default async function page() {
             <h1></h1>
           )}
         </div>
-        <div className="w-[90vw] flex items-center justify-center mt-10 pb-10 ">
-          <div className="flex items-center justify-center  pb-10 w-[90vw] ">
+        <div className="sm:w-[90vw] w-screen flex items-center justify-center mt-10 pb-10 ">
+          
           <Branches />          
-          </div>
+          
         </div>
       </div>
     </div>

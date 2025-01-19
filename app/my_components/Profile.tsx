@@ -22,6 +22,7 @@ export async function Profile() {
 
   const avatarurl = session?.user?.image
   const defaultavatar = "https://github.com/shadcn.png"
+
  
   
   

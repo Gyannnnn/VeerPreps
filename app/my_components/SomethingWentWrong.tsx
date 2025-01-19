@@ -5,7 +5,7 @@ export default function SomethingWentWrong() {
   return (
     <div>
       <div className="h-[60vh] w-screen flex items-center justify-center bg-transparent  pt-14">
-        <div className="w-screen h-full text-3xl flex flex-col  items-center justify-center">
+        <div className="w-screen h-full sm:text-3xl text-2xl flex flex-col  items-center justify-center">
           <Image
             src="/loader/wentwrong3.gif"
             height={100}
