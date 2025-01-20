@@ -112,7 +112,7 @@ export default function Admincard({}) {
                   <TooltipTrigger asChild>
                     <Link
                       className="flex gap-2 items-center "
-                      href="mailto:shibanandabhatora@gmail.com"
+                      href="mailto:hackerqu38@gmail.com"
                     >
                       <BiLogoGmail />
                     </Link>
@@ -128,33 +128,18 @@ export default function Admincard({}) {
                   <TooltipTrigger asChild>
                     <Link
                       className="flex gap-2 items-center "
-                      href="mailto:shibanandabhatora@gmail.com"
+                      href="https://t.me/Shiba5572"
                     >
                       <FaTelegramPlane />
                     </Link>
                   </TooltipTrigger>
 
                   <TooltipContent>
-                    <p>Mail</p>
+                    <p>Telegram</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      className="flex gap-2 items-center "
-                      href="mailto:shibanandabhatora@gmail.com"
-                    >
-                      <FaDiscord />
-                    </Link>
-                  </TooltipTrigger>
-
-                  <TooltipContent>
-                    <p>Mail</p>
-                  </TooltipContent>
-                </Tooltip>
-              </div>
+              
             </TooltipProvider>
           </div>
         </div>
