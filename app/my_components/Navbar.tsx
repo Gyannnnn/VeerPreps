@@ -25,12 +25,7 @@ export default function Navbar() {
           >
             Home
           </Link>
-          <Link
-            className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
-            href="/profile"
-          >
-            Your Profile
-          </Link>
+
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
             href="/pyqs"
@@ -45,6 +40,12 @@ export default function Navbar() {
           </Link>
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
+            href="/profile"
+          >
+            Your Profile
+          </Link>
+          <Link
+            className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
             target="_blank"
             href="https://forms.gle/RZQEFb9Y4a9yQnYNA"
           >
@@ -54,7 +55,7 @@ export default function Navbar() {
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
             target="_blank"
-            href=""
+            href="https://forms.gle/seiczu9ceHw7SEuA9"
           >
             Report issue
           </Link>

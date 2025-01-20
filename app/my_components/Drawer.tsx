@@ -74,7 +74,7 @@ export async function DrawerDemo() {
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="https://iitkirba-api.vercel.app/api/branch">
+            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" target="_blank" href="https://forms.gle/seiczu9ceHw7SEuA9">
               Report Issue
             </Link>
           </DrawerClose>

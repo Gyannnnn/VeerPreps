@@ -39,6 +39,6 @@ export default async function page() {
 
 
 export const metadata:Metadata={
-  title:"Branches",
+  title:"IIT KIRBA",
   description:"A page where all branches of vssut burla are listed , the only previous year question paper site for veer surendra sai university of technlogy burla samablpur formely university collage of engineering burla sambalpur"
 }
