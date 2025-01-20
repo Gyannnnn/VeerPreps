@@ -7,13 +7,48 @@ import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/toaster";
 import { GeistSans } from "geist/font/sans";
-import Meta from "./Meta";
-import { GeistMono } from "geist/font/mono";
 
-export const metadata: Metadata = {
-  title: "IIT Kirba",
+import { GeistMono } from "geist/font/mono";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
+export const metadata = {
+  title: "iitkirba - Previous Year Questions & Notes for VSSUT Burla",
   description:
-    "A website for vssut which contains all the previous year question papers and notes ",
+    "Access previous year question papers and handwritten notes for VSSUT Burla (formerly UCE Burla) including mid-semester, end-semester, back papers, and supplementary papers. Login to download and save content for free on iitkirba.xyz.",
+  keywords: [
+    "VSSUT Burla previous year questions",
+    "UCE Burla question papers",
+    "VSSUT notes",
+    "mid-semester papers",
+    "end-semester papers",
+    "back papers",
+    "supplementary papers",
+    "handwritten notes",
+    "VSSUT student resources",
+    "iitkirba.xyz",
+  ],
+  openGraph: {
+    title: "iitkirba - VSSUT Burla Question Papers & Notes",
+    description:
+      "Find and download previous year question papers and notes for VSSUT Burla. Get access to mid-semester, end-semester, back, and supplementary papers for free.",
+    url: "https://www.iitkirba.xyz",
+    images: [
+      {
+        url: "https://www.iitkirba.xyz/og-image.jpg",
+        width: 800,
+        height: 600,
+        alt: "iitkirba",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "iitkirba - VSSUT Burla Question Papers & Notes",
+    description:
+      "Access VSSUT Burla's previous year question papers and notes. Download mid-semester, end-semester, back, and supplementary papers for free.",
+    images: ["https://www.iitkirba.xyz/twitter-image.jpg"],
+  },
 };
 
 export default async function RootLayout({
@@ -23,27 +58,22 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <>
-      <Meta />
-      <SessionProvider session={session}>
-        <html
-          lang="en"
-          className={`${GeistSans.variable} ${GeistMono.variable}`}
-        >
-          <body className="antialiased">
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Navbar />
-              {children}
-              <Toaster />
-            </ThemeProvider>
-          </body>
-        </html>
-      </SessionProvider>
-    </>
+    <SessionProvider session={session}>
+      <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+        <body className="antialiased">
+          <SpeedInsights />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
