@@ -11,8 +11,12 @@ const nextConfig = {
         hostname: "gyannnnn.github.io",
         pathname: "/iitkirba.io/db/pyq/branch/**/logo/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
     ],
-    domains:['res.cloudinary.com'],
   },
 };
 
