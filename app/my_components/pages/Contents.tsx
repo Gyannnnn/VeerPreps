@@ -115,7 +115,8 @@ export default async function Contents({ ids }: PageProps) {
                         alt="alert"
                       ></Image>
                       <h1 className="text-2xl">No Notes Found !</h1>
-                      <h1 className="text-sm text-blue-500"> Send Your Notes</h1>
+                      <h1 className="text-sm text-blue-500
+                      "> Send Your Notes</h1>
                     </Link>
                   </div>
                 </div>

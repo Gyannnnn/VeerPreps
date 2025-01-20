@@ -5,9 +5,9 @@ import React from 'react'
 
 
 export default async function page() {
-  console.log('Rendering page component');
+ 
   const session = await auth();
-  console.log('Session:', session);
+ 
   
   if (!session) {
     return (

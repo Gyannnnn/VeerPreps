@@ -49,7 +49,7 @@ export default function MyApp() {
  
   function increasewidth(){
     Setwidth(width+150)
-    console.log(width)
+    
   }
   function decreasewidth(){
     if(width === 400){
@@ -88,7 +88,7 @@ export default function MyApp() {
   );
  } catch (error) {
   const err  =error as Error;
-  console.log(err.message);
+  
   return <div>Something went wrong</div>;
   
  }

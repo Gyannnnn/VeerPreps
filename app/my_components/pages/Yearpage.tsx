@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import SomethingWentWrong from "../SomethingWentWrong";
 
+
 interface year {
   year_id: number;
   branchId: number;
@@ -23,7 +24,7 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
     );
 
     const requiredyears = years.data.requiredyear;
-    console.log("req:  " + requiredyears[0].yearName);
+  
     return (
       <div className="w-screen min-h-screen flex justify-center bg-secondary dark:bg-zinc-950">
         <div className="sm:w-[50vw] w-[90vw] min-h-screen flex flex-col gap-4 items-center justify-center ">
@@ -42,7 +43,7 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
     );
   } catch (error) {
     let err = error as Error;
-    console.log(err.message);
+   
     return (
       <div className="h-screen w-screen flex items-center justify-center">
         <SomethingWentWrong />

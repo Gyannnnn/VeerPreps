@@ -39,7 +39,7 @@ export default async function Subjects({ ids }: pageprops) {
       `https://iitkirba-api.vercel.app/api/subject/common`
     );
     data = response.data.subjects;
-    console.log(data);
+   
   } else {
     try {
       const response = await axios.get<{ subjects: Subject[] }>(
@@ -79,7 +79,7 @@ export default async function Subjects({ ids }: pageprops) {
   );
   } catch (error) {
     let err = error as Error;
-    console.log(err.message);
+
     return (
       <SomethingWentWrong/>
     )
