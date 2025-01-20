@@ -29,9 +29,9 @@ export default async function Branches() {
               href={`/year/${branch.branch_id}`}
               className="hover:cursor-pointer max-sm:px-2"
             >
-              <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex   flex-col drop-shadow-lg items-center justify-around  max-sm:w-86 px-2   rounded-md ">
+              <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex border   flex-col drop-shadow-lg items-center justify-around  max-sm:w-86 px-2   rounded-md ">
                 <Image
-                  className="rounded-xl "
+                  className="rounded-xl border border-blue-500 "
                   height={250}
                   width={350}
                   src={branch.displayimage}

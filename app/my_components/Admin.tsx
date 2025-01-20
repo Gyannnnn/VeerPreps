@@ -19,7 +19,7 @@ import {
 export default function Admincard({}) {
   return (
     <div className="flex flex-wrap sm:gap-10 gap-4   justify-center">
-      <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer  justify-center gap-6 relative">
+      <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
           Super Admin
         </Badge>
@@ -91,7 +91,7 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative hover:cursor-pointer">
+      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative border border-blue-500 hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
@@ -160,7 +160,7 @@ export default function Admincard({}) {
         </div>
       </Card>
       
-      <Card className="w-72  h-96 flex flex-col items-center  justify-center gap-6 relative hover:cursor-pointer">
+      <Card className="w-72  h-96 flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
@@ -215,7 +215,7 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative hover:cursor-pointer">
+      <Card className="w-72 h-96 flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"

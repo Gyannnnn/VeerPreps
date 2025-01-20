@@ -45,19 +45,19 @@ export default function Page() {
 
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
-      <div className="w-[95vw] min-h-screen">
+      <div className="w-[95vw]  min-h-screen">
         <h1 className="sm:pl-4 pt-10 pb-5 sm:text-3xl text-2xl">
           All Previous Year Questions
         </h1>
-        <div className="flex justify-start items-center sm:w-1/3 w-full    mb-6  border rounded-md px-2">
+        <div className="flex border border-blue-500   sm:ml-4 justify-end items-center sm:w-1/3 w-full mb-6  bg-primary-foreground rounded-md px-2">
           <input
             type="text"
             placeholder="Search PYQs...."
-            className=" w-full  border-gray-300 rounded-md outline-none border-none text-sm py-3   bg-transparent"
+            className=" w-full   rounded-md outline-none border-none text-sm py-3   bg-transparent"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <CiSearch className="text-2xl" />
+          <CiSearch className="text-2xl text-blue-500  cursor-pointer" />
         </div>
         <div className="flex flex-wrap gap-2  items-start justify-center">
           {filteredPyqs.length > 0 ? (
