@@ -237,7 +237,7 @@ export default function Admincard({}) {
                   <TooltipTrigger asChild>
                     <Link
                       className="flex gap-2 items-center "
-                      href="mailto:shibanandabhatora@gmail.com"
+                      href="https://t.me/Ujjwalbarik"
                     >
                       <FaTelegramPlane />
                     </Link>

@@ -5,11 +5,10 @@ import Navbar from "@/app/my_components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import { GeistSans } from "geist/font/sans";
-
-import { GeistMono } from 'geist/font/mono'
-
+import Meta from "./Meta";
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
   title: "IIT Kirba",
@@ -24,23 +23,27 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <SessionProvider session={session}>
-      <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-        <body
-          className="antialiased"
+    <>
+      <Meta />
+      <SessionProvider session={session}>
+        <html
+          lang="en"
+          className={`${GeistSans.variable} ${GeistMono.variable}`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
-    </SessionProvider>
+          <body className="antialiased">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </body>
+        </html>
+      </SessionProvider>
+    </>
   );
 }
