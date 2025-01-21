@@ -16,6 +16,8 @@ import {
 import { LogIn } from "lucide-react";
 import { auth } from "@/auth";
 import Logout from "./Logout";
+import localFont from "next/font/local";
+const myfont = localFont({ src: "../../font/PlaywriteVN-Regular.ttf" });
 
 export async function DrawerDemo() {
   const session = await auth();
@@ -33,8 +35,8 @@ export async function DrawerDemo() {
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
-            <DrawerDescription>
-              Lets get rid from the google drive link
+            <DrawerDescription >
+              <p className="text-sm">Lets get rid from the google drive</p>
             </DrawerDescription>
           </DrawerHeader>
         </div>

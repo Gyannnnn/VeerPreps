@@ -71,15 +71,15 @@ export default async function Contents({ ids }: PageProps) {
 
     return (
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <div className="min-h-screen w-[90vw] pt-10">
-          <div>
-            <div className="flex items-center justify-between">
-              <h1 className="text-2xl ">Previous Year Questions</h1>{" "}
+        <div className="min-h-screen sm:w-[90vw] w-screen flex flex-col items-center  pt-10 px-4">
+          <div className="w-full" >
+            <div className="flex max-sm:flex-col items-start max-sm:w-full  justify-between  max-sm:gap-2 ">
+              <h1 className="sm:text-3xl text-2xl  ">Previous Year Questions</h1>{" "}
               <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
                 <Button className=" ">Send your Pyqs</Button>
               </Link>
             </div>
-            <div className="flex flex-wrap gap-2 pt-4">
+            <div className="flex justify-start  flex-wrap gap-2 pt-4 ">
               {pyqs.map((pyq) => (
                 <div key={pyq.pyq_id}>
                   <Pdf
@@ -92,9 +92,9 @@ export default async function Contents({ ids }: PageProps) {
               ))}
             </div>
           </div>
-          <div className="pt-10">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl">Subject Notes</h1>
+          <div className="pt-10  w-full">
+            <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start  max-sm:gap-2">
+              <h1 className="text-2xl sm:text-3xl">Subject Notes</h1>
               <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
                 <Button className=" ">Send your Notes</Button>
               </Link>

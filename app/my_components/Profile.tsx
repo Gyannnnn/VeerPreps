@@ -21,7 +21,7 @@ export async function Profile() {
   const name = session?.user?.name
 
   const avatarurl = session?.user?.image
-  const defaultavatar = "https://github.com/shadcn.png"
+  const defaultavatar = "https://res.cloudinary.com/dlm8mel1x/image/upload/v1737448805/bear_w4ylw5.png"
 
  
   

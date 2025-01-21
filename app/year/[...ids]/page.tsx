@@ -14,8 +14,7 @@ export default function Page({ params }: PageProps) {
   const parsedBranchId = parseInt(branchId, 10);
   const ids = params.ids;
 
-  console.log(ids);
-  console.log(ids.length);
+
 
   switch (ids.length) {
     case 1:
