@@ -67,7 +67,7 @@ export default function Page() {
           />
           <CiSearch className="text-2xl text-blue-500  cursor-pointer" />
         </div>
-        <div className="flex flex-wrap   items-start justify-center">
+        <div className="flex flex-wrap  max-sm:gap-2 items-start justify-center">
           {filteredPyqs.length > 0 ? (
             filteredPyqs.map((pyq) => (
               <Pdf
