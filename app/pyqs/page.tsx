@@ -6,6 +6,9 @@ import Pdf from "../my_components/pdf";
 import SomethingWentWrong from "../my_components/SomethingWentWrong";
 import { CiSearch } from "react-icons/ci";
 
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
 interface Allpyqs {
   pyqname: string;
   pyq_id: number;
@@ -46,10 +49,15 @@ export default function Page() {
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
       <div className="w-[95vw]  min-h-screen">
-        <h1 className="sm:pl-4 pt-10 pb-5 sm:text-3xl text-2xl">
-          All Previous Year Questions
-        </h1>
-        <div className="flex border border-blue-500   sm:ml-4 justify-end items-center sm:w-1/3 w-full mb-6  bg-primary-foreground rounded-md px-2">
+        <div className="flex items-center justify-between pt-10 pr-5">
+              <h1 className="sm:pl-4  pb-5 sm:text-3xl text-2xl">
+                All Previous Year Questions
+              </h1>
+              <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
+                <Button className=" ">Send your Pyqs</Button>{" "}
+              </Link>
+        </div>
+        <div className="flex border border-blue-500 bg-secondary   sm:ml-4 justify-end items-center sm:w-1/3 w-full mb-6  rounded-md px-2">
           <input
             type="text"
             placeholder="Search PYQs...."
@@ -71,7 +79,7 @@ export default function Page() {
               />
             ))
           ) : (
-            <p>No results found ! :)  </p>
+            <p className="text-xl">No pyq found 🥲 </p>
           )}
         </div>
       </div>

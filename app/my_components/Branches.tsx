@@ -1,15 +1,14 @@
-"use client"
+"use client";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import SomethingWentWrong from "./SomethingWentWrong";
-
+import { Search } from "lucide-react";
 
 import { useState, useEffect } from "react";
-
-
+import Suspense from "./Loading";
 
 interface branch {
   branch_id: string;
@@ -37,35 +36,34 @@ export default function Branches() {
           setLoading(false);
         }
       };
-  
+
       fetchBranches();
     }, []);
-  
-    
+
     const filteredbranch = branches.filter((branch) =>
       branch.branchname.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  
+
     if (loading) {
-      
-      return (
-        <h1>Loading...</h1>
-      )
+      return <Suspense />;
     }
-  
+
     return (
       <div className="sm:w-[95vw] w-screen flex flex-col gap-2 items-center">
-        <div className="w-[87vw] h-10 flex items-center justify-end pb-10">
-          <input
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            type="text"
-            placeholder="Search branches"
-            className="px-2 py-2 sm:w-1/3 w-full bg-transparent border-2 border-blue-500 outline-none rounded-lg"
-          />
+        <div className="w-[87vw] h-10 flex gap-2 items-center justify-end mb-10   ">
+          <div className="flex  sm:w-1/3 w-full  items-center justify-between  bg-secondary border-2 rounded-md px-2  border-blue-500">
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              type="text"
+              placeholder="Search branches ..."
+              className="px-2 py-2 sm:w-1/3 w-full bg-transparent  outline-none rounded-lg"
+            />
+            <Search />
+          </div>
         </div>
         <div className="sm:w-[95vw] w-screen min-h-screen flex justify-center flex-wrap gap-5">
-          {filteredbranch.map((branch) => (
+          {filteredbranch.length >0 ?(filteredbranch.map((branch) => (
             <Link
               key={branch.branch_id}
               href={`/year/${branch.branch_id}`}
@@ -88,14 +86,15 @@ export default function Branches() {
                 </div>
               </Card>
             </Link>
-          ))}
+          ))):(
+            <h1 className="text-xl">No Branches Found 🥲</h1>
+          )
+        }
+          
         </div>
       </div>
     );
   } catch (error) {
-    return (
-      <SomethingWentWrong/>
-    )
-    
+    return <SomethingWentWrong />;
   }
 }

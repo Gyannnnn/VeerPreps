@@ -46,10 +46,9 @@ export default function Navbar() {
           </Link>
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
-            target="_blank"
-            href="https://forms.gle/RZQEFb9Y4a9yQnYNA"
+            href="/admin"
           >
-            Send Pyq
+            Admins
           </Link>
 
           <Link
@@ -58,12 +57,6 @@ export default function Navbar() {
             href="https://forms.gle/seiczu9ceHw7SEuA9"
           >
             Report issue
-          </Link>
-          <Link
-            className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
-            href="/admin"
-          >
-            Admins
           </Link>
         </div>
       </div>

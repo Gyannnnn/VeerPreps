@@ -3,6 +3,7 @@ import Pdf from "../pdf";
 import Image from "next/image";
 import Link from "next/link";
 import NothingFound from "../NothingFound";
+import { Button } from "@/components/ui/button";
 
 interface Subject {
   subject_id: number;
@@ -72,7 +73,12 @@ export default async function Contents({ ids }: PageProps) {
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
         <div className="min-h-screen w-[90vw] pt-10">
           <div>
-            <h1 className="text-2xl">Previous Year Questions</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl ">Previous Year Questions</h1>{" "}
+              <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
+                <Button className=" ">Send your Pyqs</Button>
+              </Link>
+            </div>
             <div className="flex flex-wrap gap-2 pt-4">
               {pyqs.map((pyq) => (
                 <div key={pyq.pyq_id}>
@@ -87,7 +93,12 @@ export default async function Contents({ ids }: PageProps) {
             </div>
           </div>
           <div className="pt-10">
-            <h1 className="text-3xl">Subject Notes</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl">Subject Notes</h1>
+              <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
+                <Button className=" ">Send your Notes</Button>
+              </Link>
+            </div>
             <div className="flex flex-wrap gap-2 pt-4 items-center justify-center">
               {notes.length > 0 ? (
                 notes.map((note: Notes) => (
@@ -115,8 +126,13 @@ export default async function Contents({ ids }: PageProps) {
                         alt="alert"
                       ></Image>
                       <h1 className="text-2xl">No Notes Found !</h1>
-                      <h1 className="text-sm text-blue-500
-                      "> Send Your Notes</h1>
+                      <h1
+                        className="text-sm text-blue-500
+                      "
+                      >
+                        {" "}
+                        Send Your Notes
+                      </h1>
                     </Link>
                   </div>
                 </div>

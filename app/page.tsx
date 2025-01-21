@@ -27,10 +27,8 @@ export default async function page() {
         </div>
       <div className=" sm:w-[90vw] w-screen min-h-screen flex flex-col items-center justify-center mt-16 pb-10">
         
-        <div className="sm:w-[98vw] w-screen flex  items-start justify-center mt-10 pb-10">
-          
-          <Branches />          
-          
+        <div className="sm:w-[98vw] w-screen flex  items-start justify-center mt-10 pb-10">          
+          <Branches />                    
         </div>
       </div>
     </div>
