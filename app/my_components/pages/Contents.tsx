@@ -53,55 +53,58 @@ export default async function Contents({ ids }: PageProps) {
           `https://iitkirba-api.vercel.app/api/notes/${subjectid}`
         )
         .catch(() => ({ data: { notes: [] } })),
-      axios.get<{ pyq: Contents[] }>(
-        `https://iitkirba-api.vercel.app/api/pyq/${subjectid}`
-      ),
+      axios
+        .get<{ pyq: Contents[] }>(
+          `https://iitkirba-api.vercel.app/api/pyq/${subjectid}`
+        )
+        .catch(() => ({ data: { pyq: [] } })),
     ]);
 
-    const notes = notesResponse.data.notes;
-    const pyqs = pyqResponse.data.pyq;
+    const notes: Notes[] = notesResponse.data.notes;
+    const pyqs: Contents[] = pyqResponse.data.pyq;
 
-    if (!pyqs || pyqs.length === 0) {
-      return (
-        <div className="h-screen w-screen flex items-center justify-center text-2xl">
-          No Contents found
-        </div>
-      );
+    if (notes.length === 0 && pyqs.length === 0) {
+      return <NothingFound />;
     }
 
     return (
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <div className="min-h-screen sm:w-[90vw] w-screen flex flex-col items-center  pt-10 px-4">
-          <div className="w-full" >
-            <div className="flex max-sm:flex-col items-start max-sm:w-full  justify-between  max-sm:gap-2 ">
-              <h1 className="sm:text-3xl text-2xl  ">Previous Year Questions</h1>{" "}
-              <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
-                <Button className=" ">Send your Pyqs</Button>
+        <div className="min-h-screen sm:w-[90vw] w-screen flex flex-col items-center pt-10 px-4">
+          <div className="w-full">
+            <div className="flex max-sm:flex-col items-start max-sm:w-full justify-between max-sm:gap-2">
+              <h1 className="sm:text-3xl text-2xl">Previous Year Questions</h1>
+              <Link target="_blank" href="https://forms.gle/srXqik5xytPDrgmB7">
+                <Button>Send your Pyqs</Button>
               </Link>
             </div>
-            <div className="flex justify-start  flex-wrap gap-2 pt-4 ">
-              {pyqs.map((pyq) => (
-                <div key={pyq.pyq_id}>
-                  <Pdf
-                    notes={false}
-                    pyqid={pyq.pyq_id}
-                    pyqname={pyq.pyqname}
-                    links={pyq.links}
-                  />
-                </div>
-              ))}
+            <div className="flex justify-start flex-wrap gap-2 pt-4">
+              {pyqs.length > 0 ? (
+                pyqs.map((pyq) => (
+                  <div key={pyq.pyq_id}>
+                    <Pdf
+                      notes={false}
+                      pyqid={pyq.pyq_id}
+                      pyqname={pyq.pyqname}
+                      links={pyq.links}
+                    />
+                  </div>
+                ))
+              ) : (
+                <h2 className="text-xl">No PYQs found</h2>
+              )}
             </div>
           </div>
-          <div className="pt-10  w-full">
-            <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start  max-sm:gap-2">
+
+          <div className="pt-10 w-full">
+            <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
               <h1 className="text-2xl sm:text-3xl">Subject Notes</h1>
-              <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
-                <Button className=" ">Send your Notes</Button>
+              <Link target="_blank" href="https://forms.gle/srXqik5xytPDrgmB7">
+                <Button>Send your Notes</Button>
               </Link>
             </div>
-            <div className="flex flex-wrap gap-2 pt-4 items-center justify-center">
+            <div className="flex flex-wrap gap-2 pt-4 items-center justify-start">
               {notes.length > 0 ? (
-                notes.map((note: Notes) => (
+                notes.map((note) => (
                   <div key={note.notes_id}>
                     <Pdf
                       notes={true}
@@ -112,27 +115,20 @@ export default async function Contents({ ids }: PageProps) {
                   </div>
                 ))
               ) : (
-                <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950  pb-10">
-                  <div className="w-screen h-full  flex flex-col  items-center justify-center">
+                <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pb-10">
+                  <div className="w-screen h-full flex flex-col items-center justify-center">
                     <Link
-                      className="text-xl  flex flex-col items-center justify-center "
+                      className="text-xl flex flex-col items-center justify-center"
                       href={"https://forms.gle/RZQEFb9Y4a9yQnYNA"}
                     >
-                      {" "}
                       <Image
                         src="/loader/alert.gif"
                         height={30}
                         width={50}
                         alt="alert"
-                      ></Image>
-                      <h1 className="text-2xl">No Notes Found !</h1>
-                      <h1
-                        className="text-sm text-blue-500
-                      "
-                      >
-                        {" "}
-                        Send Your Notes
-                      </h1>
+                      />
+                      <h1 className="text-2xl">No Notes Found!</h1>
+                      <h1 className="text-sm text-blue-500">Send Your Notes</h1>
                     </Link>
                   </div>
                 </div>
