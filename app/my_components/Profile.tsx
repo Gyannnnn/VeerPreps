@@ -30,7 +30,7 @@ export async function Profile() {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage  src={`${avatarurl ? avatarurl :defaultavatar }`} alt="@shadcn" />
+          <AvatarImage   src={`${avatarurl ? avatarurl :defaultavatar }`} alt="@shadcn" />
           <AvatarFallback className="text-2xl flex items-center justify-center font-sans font-light ">
             {
               name ? name[0] : getFallBack(session?.user?.email as string)

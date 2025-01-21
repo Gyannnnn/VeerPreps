@@ -28,7 +28,8 @@ export default function Admincard({}) {
           src="/images/me.jpg"
           width={150}
           height={200}
-          alt="shiba"
+          alt="me"
+          priority
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -99,6 +100,7 @@ export default function Admincard({}) {
           width={150}
           height={200}
           alt="shiba"
+          priority
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -152,7 +154,8 @@ export default function Admincard({}) {
           src="/images/nimtish.jpeg"
           width={150}
           height={200}
-          alt="shiba"
+          priority
+          alt="nimtish"
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -207,7 +210,8 @@ export default function Admincard({}) {
           src="/images/ujjwal.jpg"
           width={150}
           height={200}
-          alt="shiba"
+          alt="ujjwal"
+          priority
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">

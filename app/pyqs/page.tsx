@@ -48,9 +48,9 @@ export default function Page() {
 
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
-      <div className="w-[95vw]  min-h-screen">
-        <div className="flex items-center justify-between pt-10 pr-5">
-              <h1 className="sm:pl-4  pb-5 sm:text-3xl text-2xl">
+      <div className="w-[95vw]    min-h-screen">
+        <div className="flex items-center justify-between mt-10 mb-5 pr-5  ">
+              <h1 className="sm:pl-3  sm:text-2xl text-sm">
                 All Previous Year Questions
               </h1>
               <Link target="_black" href="https://forms.gle/srXqik5xytPDrgmB7">
@@ -61,13 +61,13 @@ export default function Page() {
           <input
             type="text"
             placeholder="Search PYQs...."
-            className=" w-full   rounded-md outline-none border-none text-sm py-3   bg-transparent"
+            className=" w-full   rounded-md outline-none border-none text-sm py-2   bg-transparent"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <CiSearch className="text-2xl text-blue-500  cursor-pointer" />
         </div>
-        <div className="flex flex-wrap gap-2  items-start justify-center">
+        <div className="flex flex-wrap   items-start justify-center">
           {filteredPyqs.length > 0 ? (
             filteredPyqs.map((pyq) => (
               <Pdf

@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import SomethingWentWrong from "./SomethingWentWrong";
 import { Search } from "lucide-react";
-
+import getName from "@/utils/Name";
 import { useState, useEffect } from "react";
 import Suspense from "./Loading";
+import { Session } from "next-auth";
+import localFont from "next/font/local";
+const myfont = localFont({ src: "../../font/PlaywriteVN-Regular.ttf" });
 
 interface branch {
   branch_id: string;
@@ -17,10 +20,15 @@ interface branch {
   branchname: string;
 }
 
-export default function Branches() {
+interface branchProps {
+  session: Session | null;
+}
+
+export default function Branches({ session }: branchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [branches, setBranches] = useState<branch[]>([]);
   const [loading, setLoading] = useState(true);
+  const name = session?.user?.name;
 
   try {
     useEffect(() => {
@@ -50,7 +58,25 @@ export default function Branches() {
 
     return (
       <div className="sm:w-[95vw] w-screen flex flex-col gap-2 items-center">
-        <div className="w-[87vw] h-10 flex gap-2 items-center justify-end mb-10   ">
+        <div className="w-[91vw] 2xl:w-[87vw] h-10 flex sm:flex-row flex-col gap-2 items-center justify-between sm:mb-10 mb-20   ">
+          <div className="max-sm:w-full ">
+            {session?.user ? (
+              <h1
+                style={myfont.style}
+                className="sm:text-2xl max-sm:text-2xl text-black flex items-center justify-start gap-2 hover:cursor-pointer dark:text-white"
+              >
+                <span> hello</span>
+                <span className="inline-block animate-wave text-3xl transform-origin-[70%_70%]">
+                  👋
+                </span>
+                {name
+                  ? name
+                  : getName(session?.user?.email as string)?.toLowerCase()}
+              </h1>
+            ) : (
+              <h1></h1>
+            )}
+          </div>
           <div className="flex  sm:w-1/3 w-full  items-center justify-between  bg-secondary border-2 rounded-md px-2  border-blue-500">
             <input
               value={searchTerm}
@@ -63,34 +89,34 @@ export default function Branches() {
           </div>
         </div>
         <div className="sm:w-[95vw] w-screen min-h-screen flex justify-center flex-wrap gap-5">
-          {filteredbranch.length >0 ?(filteredbranch.map((branch) => (
-            <Link
-              key={branch.branch_id}
-              href={`/year/${branch.branch_id}`}
-              className="hover:cursor-pointer max-sm:px-2"
-            >
-              <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex border flex-col drop-shadow-lg items-center justify-around max-sm:w-86 px-2 rounded-md">
-                <Image
-                  className="rounded-xl border"
-                  height={250}
-                  width={350}
-                  src={branch.displayimage}
-                  alt="information technology"
-                  priority
-                />
-                <div className="flex flex-col gap-2 items-start w-full">
-                  <h1 className="font-sans text-xl w-full text-center tracking-tighter">
-                    {branch.branchname}
-                  </h1>
-                  <Button className="w-full">View Content</Button>
-                </div>
-              </Card>
-            </Link>
-          ))):(
+          {filteredbranch.length > 0 ? (
+            filteredbranch.map((branch) => (
+              <Link
+                key={branch.branch_id}
+                href={`/year/${branch.branch_id}`}
+                className="hover:cursor-pointer max-sm:px-2"
+              >
+                <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex border flex-col drop-shadow-lg items-center justify-around max-sm:w-86 px-2 rounded-md">
+                  <Image
+                    className="rounded-xl border"
+                    height={250}
+                    width={350}
+                    src={branch.displayimage}
+                    alt="information technology"
+                    priority
+                  />
+                  <div className="flex flex-col gap-2 items-start w-full">
+                    <h1 className="font-sans text-xl w-full text-center tracking-tighter">
+                      {branch.branchname}
+                    </h1>
+                    <Button className="w-full">View Content</Button>
+                  </div>
+                </Card>
+              </Link>
+            ))
+          ) : (
             <h1 className="text-xl">No Branches Found 🥲</h1>
-          )
-        }
-          
+          )}
         </div>
       </div>
     );

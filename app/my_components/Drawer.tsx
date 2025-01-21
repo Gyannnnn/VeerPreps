@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X } from "lucide-react";
 
 import {
   Drawer,
@@ -26,10 +26,7 @@ export async function DrawerDemo() {
         <Menu />
       </DrawerTrigger>
       <DrawerContent>
-        <DrawerClose
-          asChild
-          className="absolute top-6 right-4 cursor-pointer"
-        >
+        <DrawerClose asChild className="absolute top-6 right-4 cursor-pointer">
           <X className="text-5xl text-primary" />
         </DrawerClose>
 
@@ -42,39 +39,53 @@ export async function DrawerDemo() {
           </DrawerHeader>
         </div>
         <div className="flex flex-col items-center gap-2 font-sans text-[14px] text-nav-text px-16 mt-4">
-         
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="/">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/"
+            >
               Home
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="/profile">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/profile"
+            >
               Your Profile
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="/pyqs">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/pyqs"
+            >
               Pyqs
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="/notes">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/notes"
+            >
               Notes
             </Link>
           </DrawerClose>
+
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="https://forms.gle/RZQEFb9Y4a9yQnYNA">
-              Send pyq
-            </Link>
-          </DrawerClose>
-          <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" href="/admin">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/admin"
+            >
               Admins
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <Link className="bg-secondary py-2 w-full flex justify-center rounded-md" target="_blank" href="https://forms.gle/seiczu9ceHw7SEuA9">
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              target="_blank"
+              href="https://forms.gle/seiczu9ceHw7SEuA9"
+            >
               Report Issue
             </Link>
           </DrawerClose>

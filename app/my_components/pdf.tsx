@@ -18,7 +18,7 @@ export default function Pdf({
       className="flex"
       href={notes ? `/viewer/notes/${pyqid}` : `/viewer/${pyqid}`}
     >
-      <Card className="flex flex-col py-2  w-36 bg-transparent dark:bg-secondary border-none gap-2 items-center justify-center">
+      <div className="flex flex-col py-2  w-36 bg-transparent dark:bg-secondary border-none gap-2 items-center justify-center rounded-xl ">
         <Image
           priority
           src={"/images/file.png"}
@@ -27,7 +27,7 @@ export default function Pdf({
           alt="icon"
         />
         <h1 className="text-center text-sm">{pyqname}</h1>
-      </Card>
+      </div>
     </Link>
   );
 }

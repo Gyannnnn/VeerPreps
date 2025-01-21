@@ -9,6 +9,17 @@ export default {
   ],
   theme: {
   	extend: {
+		keyframes: {
+			wave: {
+			  '0%, 100%': { transform: 'rotate(0deg)' },
+			  '25%': { transform: 'rotate(10deg)' },
+			  '50%': { transform: 'rotate(-10deg)' },
+			  '75%': { transform: 'rotate(10deg)' },
+			},
+		  },
+		  animation: {
+			wave: 'wave 2s infinite',
+		  },
 		fontFamily: {
 			sans: ['var(--font-geist-sans)'],
 			mono: ['var(--font-geist-mono)'],
