@@ -74,10 +74,10 @@ export default async function Contents({ ids }: PageProps) {
             <div className="flex max-sm:flex-col items-start max-sm:w-full justify-between max-sm:gap-2">
               <h1 className="sm:text-3xl text-2xl">Previous Year Questions</h1>
               <Link target="_blank" href="https://forms.gle/srXqik5xytPDrgmB7">
-                <Button>Send your Pyqs</Button>
+                <Button variant={"outline"}>Send your Pyqs</Button>
               </Link>
             </div>
-            <div className="flex justify-start flex-wrap gap-2 pt-4">
+            <div className="flex justify-start flex-wrap gap-2 pt-4 ">
               {pyqs.length > 0 ? (
                 pyqs.map((pyq) => (
                   <div key={pyq.pyq_id}>
@@ -99,7 +99,7 @@ export default async function Contents({ ids }: PageProps) {
             <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
               <h1 className="text-2xl sm:text-3xl">Subject Notes</h1>
               <Link target="_blank" href="https://forms.gle/srXqik5xytPDrgmB7">
-                <Button>Send your Notes</Button>
+                <Button variant="outline">Send your Notes</Button>
               </Link>
             </div>
             <div className="flex flex-wrap gap-2 pt-4 items-center justify-start">

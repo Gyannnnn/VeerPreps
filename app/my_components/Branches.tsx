@@ -77,15 +77,15 @@ export default function Branches({ session }: branchProps) {
               <h1></h1>
             )}
           </div>
-          <div className="flex  sm:w-1/3 w-full  items-center justify-between  bg-secondary border-2 rounded-md px-2  border-blue-500">
+          <div className="flex  sm:w-1/3 w-full  items-center justify-between hover:cursor-pointer   border-2 rounded-md px-2 py-3  ">
             <input
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              type="text"
+              type="text"              
               placeholder="Search branches ..."
-              className="px-2 py-2 sm:w-1/3 w-full bg-transparent  outline-none rounded-lg"
+              className="px-2  sm:w-1/3 w-full bg-transparent  outline-none rounded-lg"
             />
-            <Search />
+            <Search className="text-gray-400 hover:text-gray-500 " />
           </div>
         </div>
         <div className="sm:w-[95vw] w-screen min-h-screen flex justify-center flex-wrap gap-5">
@@ -94,22 +94,22 @@ export default function Branches({ session }: branchProps) {
               <Link
                 key={branch.branch_id}
                 href={`/year/${branch.branch_id}`}
-                className="hover:cursor-pointer max-sm:px-2"
+                className="hover:cursor-pointer "
               >
-                <Card className="w-80 sm:h-[48vh] max-sm:h-[48vh] flex border flex-col drop-shadow-lg items-center justify-around max-sm:w-86 px-2 rounded-md">
+                <Card className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] flex border flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm ">
                   <Image
-                    className="rounded-xl border"
-                    height={250}
+                    className="rounded-sm border"
+                    height={400}
                     width={350}
                     src={branch.displayimage}
                     alt="information technology"
                     priority
                   />
-                  <div className="flex flex-col gap-2 items-start w-full">
-                    <h1 className="font-sans text-xl w-full text-center tracking-tighter">
+                  <div className="flex flex-col sm:gap-4 gap-2 items-start w-full">
+                    <h1 className="font-sans sm:text-xl text-[1.4rem] w-full text-center tracking-tighter">
                       {branch.branchname}
                     </h1>
-                    <Button className="w-full">View Content</Button>
+                    <Button className="w-full py-6">View Content</Button>
                   </div>
                 </Card>
               </Link>

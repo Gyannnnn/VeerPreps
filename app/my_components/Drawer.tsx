@@ -36,7 +36,7 @@ export async function DrawerDemo() {
           <DrawerHeader>
             <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
             <DrawerDescription >
-              <p className="text-sm">Lets get rid from the google drive</p>
+              <p className="text-sm">VSSUT's Hub for Questions & Notes</p>
             </DrawerDescription>
           </DrawerHeader>
         </div>

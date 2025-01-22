@@ -9,7 +9,7 @@ import { Metadata } from "next";
 
 export default async function page() {
   const session = await auth();
-  const name = session?.user?.name;
+  // const name = session?.user?.name;
 
   return (
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex flex-col items-center justify-center">

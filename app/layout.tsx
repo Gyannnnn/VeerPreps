@@ -10,6 +10,7 @@ import { GeistSans } from "geist/font/sans";
 
 import { GeistMono } from "geist/font/mono";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Footer from "./my_components/Footer";
 
 export const metadata = {
   title: "iitkirba - Previous Year Questions & Notes for VSSUT Burla",
@@ -70,6 +71,7 @@ export default async function RootLayout({
           >
             <Navbar />
             {children}
+            <Footer/>
             <Toaster />
           </ThemeProvider>
         </body>

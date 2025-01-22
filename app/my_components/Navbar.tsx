@@ -7,7 +7,7 @@ import { DrawerDemo } from "./Drawer";
 
 export default function Navbar() {
   return (
-    <div className="w-screen h-[54px] bg-white/30 dark:bg-zinc-950/50 backdrop-blur-lg backdrop-saturate-150 border border-white/10 shadow-md flex items-center justify-between px-5 md:px-24 fixed top-1 z-10">
+    <div className="w-screen h-[54px] bg-white/30 dark:bg-zinc-950/50 backdrop-blur-lg backdrop-saturate-150 border border-white/10 shadow-md flex items-center justify-between px-5 md:px-16 fixed top-1 z-10">
       <div className="md:hidden flex justify-center items-center">
         <DrawerDemo />
       </div>

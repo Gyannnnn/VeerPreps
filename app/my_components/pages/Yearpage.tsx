@@ -33,8 +33,9 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
               key={year.year_id}
               href={`/year/${branchId}/subjects/${year.year_id}`}
             >
-              <Card className="h-[10vh] sm:w-[50vw] w-[96vw] bg-primary-foreground flex items-center justify-center sm:text-2xl text-xl rounded-sm">
+              <Card className="h-[10vh] lg:h-[10vh] sm:w-[50vw] w-[96vw] dark:bg-zinc-950 flex flex-col  items-start justify-center pl-6  sm:text-2xl text-xl rounded-sm relative">
                 <h1 className="text-2xl">{year.yearName}</h1>
+                <h1 className="text-sm text-blue-500 hover:text-blue-400 underline underline-offset-1 absolute bottom-2 right-2">Explore subjects</h1>
               </Card>
             </Link>
           ))}
