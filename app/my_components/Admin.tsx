@@ -21,7 +21,7 @@ export default function Admincard({}) {
     <div className="flex flex-wrap sm:gap-10 gap-4   justify-center">
       <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
-          Super Admin
+          Developer
         </Badge>
         <Image
           className="rounded-full"
