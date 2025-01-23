@@ -75,7 +75,7 @@ export default function Allnotes() {
               />
             ))
           ) : (
-            <h1>No notes found</h1>
+            <h1>No notes found 🥲</h1>
           )}
         </div>
       </div>
