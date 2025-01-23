@@ -4,6 +4,8 @@ import ThemeToggler from "./ThemeToggler";
 import { Profile } from "./Profile";
 
 import { DrawerDemo } from "./Drawer";
+import Image from "next/image";
+import Logo from "./Logo";
 
 export default function Navbar() {
   return (
@@ -16,7 +18,7 @@ export default function Navbar() {
           href="/"
           className="font-sans lg:text-2xl text-sm  font-bold cursor-pointer"
         >
-          IIT KIRBA
+          <Logo/>
         </Link>
         <div className="flex items-center text-[14px] text-nav-text font-sans">
           <Link
