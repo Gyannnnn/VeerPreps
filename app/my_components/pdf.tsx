@@ -17,7 +17,7 @@ export default function Pdf({
       className="flex"
       href={notes ? `/viewer/notes/${pyqid}` : `/viewer/${pyqid}`}
     >
-      <div className="flex flex-col py-2  w-36 bg-transparent border-none gap-2 items-center justify-center rounded-xl ">
+      <div className="flex flex-col py-2  w-36 bg-transparent border-none gap-1 items-center justify-center rounded-xl ">
         <Image
           priority
           src={"/images/file.png"}
