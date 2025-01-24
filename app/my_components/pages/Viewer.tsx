@@ -82,7 +82,7 @@ export default function MyApp() {
             />
           ))}
         </Document>
-        <div className="max-sm:hidden "><CirclePlus onClick={increasewidth} className=" hover:cursor-pointer"  /><CircleMinus onClick={decreasewidth} className="text-4xl hover:cursor-pointer"  /></div>
+        <div className="max-sm:hidden  "><CirclePlus onClick={increasewidth} className=" hover:cursor-pointer"  /><CircleMinus onClick={decreasewidth} className="text-4xl hover:cursor-pointer"  /></div>
       </div>
     </div>
   );

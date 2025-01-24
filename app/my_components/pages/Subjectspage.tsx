@@ -4,6 +4,7 @@ import axios from "axios";
 import { Metadata } from "next";
 import SomethingWentWrong from "../SomethingWentWrong";
 
+import { FaArrowRight } from "react-icons/fa";
 interface Subject {
   subject_id: number | undefined;
   yearId: number;
@@ -47,15 +48,16 @@ export default async function Subjects({ ids }: pageprops) {
       );
       data = response.data.subjects;
     } catch (error) {
-      console.log(error);
+      
     }
   }
 
   if (!data || data.length === 0) {
     console.log("No subjects available");
     return (
-      <div className="h-screen w-screen flex items-center justify-center text-2xl">
-        <h1>No Subjects</h1>
+      <div className="h-screen w-screen flex flex-col items-center justify-center text-3xl">
+        <h1 >Coming Soon !</h1>
+        <Link className="text-sm text-blue-500 hover:text-blue-400" href={"/admin"}>Contact Admins</Link>
       </div>
     );
   }
@@ -69,9 +71,9 @@ export default async function Subjects({ ids }: pageprops) {
             href={`/year/${branchId}/subjects/${yearid}/contents/${subject.subject_id}`}
             key={subject.subject_id}
           >
-            <Card className="sm:w-[50vw] max-sm:w-[96vw] sm:h-16 h-20 flex bg-primary-foreground rounded-sm  items-start justify-start py-2  px-4 relative">
-              <h1 className="text-xl leading-tight">{subject.subjectname}</h1>
-              <p className="absolute sm:bottom-2 bottom-1 right-1 sm:right-4 sm:text-sm text-[0.8rem] text-blue-500 hover:text-blue-400">Explore materials</p>
+            <Card className="sm:w-[50vw] max-sm:w-[96vw] sm:h-16 h-20 flex bg-primary-foreground rounded-sm  items-center justify-between px-2 max-sm:relative ">
+              <h1 className="text-xl max-sm:absolute max-sm:left-2 max-sm:top-2">{subject.subjectname}</h1>
+              <p className="text-sm text-blue-500 hover:text-blue-400 flex justify-center items-center gap-2 max-sm:absolute max-sm:right-1 max-sm:bottom-1">Explore materials <FaArrowRight className="font-light"/> </p>
             </Card>
           </Link>
         ))}
