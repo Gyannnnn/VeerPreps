@@ -100,9 +100,9 @@ export default function Branches({ session }: BranchProps) {
               key={index}
               className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
             >
-              <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
-              <div className="w-3/4 h-6 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
-              <div className="w-1/2 h-8 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
+              <div className="w-full h-52 bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
+              <div className="w-full h-20 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
+              <div className="w-full h-8 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
             </Card>
           ))
         ) : filteredBranches.length > 0 ? (

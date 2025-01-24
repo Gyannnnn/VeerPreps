@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Card className="w-full min-h-10 bg-secondary dark:bg-zinc-950 rounded-none drop-shadow-xl flex flex-col items-center justify-center py-2">
+    <Card className="w-full min-h-10 bg-secondary dark:bg-zinc-950 rounded-t-xl drop-shadow-xl flex flex-col items-center justify-center py-2">
       <div className="w-full flex flex-col items-center justify-center">
         <Link href={"/"}>
           <div className="w-full flex gap-4 items-center justify-center hover:cursor-pointer min-h-[60px]">

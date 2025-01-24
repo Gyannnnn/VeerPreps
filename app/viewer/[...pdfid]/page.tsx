@@ -21,9 +21,6 @@ interface Notes {
 }
 
 export default async function Page({ params }: PageProps) {
-  console.log(params);
-  console.log(typeof params.pdfid);
-
   if (params.pdfid.length == 2) {
     console.log(params.pdfid);
     const notesid = params.pdfid[1];
@@ -43,16 +40,14 @@ export default async function Page({ params }: PageProps) {
     }
   } else {
     const pdfid = params.pdfid;
-    console.log(pdfid);
-    console.log("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+
     try {
       const response = await axios.get<Pyq>(
         `https://iitkirba-api.vercel.app/api/pyq/id/${pdfid}`
       );
-      console.log(response.data);
+
       const data = response.data;
-      console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-      console.log(data.links);
+
       return <PdfRenderer links={data.links} />;
     } catch (error) {
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
