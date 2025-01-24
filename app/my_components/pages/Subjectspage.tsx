@@ -71,7 +71,7 @@ export default async function Subjects({ ids }: pageprops) {
             href={`/year/${branchId}/subjects/${yearid}/contents/${subject.subject_id}`}
             key={subject.subject_id}
           >
-            <Card className="sm:w-[50vw] max-sm:w-[96vw] sm:h-16 h-20 flex bg-primary-foreground rounded-sm  items-center justify-between px-2 max-sm:relative ">
+            <Card className="sm:w-[50vw] max-sm:w-[96vw] sm:h-16 h-20 flex bg-primary-foreground dark:bg-zinc-950 rounded-sm  items-center justify-between px-2 max-sm:relative ">
               <h1 className="text-xl max-sm:absolute max-sm:left-2 max-sm:top-2">{subject.subjectname}</h1>
               <p className="text-sm text-blue-500 hover:text-blue-400 flex justify-center items-center gap-2 max-sm:absolute max-sm:right-1 max-sm:bottom-1">Explore materials <FaArrowRight className="font-light"/> </p>
             </Card>

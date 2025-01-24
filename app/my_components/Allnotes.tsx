@@ -63,7 +63,7 @@ export default function Allnotes() {
             <CiSearch className="text-xl hover:cursor-pointer" />
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-center pt-10">
+        <div className="flex flex-wrap items-center justify-center max-sm:justify-around  pt-10">
           {filteredNotes.length > 0 ? (
             filteredNotes.map((note) => (
               <Pdf
@@ -75,7 +75,7 @@ export default function Allnotes() {
               />
             ))
           ) : (
-            <h1>No notes found 🥲</h1>
+            <h1 className="text-center pl-4">No notes found 🥲</h1>
           )}
         </div>
       </div>

@@ -29,7 +29,7 @@ export async function DrawerDemo() {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerClose asChild className="absolute top-6 right-4 cursor-pointer">
-          <X className="text-5xl text-primary" />
+          <X type="Button" className="text-5xl text-primary" />
         </DrawerClose>
 
         <div className="mx-auto w-full max-w-sm">
@@ -86,7 +86,7 @@ export async function DrawerDemo() {
             <Link
               className="bg-secondary py-2 w-full flex justify-center rounded-md"
               target="_blank"
-              href="https://forms.gle/seiczu9ceHw7SEuA9"
+              href="https://forms.gle/FKpY6r34xN4Gu6X86"
             >
               Report Issue
             </Link>

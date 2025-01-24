@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { loginWithCreds } from "@/actions/auth";
 import LoginWithGoogle from "./LoginWithGoogle";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Ensure to include the CSS for the toast notifications
+import "react-toastify/dist/ReactToastify.css"; 
 import { Bounce } from "react-toastify";
 import { useState } from "react";
 
@@ -87,7 +87,7 @@ export default function LoginForm({
                   {isloading ? "Logging in ..." : "Login"}
                 </Button>
               </div>
-              <div className="text-center text-sm">You can directly login! 🙃</div>
+              <div className="text-center text-sm"> No need to sign up <br/>You can directly login! 🙃</div>
             </div>
           </form>
         </CardContent>

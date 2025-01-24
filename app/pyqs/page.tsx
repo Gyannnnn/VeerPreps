@@ -66,7 +66,7 @@ export default function Page() {
              
         </div>
         
-        <div className="flex flex-wrap  max-sm:gap-2 items-start justify-center">
+        <div className="flex flex-wrap  max-sm:gap-2 items-start justify-center max-sm:justify-between">
           {filteredPyqs.length > 0 ? (
             filteredPyqs.map((pyq) => (
               <Pdf
@@ -78,7 +78,7 @@ export default function Page() {
               />
             ))
           ) : (
-            <p className="text-xl">No pyq found 🥲 </p>
+            <p className="text-xl pl-4">No pyq found 🥲 </p>
           )}
         </div>
       </div>
