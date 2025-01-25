@@ -67,7 +67,7 @@ export default function MyApp() {
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative ">
-        <Link className=" py-2 rounded-full bg-blue-500 hover:bg-blue-400 flex items-center justify-center  w-10 z-10 text-white fixed top-20 sm:right-10 right-2" href="/dld_end_2024.pdf"><Download/> </Link>
+        <Link className=" py-2 rounded-full bg-blue-500 hover:bg-blue-400 flex items-center justify-center  w-10 z-10 text-white fixed top-20 sm:right-10 right-2" target="_blank" href="/dld_end_2024.pdf"><Download/> </Link>
         <Document
           className="flex flex-col items-center justify-center gap-2 "
           renderMode="canvas"

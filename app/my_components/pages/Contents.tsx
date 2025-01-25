@@ -119,7 +119,7 @@ export default async function Contents({ ids }: PageProps) {
                   <div className="w-screen h-full flex flex-col items-center justify-center">
                     <Link
                       className="text-xl flex flex-col items-center justify-center"
-                      href={"https://forms.gle/RZQEFb9Y4a9yQnYNA"}
+                      href={"https://forms.gle/Ro31WGz1TKpp3ybX9"}
                     >
                       <Image
                         src="/loader/alert.gif"
