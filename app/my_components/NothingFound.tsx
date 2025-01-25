@@ -9,7 +9,7 @@ export default function NothingFound() {
         <Link
           className="max-sm:text-xl sm:text-sm text-blue-600  flex flex-col items-center justify-center hover:underline underline-offset-2"
           target="_blank"
-          href={"https://forms.gle/RZQEFb9Y4a9yQnYNA"}
+          href={"https://forms.gle/EYBP1xcCxYqsdeVK6"}
         >
           {" "}
           <h1> Send Your Pyqs</h1>
