@@ -77,7 +77,7 @@ export default async function Contents({ ids }: PageProps) {
                 <Button variant={"outline"}>Send your Pyqs</Button>
               </Link>
             </div>
-            <div className="flex justify-start flex-wrap gap-2 pt-4 ">
+            <div className="flex max-sm:justify-between justify-start flex-wrap gap-2 pt-4 ">
               {pyqs.length > 0 ? (
                 pyqs.map((pyq) => (
                   <div key={pyq.pyq_id}>
@@ -102,7 +102,7 @@ export default async function Contents({ ids }: PageProps) {
                 <Button variant="outline">Send your Notes</Button>
               </Link>
             </div>
-            <div className="flex flex-wrap gap-2 pt-4 items-center justify-start">
+            <div className="flex flex-wrap gap-2 pt-4 items-center max-sm:justify-between justify-start">
               {notes.length > 0 ? (
                 notes.map((note) => (
                   <div key={note.notes_id}>

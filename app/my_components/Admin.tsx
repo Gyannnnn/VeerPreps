@@ -29,7 +29,7 @@ export default function Admincard({}) {
           width={150}
           height={200}
           alt="me"
-          priority
+          priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -100,7 +100,7 @@ export default function Admincard({}) {
           width={150}
           height={200}
           alt="shiba"
-          priority
+          priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -154,7 +154,7 @@ export default function Admincard({}) {
           src="/images/nimtish.jpeg"
           width={150}
           height={200}
-          priority
+          priority={true}
           alt="nimtish"
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
@@ -211,7 +211,7 @@ export default function Admincard({}) {
           width={150}
           height={200}
           alt="ujjwal"
-          priority
+          priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
@@ -225,7 +225,7 @@ export default function Admincard({}) {
                   <TooltipTrigger asChild>
                     <Link
                       className="flex gap-2 items-center "
-                      href="mailto:shibanandabhatora@gmail.com"
+                      href="mailto:ujjwalbarik3@gmail.com"
                     >
                       <BiLogoGmail />
                     </Link>

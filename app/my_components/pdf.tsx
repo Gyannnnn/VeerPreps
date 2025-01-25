@@ -19,8 +19,8 @@ export default function Pdf({
     >
       <div className="flex flex-col py-2  w-36 bg-transparent border-none gap-1 items-center justify-center rounded-xl ">
         <Image
-          priority
-          src={"/images/file.png"}
+          priority={true}
+          src={"/images/pdf.png"}
           width={100}
           height={100}
           alt="icon"
