@@ -30,6 +30,12 @@ interface Notes {
   notesname: string;
 }
 
+interface VideoLinks {
+  subjectId: number;
+  link: string;
+  videoname: string;
+}
+
 interface PageProps {
   ids: string[];
 }
@@ -47,7 +53,7 @@ export default async function Contents({ ids }: PageProps) {
   }
 
   try {
-    const [notesResponse, pyqResponse] = await Promise.all([
+    const [notesResponse, pyqResponse, videolinksResponse] = await Promise.all([
       axios
         .get<{ notes: Notes[] }>(
           `https://iitkirba-api.vercel.app/api/notes/${subjectid}`
@@ -58,23 +64,30 @@ export default async function Contents({ ids }: PageProps) {
           `https://iitkirba-api.vercel.app/api/pyq/${subjectid}`
         )
         .catch(() => ({ data: { pyq: [] } })),
+      axios
+        .get<{ videolinks: VideoLinks[] }>(
+          `https://iitkirba-api.vercel.app/api/videos/${subjectid}`
+        )
+        .catch(() => ({ data: { videolinks: [] } })),
     ]);
 
-    const notes: Notes[] = notesResponse.data.notes;
-    const pyqs: Contents[] = pyqResponse.data.pyq;
+    const notes: Notes[] = notesResponse?.data?.notes || [];
+    const pyqs: Contents[] = pyqResponse?.data?.pyq || [];
+    const videolinks: VideoLinks[] = videolinksResponse?.data?.videolinks || [];
 
-    if (notes.length === 0 && pyqs.length === 0) {
+    if (notes.length === 0 && pyqs.length === 0 && videolinks.length === 0) {
       return <NothingFound />;
     }
 
     return (
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
         <div className="min-h-screen sm:w-[90vw] w-screen flex flex-col items-center pt-10 px-4">
+          {/* PYQs Section */}
           <div className="w-full">
             <div className="flex max-sm:flex-col items-start max-sm:w-full justify-between max-sm:gap-2">
               <h1 className="sm:text-3xl text-2xl">Previous Year Questions</h1>
               <Link target="_blank" href="https://forms.gle/EYBP1xcCxYqsdeVK6">
-                <Button variant={"outline"}>Upload your Pyqs</Button>
+                <Button variant="outline">Upload your Pyqs</Button>
               </Link>
             </div>
             <div className="flex max-sm:justify-between justify-start flex-wrap gap-2 pt-4 ">
@@ -95,6 +108,7 @@ export default async function Contents({ ids }: PageProps) {
             </div>
           </div>
 
+          {/* Notes Section */}
           <div className="pt-10 w-full">
             <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
               <h1 className="text-2xl sm:text-3xl">Subject Notes</h1>
@@ -136,10 +150,35 @@ export default async function Contents({ ids }: PageProps) {
               )}
             </div>
           </div>
+
+          {/* YouTube Videos Section */}
+          <div className="pt-10 w-full">
+            <h1 className="text-2xl sm:text-3xl">YouTube Videos</h1>
+            <div className="flex flex-wrap gap-2 pt-4 items-center max-sm:justify-between justify-start">
+              {videolinks.length > 0 ? (
+                videolinks.map((videolink) => (
+                  <div key={videolink.subjectId}>
+                    <Link href={videolink.link} className="flex flex-col items-center justify-center" target="_blank">
+                      <Image
+                        src={"/images/youtube.png"}
+                        alt="youtube"
+                        width={80}
+                        height={80}
+                      />
+                      <h1 className="text-center">{videolink.videoname}</h1>
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <h2 className="text-xl">Coming Soon for this Subject</h2>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );
   } catch (error) {
+    console.error("Error loading data:", error);
     return <NothingFound />;
   }
 }
