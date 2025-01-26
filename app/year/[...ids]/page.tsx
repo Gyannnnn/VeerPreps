@@ -1,6 +1,6 @@
 import Contents from "@/app/my_components/pages/Contents";
 import Subjects from "@/app/my_components/pages/Subjectspage";
-import Viewer from "@/app/my_components/pages/Viewer";
+
 import Yearpage from "@/app/my_components/pages/Yearpage";
 
 interface PageProps {
@@ -14,8 +14,6 @@ export default function Page({ params }: PageProps) {
   const parsedBranchId = parseInt(branchId, 10);
   const ids = params.ids;
 
-
-
   switch (ids.length) {
     case 1:
       return <Yearpage branchId={parsedBranchId} />;
@@ -23,9 +21,8 @@ export default function Page({ params }: PageProps) {
       return <Subjects ids={ids} />;
     case 5:
       return <Contents ids={ids} />;
-    case 6:
-      return <Viewer />;
+
     default:
-      return <div>Page not found</div>; 
+      return <div>Page not found</div>;
   }
 }
