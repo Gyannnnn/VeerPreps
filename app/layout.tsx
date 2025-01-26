@@ -65,8 +65,8 @@ export default async function RootLayout({
           <SpeedInsights />
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
+            enableSystem={true}
             disableTransitionOnChange
           >
             <Navbar />
