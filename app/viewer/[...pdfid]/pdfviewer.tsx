@@ -88,14 +88,14 @@ export default function PdfRenderer({ links }: { links: string }) {
             />
           ))}
         </Document>
-        <div className="min-w-2 min-h-2  flex gap-4 rounded-xl text-blue-500 fixed bottom-4 right-4   text-6xl  max-sm:hidden ">
+        <div className="min-w-2 min-h-2  flex gap-4 rounded-xl text-blue-500  dark:text-white  fixed bottom-4 right-4   text-6xl  max-sm:hidden ">
           <FaCirclePlus
             onClick={increaseWidth}
-            className=" hover:cursor-pointer hover:text-blue-400"
+            className=" hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
           />
           <FaCircleMinus
             onClick={decreaseWidth}
-            className=" hover:cursor-pointer hover:text-blue-400"
+            className=" hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
           />
         </div>
       </div>

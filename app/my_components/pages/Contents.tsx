@@ -74,7 +74,7 @@ export default async function Contents({ ids }: PageProps) {
             <div className="flex max-sm:flex-col items-start max-sm:w-full justify-between max-sm:gap-2">
               <h1 className="sm:text-3xl text-2xl">Previous Year Questions</h1>
               <Link target="_blank" href="https://forms.gle/EYBP1xcCxYqsdeVK6">
-                <Button variant={"outline"}>Send your Pyqs</Button>
+                <Button variant={"outline"}>Upload your Pyqs</Button>
               </Link>
             </div>
             <div className="flex max-sm:justify-between justify-start flex-wrap gap-2 pt-4 ">
@@ -99,7 +99,7 @@ export default async function Contents({ ids }: PageProps) {
             <div className="flex flex-wrap items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-2">
               <h1 className="text-2xl sm:text-3xl">Subject Notes</h1>
               <Link target="_blank" href="https://forms.gle/Ro31WGz1TKpp3ybX9">
-                <Button variant="outline">Send your Notes</Button>
+                <Button variant="outline">Upload your Notes</Button>
               </Link>
             </div>
             <div className="flex flex-wrap gap-2 pt-4 items-center max-sm:justify-between justify-start">
@@ -120,6 +120,7 @@ export default async function Contents({ ids }: PageProps) {
                     <Link
                       className="text-xl flex flex-col items-center justify-center"
                       href={"https://forms.gle/Ro31WGz1TKpp3ybX9"}
+                      target="_blank"
                     >
                       <Image
                         src="/loader/alert.gif"
