@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NothingFound from "../NothingFound";
 import { Button } from "@/components/ui/button";
+import { FaYoutube } from "react-icons/fa";
 
 interface Subject {
   subject_id: number;
@@ -130,7 +131,7 @@ export default async function Contents({ ids }: PageProps) {
                 ))
               ) : (
                 <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pb-10">
-                  <div className="w-screen h-full flex flex-col items-center justify-center">
+                  <div className="w-screen h-full flex flex-col max-sm:items-start items-center justify-center">
                     <Link
                       className="text-xl flex flex-col items-center justify-center"
                       href={"https://forms.gle/Ro31WGz1TKpp3ybX9"}
@@ -152,13 +153,13 @@ export default async function Contents({ ids }: PageProps) {
           </div>
 
           {/* YouTube Videos Section */}
-          <div className="pt-10 w-full">
-            <h1 className="text-2xl sm:text-3xl">YouTube Videos</h1>
-            <div className="flex flex-wrap gap-2 pt-4 items-center max-sm:justify-between justify-start">
+          <div className="pt-5 w-full pb-10">
+            <h1 className="text-2xl sm:text-3xl pb-5 flex items-end gap-2">YouTube <FaYoutube className="text-4xl"/> Videos </h1>
+            <div className="flex flex-wrap   items-center max-sm:justify-between justify-start ">
               {videolinks.length > 0 ? (
                 videolinks.map((videolink) => (
-                  <div key={videolink.subjectId}>
-                    <Link href={videolink.link} className="flex flex-col items-center justify-center" target="_blank">
+                  <div key={videolink.subjectId} className="flex items-center justify-center">
+                    <Link href={videolink.link} className="flex flex-col items-center  justify-start h-40 w-40 " target="_blank">
                       <Image
                         src={"/images/youtube.png"}
                         alt="youtube"
