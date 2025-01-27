@@ -14,8 +14,6 @@ import { AiTwotoneSave } from "react-icons/ai";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 
-
-
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const MAX_WIDTH = 1150;
@@ -73,12 +71,19 @@ export default function PdfRenderer({
 
     setWidth(newWidth);
   };
+  const signinfirst = ()=>{
+    toast({
+      variant: "destructive",
+      title: "Sign in to save PDF",
+      description: "You need to sign in to save your PDF.",
+    })
+  }
 
   const handleSavePdf = async () => {
     setIsLoading(true);
     try {
       const response = await savepdf(id, email, notes, name);
-      
+
       // Check if the response is an instance of Error (using `as Error` to satisfy TypeScript)
 
       toast({
@@ -97,7 +102,6 @@ export default function PdfRenderer({
           "An error occurred while saving the PDF. Please try again.",
       });
       console.error(error);
-      
     }
   };
 
@@ -114,8 +118,8 @@ export default function PdfRenderer({
         </Link>
 
         <button
-          className="text-3xl px-2 py-2 bg-blue-500 rounded-full fixed top-32 sm:right-10 right-2 text-white"
-          onClick={handleSavePdf}
+          className="text-3xl px-2 py-2 bg-blue-500 rounded-full fixed top-32 z-20 sm:right-10 right-2 text-white"
+          onClick={email ? handleSavePdf : signinfirst}
           aria-label="Save PDF"
         >
           {isLoading ? (
