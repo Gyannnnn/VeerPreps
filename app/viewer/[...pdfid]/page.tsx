@@ -1,5 +1,6 @@
 import axios from "axios";
 import PdfRenderer from "./pdfviewer";
+import { auth } from "@/auth";
 
 interface PageProps {
   params: { pdfid: string | string[] };
@@ -21,8 +22,11 @@ interface Notes {
 }
 
 export default async function Page({ params }: PageProps) {
+  const session = await auth();
+
+  const email = session?.user?.email as string;
+
   if (params.pdfid.length == 2) {
-    console.log(params.pdfid);
     const notesid = params.pdfid[1];
 
     try {
@@ -30,9 +34,16 @@ export default async function Page({ params }: PageProps) {
         `https://iitkirba-api.vercel.app/api/notes/getone/${notesid}`
       );
       const data = response.data.note;
-      console.log(data);
 
-      return <PdfRenderer links={data.link} />;
+      return (
+        <PdfRenderer
+          email={email}
+          name={data.notesname}
+          id={data.notes_id}
+          notes={true}
+          links={data.link}
+        />
+      );
     } catch (error) {
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
         <h1>Not Found</h1>
@@ -48,7 +59,15 @@ export default async function Page({ params }: PageProps) {
 
       const data = response.data;
 
-      return <PdfRenderer links={data.links} />;
+      return (
+        <PdfRenderer
+          email={email}
+          name={data.pyqname}
+          id={data.pyq_id}
+          notes={false}
+          links={data.links}
+        />
+      );
     } catch (error) {
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
         <h1>Not Found</h1>

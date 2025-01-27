@@ -131,7 +131,7 @@ export default async function Contents({ ids }: PageProps) {
                 ))
               ) : (
                 <div className="w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pb-10">
-                  <div className="w-screen h-full flex flex-col max-sm:items-start items-center justify-center">
+                  <div className="w-full h-full flex flex-col max-sm:items-start items-center justify-center">
                     <Link
                       className="text-xl flex flex-col items-center justify-center"
                       href={"https://forms.gle/Ro31WGz1TKpp3ybX9"}

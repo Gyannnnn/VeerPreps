@@ -5,7 +5,8 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { db } from "./prisma";
 import { saltAndHashPassword } from "./utils/helper";
-import Google from "next-auth/providers/google"
+import Google from "next-auth/providers/google";
+
 export const {
   handlers: { GET, POST },
   signIn,
@@ -13,12 +14,11 @@ export const {
   auth,
 } = NextAuth({
   adapter: PrismaAdapter(db),
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt" }, // Using JWT strategy
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-
     }),
     Github({
       clientId: process.env.AUTH_GITHUB_ID,
@@ -69,4 +69,6 @@ export const {
       },
     }),
   ],
+  
+  
 });

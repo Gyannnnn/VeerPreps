@@ -22,6 +22,16 @@ model User {
   updatedAt     DateTime        @updatedAt
 
   savedLinks    Saved[]         // Relation field to `Saved` model
+  savedpdfs     savedpdfs[]     // Relation field to `Saved` model
+}
+
+model savedpdfs {
+  id        String   @id @default(cuid())
+  useremail String
+  pdfid     Int
+  user      User     @relation(fields: [useremail], references: [email], onDelete: Cascade)  // Change to reference email
+  notes     Boolean
+  pdfname   String
 }
 
 model Saved {
