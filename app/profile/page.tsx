@@ -3,7 +3,6 @@ import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Pdf from "../my_components/pdf";
-import Unsavepdf from "../my_components/Unsavepdf";
 
 export default async function Page() {
   const session = await auth();
@@ -34,12 +33,6 @@ export default async function Page() {
             {savedpdfs.length > 0 ? (
               savedpdfs.map((savedpdf) => (
                 <div className="relative" key={savedpdf.id}>
-                 
-                  <Unsavepdf
-                    email={user.email as string}
-                    id={savedpdf.pdfid.toString()}
-                  />
-                
                   <Pdf
                     pyqname={savedpdf.pdfname}
                     notes={savedpdf.notes}

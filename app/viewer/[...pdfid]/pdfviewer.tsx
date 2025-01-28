@@ -7,14 +7,15 @@ import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import Link from "next/link";
 import { savepdf } from "@/actions/savepdf";
+import { isSaved } from "@/actions/issavedpdf"; // Import your isSaved function
+import { unsavePdf } from "@/actions/unsavepdf";
 
 import { IoMdDownload } from "react-icons/io";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
-import { FiSave } from "react-icons/fi";
+import { FiSave, FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
-
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -41,6 +42,7 @@ export default function PdfRenderer({
   const [width, setWidth] = useState<number>(1000);
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [saved, setSaved] = useState(false); // Track if PDF is saved
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,6 +54,21 @@ export default function PdfRenderer({
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const fetchSavedStatus = async () => {
+      try {
+        const savedStatus = await isSaved(id, email); // Check if PDF is saved
+        setSaved(savedStatus);
+      } catch (error) {
+        console.error("Error checking saved status:", error);
+      }
+    };
+
+    if (email) {
+      fetchSavedStatus();
+    }
+  }, [id, email]);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -73,12 +90,8 @@ export default function PdfRenderer({
 
     setWidth(newWidth);
   };
+
   const signinfirst = () => {
-    // toast({
-    //   variant: "destructive",
-    //   title: "Sign in to save PDF",
-    //   description: "You need to sign in to save your PDF.",
-    // });
     toast({
       variant: "destructive",
       title: "Sign in to save PDF",
@@ -88,32 +101,37 @@ export default function PdfRenderer({
           <Link href="/sign-in">Signin</Link>
         </ToastAction>
       ),
-    })
+    });
   };
 
-  const handleSavePdf = async () => {
+  const handleToggleSavePdf = async () => {
     setIsLoading(true);
     try {
-      const response = await savepdf(id, email, notes, name);
-
-      // Check if the response is an instance of Error (using `as Error` to satisfy TypeScript)
-
-      toast({
-        title: "PDF Saved",
-        description: "Your PDF has been saved successfully!",
-      });
-      console.log("Saved PDF:", response);
-      setIsLoading(false);
+      if (saved) {
+        await unsavePdf(id, email); // Call the unsavePdf function
+        toast({
+          title: "PDF Unsaved",
+          description: "The PDF has been removed from your saved list.",
+        });
+      } else {
+        await savepdf(id, email, notes, name); // Call the savePdf function
+        toast({
+          title: "PDF Saved",
+          description: "Your PDF has been saved successfully!",
+        });
+      }
+      setSaved(!saved); // Toggle the saved state
     } catch (error) {
       const err = error as Error;
       toast({
         variant: "destructive",
-        title: "Save Failed",
+        title: saved ? "Unsave Failed" : "Save Failed",
         description:
           err.message ||
-          "An error occurred while saving the PDF. Please try again.",
+          "An error occurred while saving or unsaving the PDF. Please try again.",
       });
       console.error(error);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -132,12 +150,14 @@ export default function PdfRenderer({
           </Link>
 
           <button
-            className=" bg-blue-500 rounded-full px-2 py-2"
-            onClick={email ? handleSavePdf : signinfirst}
-            aria-label="Save PDF"
+            className="bg-blue-500 rounded-full px-2 py-2"
+            onClick={email ? handleToggleSavePdf : signinfirst}
+            aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
             {isLoading ? (
               <AiOutlineLoading className="animate-spin" />
+            ) : saved ? (
+              <FiCheck />
             ) : (
               <FiSave />
             )}
