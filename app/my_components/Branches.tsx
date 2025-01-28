@@ -62,7 +62,7 @@ export default function Branches({ session }: BranchProps) {
   return (
     <div className="sm:w-[95vw] w-screen flex flex-col gap-2 items-center">
       {/* Search and Welcome */}
-      <div className="w-[91vw] 2xl:w-[87vw] h-10 flex sm:flex-row flex-col gap-2 items-center justify-between sm:mb-10 mb-20">
+      <div className="w-[91vw] 2xl:w-[87vw] h-10 flex sm:flex-row flex-col gap-2 items-center justify-between sm:mb-10 mb-32">
         <div className="max-sm:w-full max-sm:mb-5">
           {session?.user && (
             <h1

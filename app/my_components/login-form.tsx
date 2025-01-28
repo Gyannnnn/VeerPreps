@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import LoginWithGithub from "./LoginWithGithub";
+
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { loginWithCreds } from "@/actions/auth";
@@ -45,11 +45,11 @@ export default function LoginForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+      <Card className="lg:w-[23vw] ">
         <CardHeader className="text-center">
           <CardTitle className="text-xl">IIT KIRBA</CardTitle>
           <CardDescription>
-            Login with your Github or Google account
+            Login with your  Google account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -89,7 +89,7 @@ export default function LoginForm({
                   {isloading ? <AiOutlineLoading3Quarters className="animate-spin"/> : "Login"}
                 </Button>
               </div>
-              <div className="text-center text-sm"> No need to sign up <br/>You can directly login! 🙃</div>
+              <div className="text-center text-sm"> No need to sign up <br/>You can directly login  ! 🙃</div>
             </div>
           </form>
         </CardContent>
