@@ -20,11 +20,12 @@ export default function Pdf({
       <div className="flex flex-col py-2  w-36 bg-transparent border-none gap-1 items-center justify-center rounded-xl ">
         <Image
           priority={true}
-          src={"/images/pdf.png"}
-          width={100}
-          height={100}
+          src={notes ? `/images/file.png` : `/images/pdf.png`}
+          width={90}
+          height={90}
           alt="icon"
         />
+       
         <h1 className="text-center text-sm">{pyqname}</h1>
       </div>
     </Link>

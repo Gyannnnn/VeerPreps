@@ -8,11 +8,13 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import Link from "next/link";
 import { savepdf } from "@/actions/savepdf";
 
-import { Download } from "lucide-react";
+import { IoMdDownload } from "react-icons/io";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
-import { AiTwotoneSave } from "react-icons/ai";
+import { FiSave } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
+import { ToastAction } from "@radix-ui/react-toast";
+
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -71,13 +73,23 @@ export default function PdfRenderer({
 
     setWidth(newWidth);
   };
-  const signinfirst = ()=>{
+  const signinfirst = () => {
+    // toast({
+    //   variant: "destructive",
+    //   title: "Sign in to save PDF",
+    //   description: "You need to sign in to save your PDF.",
+    // });
     toast({
       variant: "destructive",
       title: "Sign in to save PDF",
       description: "You need to sign in to save your PDF.",
+      action: (
+        <ToastAction altText="Goto schedule to undo">
+          <Link href="/sign-in">Signin</Link>
+        </ToastAction>
+      ),
     })
-  }
+  };
 
   const handleSavePdf = async () => {
     setIsLoading(true);
@@ -102,32 +114,35 @@ export default function PdfRenderer({
           "An error occurred while saving the PDF. Please try again.",
       });
       console.error(error);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <Link
-          className="py-2 rounded-full bg-blue-500 hover:bg-blue-400 flex items-center justify-center w-10 z-10 text-white fixed top-20 sm:right-10 right-2"
-          href={links}
-          target="_blank"
-          aria-label="Download PDF"
-        >
-          <Download />
-        </Link>
+        <div className="fixed top-20 right-3 flex max-lg:flex-col z-10 text-white text-4xl gap-6">
+          <Link
+            className="bg-blue-500 rounded-full px-2 py-2"
+            href={links}
+            target="_blank"
+            aria-label="Download PDF"
+          >
+            <IoMdDownload />
+          </Link>
 
-        <button
-          className="text-3xl px-2 py-2 bg-blue-500 rounded-full fixed top-32 z-20 sm:right-10 right-2 text-white"
-          onClick={email ? handleSavePdf : signinfirst}
-          aria-label="Save PDF"
-        >
-          {isLoading ? (
-            <AiOutlineLoading className="animate-spin" />
-          ) : (
-            <AiTwotoneSave />
-          )}
-        </button>
+          <button
+            className=" bg-blue-500 rounded-full px-2 py-2"
+            onClick={email ? handleSavePdf : signinfirst}
+            aria-label="Save PDF"
+          >
+            {isLoading ? (
+              <AiOutlineLoading className="animate-spin" />
+            ) : (
+              <FiSave />
+            )}
+          </button>
+        </div>
 
         <Document
           className="flex flex-col items-center justify-center gap-2"
@@ -144,7 +159,7 @@ export default function PdfRenderer({
           ))}
         </Document>
 
-        <div className="fixed bottom-4 right-4 flex gap-4 text-blue-500 dark:text-white text-6xl max-sm:hidden">
+        <div className="fixed bottom-4 right-4 flex gap-4 text-blue-500 dark:text-white text-6xl max-lg:hidden">
           <FaCirclePlus
             onClick={() => adjustWidth(true)}
             className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
