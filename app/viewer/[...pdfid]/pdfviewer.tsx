@@ -58,7 +58,7 @@ export default function PdfRenderer({
   useEffect(() => {
     const fetchSavedStatus = async () => {
       try {
-        const savedStatus = await isSaved(id, email); // Check if PDF is saved
+        const savedStatus = await isSaved(id, email); 
         setSaved(savedStatus);
       } catch (error) {
         console.error("Error checking saved status:", error);
