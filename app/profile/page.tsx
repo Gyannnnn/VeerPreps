@@ -29,7 +29,7 @@ export default async function Page() {
           <p>{user.email}</p>
           <h1 className="text-3xl">Your Saved PDFs</h1>
 
-          <div className="w-full min-h-screen flex flex-wrap items-start sm:justify-start justify-between gap-2 mt-5">
+          <div className="flex flex-wrap items-center sm:justify-start max-sm:justify-around  pt-10">
             {savedpdfs.length > 0 ? (
               savedpdfs.map((savedpdf) => (
                 <div className="relative" key={savedpdf.id}>
