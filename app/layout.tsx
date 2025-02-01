@@ -12,6 +12,8 @@ import { GeistMono } from "geist/font/mono";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./my_components/Footer";
 
+import { Analytics } from "@vercel/analytics/react"
+
 export const metadata = {
   title: "iitkirba - Previous Year Questions & Notes for VSSUT Burla",
   description:
@@ -71,6 +73,7 @@ export default async function RootLayout({
           >
             <Navbar />
             {children}
+            <Analytics />
             <Footer/>
             <Toaster />
           </ThemeProvider>
