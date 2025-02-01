@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="border-black dark:border-white flex-shrink-0">
               <Logo />
             </div>
-            <h1 className="border-l-4 border-black dark:border-white pl-4 text-center sm:text-3xl dark:text-gray-300 text-gray-600 text-2xl font-bold">
+            <h1 className="border-l-2 border-black dark:border-white pl-4 text-center sm:text-3xl dark:text-gray-300 text-gray-600 text-2xl font-bold">
               IIT KIRBA
             </h1>
           </div>
