@@ -38,7 +38,7 @@ export default function Branches({ session }: BranchProps) {
     const fetchBranches = async () => {
       try {
         const response = await axios.get<{ branches: Branch[] }>(
-          "https://iitkirba-api.vercel.app/api/branch/"
+          "http://api.iitkirba.xyz/api/branch/"
         );
         setBranches(response.data.branches);
       } catch (error) {
