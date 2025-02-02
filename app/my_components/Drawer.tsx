@@ -123,7 +123,13 @@ export async function DrawerDemo() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>{<Logout />}</AlertDialogAction>
+                  <AlertDialogAction>
+                    {
+                      <DrawerClose>
+                        <Logout/>
+                      </DrawerClose>
+                    }
+                  </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
