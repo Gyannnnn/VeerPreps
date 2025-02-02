@@ -58,7 +58,7 @@ export default async function Page() {
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-start">
         <div className="w-[90vw] pt-20">
-          <h1 className="text-3xl">{user.email}</h1>
+          <h1 className="text-2xl">{user.email}</h1>
           <h1 className="text-sm pt-4">Nothing found! Try saving a PDF.</h1>
         </div>
       </div>
