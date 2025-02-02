@@ -25,7 +25,7 @@ export default function Admincard({}) {
         </Badge>
         <Image
           className="rounded-full"
-          src="/images/me.jpg"
+          src="/images/me.jpeg"
           width={150}
           height={200}
           alt="me"
