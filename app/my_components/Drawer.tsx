@@ -13,11 +13,25 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+
 import { LogIn } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { auth } from "@/auth";
 import Logout from "./Logout";
-import localFont from "next/font/local";
-const myfont = localFont({ src: "../../font/PlaywriteVN-Regular.ttf" });
+
+
 
 export async function DrawerDemo() {
   const session = await auth();
@@ -98,7 +112,23 @@ export async function DrawerDemo() {
             className="flex justify-center hover:text-destructive"
           >
             {session?.user ? (
-              <Logout />
+              <AlertDialog>
+              <AlertDialogTrigger className="flex gap-2">Logout{<LogOut/>} </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You cannot acess your profile after logging out.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>{<Logout />}</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            
+              
             ) : (
               <Link className="flex gap-2" href="/sign-in">
                 Sign in <LogIn />
