@@ -98,7 +98,7 @@ export default function Branches({ session }: BranchProps) {
           Array.from({ length: 6 }).map((_, index) => (
             <Card
               key={index}
-              className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
+              className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh]  border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
             >
               <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
               <div className="w-1/2 h-20 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
@@ -112,7 +112,7 @@ export default function Branches({ session }: BranchProps) {
               href={`/year/${branch.branch_id}`}
               className="hover:cursor-pointer"
             >
-              <Card className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] flex border flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm">
+              <Card className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] flex border flex-col drop-shadow-lg items-center justify-between max-lg:justify-around py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm">
                 <Image
                   className="rounded-sm border"
                   height={400}
