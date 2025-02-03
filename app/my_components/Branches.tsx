@@ -84,7 +84,7 @@ export default function Branches({ session }: BranchProps) {
             onChange={(e) => setSearchTerm(e.target.value)}
             type="text"
             placeholder="Search branches ..."
-            className="px-2 sm:w-1/3 w-full bg-transparent outline-none rounded-lg"
+            className="px-2 w-full bg-transparent outline-none rounded-lg"
             aria-label="Search branches"
           />
           <Search className="text-gray-400 hover:text-gray-500" />

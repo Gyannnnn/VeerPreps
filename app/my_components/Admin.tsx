@@ -18,7 +18,7 @@ import {
 
 export default function Admincard({}) {
   return (
-    <div className="flex flex-wrap sm:gap-10 gap-4   justify-center">
+    <div className="flex flex-wrap sm:gap-10 gap-4  sm:px-6 justify-center sm:justify-start">
       <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
           Developer
@@ -253,6 +253,64 @@ export default function Admincard({}) {
                 </Tooltip>
               </div>
               
+            </TooltipProvider>
+          </div>
+        </div>
+      </Card>
+      <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
+        <Badge className="absolute top-1 right-1 bg-blue-500" >
+          Designer
+        </Badge>
+        <Image
+          className="rounded-full"
+          src="/images/suman.jpeg"
+          width={150}
+          height={200}
+          alt="me"
+          priority={true}
+        />
+        <div className="pt-2 flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center ">
+            <h1 className="sm:text-2xl text-3xl text-center">Suman Sekhar Mohanty</h1>
+            <h1 className="text-sm">Information Technology (2027)</h1>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
+            <TooltipProvider>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      target="_blank"
+                      className="flex gap-2 items-center "
+                      href="mailto:sekharsuman3545@gmail.com"
+                    >
+                      <BiLogoGmail />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      target="_blank"
+                      className="flex gap-2 items-center "
+                      href="https://www.linkedin.com/in/suman-sekhar-mohanty-a16b54291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    >
+                      <FaLinkedin />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Linkedin</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
             </TooltipProvider>
           </div>
         </div>
