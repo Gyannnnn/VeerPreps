@@ -172,7 +172,7 @@ export default async function Contents({ ids }: PageProps) {
                   </div>
                 ))
               ) : (
-                <h2 className="text-xl">Coming Soon for this Subject</h2>
+                <h2 className="text-xl text-center  w-full text-wrap mt-5">Coming Soon for this Subject !</h2>
               )}
             </div>
           </div>

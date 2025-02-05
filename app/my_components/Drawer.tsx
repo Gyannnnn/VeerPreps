@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { TbMenu4 } from "react-icons/tb";
 
 import {
   Drawer,
@@ -39,7 +40,7 @@ export async function DrawerDemo() {
   return (
     <Drawer>
       <DrawerTrigger>
-        <Menu />
+        <TbMenu4 className="text-3xl"/>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerClose asChild className="absolute top-6 right-4 cursor-pointer">
