@@ -21,12 +21,12 @@ export default function Pdf({
         <Image
           priority={true}
           src={notes ? `/images/file.png` : `/images/pdf.png`}
-          width={90}
-          height={90}
+          width={80}
+          height={80}
           alt="icon"
         />
        
-        <h1 className="text-center text-sm">{pyqname}</h1>
+        <h1 className="text-center  text-sm">{pyqname}</h1>
       </div>
     </Link>
   );

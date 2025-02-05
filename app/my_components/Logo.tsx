@@ -10,9 +10,9 @@ export default function Logo() {
   return (
     <div>
         {
-            theme === 'dark'? (<Image priority={true} src="/logo/IIT KIRBA LOGO WHITE.png" width={60} height={60} alt="logo" />)
+            theme === 'dark'? (<Image priority={true} src="/logo/IIT KIRBA LOGO WHITE.png" width={55} height={55} alt="logo" />)
             :
-            (<Image priority={true} src="/logo/IIT KIRBA LOGO BLACK.png" width={60} height={60} alt="logo" />)
+            (<Image priority={true} src="/logo/IIT KIRBA LOGO BLACK.png" width={55} height={55} alt="logo" />)
         }
     </div>
   )

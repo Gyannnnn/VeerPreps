@@ -50,7 +50,7 @@ export default function Page() {
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
       <div className="w-[95vw]    min-h-screen">
         <div className="flex sm:flex-row flex-col sm:items-center  sm:justify-between mt-10 mb-5 sm:pr-5 max-sm:gap-2  ">
-              <h1 className="sm:pl-3  sm:text-2xl text-3xl py-3">
+              <h1 className="sm:pl-3  sm:text-4xl text-2xl py-3">
                 All Previous Year Questions
               </h1>
               <div className="flex border  bg-secondary   sm:ml-4 justify-end items-center sm:w-1/3 w-full mb-6  rounded-md px-2">
