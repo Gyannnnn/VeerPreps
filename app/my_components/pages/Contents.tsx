@@ -165,6 +165,7 @@ export default async function Contents({ ids }: PageProps) {
                         alt="youtube"
                         width={80}
                         height={80}
+                        priority={true}
                       />
                       <h1 className="text-center">{videolink.videoname}</h1>
                     </Link>
