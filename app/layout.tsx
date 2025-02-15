@@ -67,7 +67,7 @@ export default async function RootLayout({
           <SpeedInsights />
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
             enableSystem={true}
             disableTransitionOnChange
           >
