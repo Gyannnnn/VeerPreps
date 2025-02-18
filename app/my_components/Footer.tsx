@@ -8,7 +8,7 @@ export default function Footer() {
     <Card className="w-full min-h-10 bg-secondary dark:bg-zinc-950 sm:rounded-t-full rounded-t-3xl drop-shadow-xl flex flex-col items-center justify-center py-2">
       <div className="w-full flex flex-col items-center justify-center">
         <Link href={"/"}>
-          <div className="w-full flex gap-4 text-2xl items-center justify-center hover:cursor-pointer min-h-[60px]">
+          <div className="w-full flex gap-4 text-2xl font-extrabold items-center justify-center hover:cursor-pointer min-h-[60px]">
             {/* <div className="border-black dark:border-white flex-shrink-0">
               <Logo />
             </div> */}

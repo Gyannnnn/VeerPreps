@@ -49,7 +49,7 @@ export async function DrawerDemo() {
 
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle className="font-sans text-2xl">IIT KIRBA</DrawerTitle>
+            <DrawerTitle className="font-sans text-2xl">VeerPreps</DrawerTitle>
             <DrawerDescription >
               <p className="text-sm">VSSUT's Hub for Questions & Notes</p>
             </DrawerDescription>
