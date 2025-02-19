@@ -63,6 +63,13 @@ export default function Navbar() {
           >
             Report issue
           </Link>
+          <Link
+            className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
+            target="_blank"
+            href="/apk/Iitkirba.apk"
+          >
+            Download App
+          </Link>
         </div>
       </div>
       <div className="flex items-center justify-center gap-6">
