@@ -104,13 +104,13 @@ export async function DrawerDemo() {
             </Link>
           </DrawerClose>
           <DrawerClose asChild>
-            <a
-              className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
              
               href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
             >
               Download App
-            </a>
+            </Link>
           </DrawerClose>
         </div>
         <DrawerFooter className="w-full flex justify-center items-center mt-5">
