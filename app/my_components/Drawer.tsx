@@ -109,7 +109,7 @@ export async function DrawerDemo() {
              
               href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
             >
-              Download App
+              Download Our App
             </Link>
           </DrawerClose>
         </div>

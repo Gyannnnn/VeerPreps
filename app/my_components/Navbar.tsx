@@ -68,7 +68,7 @@ export default function Navbar() {
             
             href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
           >
-            Download App
+            Download Our App
           </Link>
         </div>
       </div>
