@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
         </Link>
         <p className="max-sm:text-[0.6rem] text-gray-500 hover:cursor-pointer text-center">
-          © 2025 iitkirba. All Rights Reserved. Designed for VSSUT students with ❤️.
+          © 2025 IIT KIRBA (VeerPreps). All Rights Reserved. Designed for VSSUT students with ❤️.
         </p>
       </div>
     </Card>
