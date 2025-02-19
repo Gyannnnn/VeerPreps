@@ -15,7 +15,7 @@ import Footer from "./my_components/Footer";
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
-  title: "iitkirba - Previous Year Questions & Notes for VSSUT Burla",
+  title: "IIT KIRBA (VeerPreps)",
   description:
     "Access previous year question papers and handwritten notes for VSSUT Burla (formerly UCE Burla) including mid-semester, end-semester, back papers, and supplementary papers. Login to download and save content for free on iitkirba.xyz.",
   keywords: [
