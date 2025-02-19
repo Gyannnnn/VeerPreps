@@ -65,8 +65,8 @@ export default function Navbar() {
           </Link>
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
-            target="_blank"
-            href="/apk/Iitkirba.apk"
+            
+            href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
           >
             Download App
           </Link>

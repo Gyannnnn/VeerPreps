@@ -24,15 +24,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-
+} from "@/components/ui/alert-dialog";
 
 import { LogIn } from "lucide-react";
 import { LogOut } from "lucide-react";
 import { auth } from "@/auth";
 import Logout from "./Logout";
-
-
 
 export async function DrawerDemo() {
   const session = await auth();
@@ -40,7 +37,7 @@ export async function DrawerDemo() {
   return (
     <Drawer>
       <DrawerTrigger>
-        <TbMenu4 className="text-3xl"/>
+        <TbMenu4 className="text-3xl" />
       </DrawerTrigger>
       <DrawerContent>
         <DrawerClose asChild className="absolute top-6 right-4 cursor-pointer">
@@ -50,7 +47,7 @@ export async function DrawerDemo() {
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle className="font-sans text-2xl">VeerPreps</DrawerTitle>
-            <DrawerDescription >
+            <DrawerDescription>
               <p className="text-sm">VSSUT's Hub for Questions & Notes</p>
             </DrawerDescription>
           </DrawerHeader>
@@ -106,6 +103,15 @@ export async function DrawerDemo() {
               Report Issue
             </Link>
           </DrawerClose>
+          <DrawerClose asChild>
+            <a
+              className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
+             
+              href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
+            >
+              Download App
+            </a>
+          </DrawerClose>
         </div>
         <DrawerFooter className="w-full flex justify-center items-center mt-5">
           <DrawerClose
@@ -114,28 +120,30 @@ export async function DrawerDemo() {
           >
             {session?.user ? (
               <AlertDialog>
-              <AlertDialogTrigger className="flex gap-2">Logout{<LogOut/>} </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    You cannot acess your profile after logging out.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>
-                    {
-                      <DrawerClose>
-                        <Logout/>
-                      </DrawerClose>
-                    }
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-            
-              
+                <AlertDialogTrigger className="flex gap-2">
+                  Logout{<LogOut />}{" "}
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you absolutely sure?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      You cannot acess your profile after logging out.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction>
+                      {
+                        <DrawerClose>
+                          <Logout />
+                        </DrawerClose>
+                      }
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             ) : (
               <Link className="flex gap-2" href="/sign-in">
                 Sign in <LogIn />
