@@ -26,11 +26,11 @@ return (
   <div>
       {
           theme === 'dark'? (
-            <h1 className='text-white '>VeerPreps</h1>
+            <h1 className='text-blue-500 '>VeerPreps</h1>
           )
           :
           (
-            <h1 className='text-black '>VeerPreps</h1>
+            <h1 className='text-blue-500 '>VeerPreps</h1>
           )
       }
   </div>

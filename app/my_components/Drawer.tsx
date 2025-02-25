@@ -46,7 +46,7 @@ export async function DrawerDemo() {
 
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle className="font-sans text-2xl">VeerPreps</DrawerTitle>
+            <DrawerTitle className="font-sans text-3xl text-blue-500">VeerPreps</DrawerTitle>
             <DrawerDescription>
               <p className="text-sm">VSSUT's Hub for Questions & Notes</p>
             </DrawerDescription>
