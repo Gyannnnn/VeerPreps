@@ -44,7 +44,7 @@ export default function Admincard({}) {
                     <Link
                       target="_blank"
                       className="flex gap-2 items-center "
-                      href="https://portrfolio.vercel.app/"
+                      href="https://me.iitkirba.xyz/"
                     >
                       <CiGlobe />
                     </Link>
