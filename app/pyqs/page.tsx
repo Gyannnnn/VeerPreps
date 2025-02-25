@@ -49,11 +49,11 @@ export default function Page() {
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
       <div className="w-[95vw]    min-h-screen">
-        <div className="flex sm:flex-row flex-col sm:items-center  sm:justify-between mt-10 mb-5 sm:pr-5 max-sm:gap-2  ">
-              <h1 className="sm:pl-3  sm:text-4xl text-2xl py-3">
+        <div className="flex  sm:flex-row  flex-col sm:items-center  sm:justify-between mt-10 mb-5 sm:pr-5 max-sm:gap-2  ">
+              <h1 className="sm:pl-6 sm:text-3xl  text-xl py-3">
                 All Previous Year Questions
               </h1>
-              <div className="flex border  bg-secondary   sm:ml-4 justify-end items-center sm:w-1/3 w-full mb-6  rounded-md px-2">
+          <div className="px-2 border rounded-lg flex sm:w-1/3 items-center justify-around">
           <input
             type="text"
             placeholder="Search PYQs...."
@@ -66,7 +66,7 @@ export default function Page() {
              
         </div>
         
-        <div className="flex flex-wrap  max-sm:gap-2 items-start justify-center max-sm:justify-between">
+        <div className="flex flex-wrap  justify-around max-sm:justify-between">
           {filteredPyqs.length > 0 ? (
             filteredPyqs.map((pyq) => (
               <Pdf

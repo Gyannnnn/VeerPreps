@@ -49,8 +49,8 @@ export default function Allnotes() {
   return (
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pt-14">
       <div className="sm:w-[95vw] w-[99vw] min-h-screen pt-10">
-        <div className="flex sm:flex-row flex-col sm:items-center sm:justify-between px-2 sm:px-14 w-full">
-          <h1 className="text-3xl py-6 ">All Notes</h1>
+        <div className="flex sm:flex-row  flex-col sm:items-center sm:justify-between  sm:px-6 px-2  w-full">
+          <h1 className="text-3xl py-2 ">All Notes</h1>
           
           <div className="sm:w-1/3 w-full border-2 px-2 py-2 rounded-sm flex items-center">
             <input
@@ -63,7 +63,7 @@ export default function Allnotes() {
             <CiSearch className="text-xl hover:cursor-pointer" />
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-center max-sm:justify-between max-sm:px-4  pt-10">
+        <div className="flex flex-wrap items-center justify-between max-sm:justify-between max-sm:px-4  pt-10">
           {filteredNotes.length > 0 ? (
             filteredNotes.map((note) => (
               <Pdf
