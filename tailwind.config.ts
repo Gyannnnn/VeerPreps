@@ -22,7 +22,11 @@ export default {
 				"50%": { transform: "rotate(30deg)" },
 				"75%": { transform: "rotate(60deg)" },
 				"100%": { transform: "rotate(0deg)" },
-			}
+			},
+			bounce: {
+				'0%, 100%': { transform: 'translateY(-12px)' }, // Increased bounce height
+				'50%': { transform: 'translateY(0)' },
+			  },
 		  },
 		  animation: {
 			wave: 'wave 2s infinite',
