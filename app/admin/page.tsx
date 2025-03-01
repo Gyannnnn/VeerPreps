@@ -4,8 +4,7 @@ export default function page() {
   return (
     <div className="min-h-screen w-screen mt-16 pb-6">
       <h1 className="text-3xl  pt-10 pb-4 pl-4 sm:pl-16 ">Admins</h1>
-      <Admincard/>
+      <Admincard />
     </div>
-    
   );
 }

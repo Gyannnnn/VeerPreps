@@ -47,7 +47,7 @@ export default function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="lg:w-[23vw] ">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">IIT KIRBA</CardTitle>
+          <CardTitle className="text-xl text-blue-500">VeerPreps</CardTitle>
           <CardDescription>
             Login with your  Google account
           </CardDescription>
