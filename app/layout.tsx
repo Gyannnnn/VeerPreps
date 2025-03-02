@@ -12,7 +12,7 @@ import { GeistMono } from "geist/font/mono";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./my_components/Footer";
 
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import AdSense from "./my_components/googleAdd/AdSense";
 
 export const metadata = {
@@ -64,7 +64,11 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-        <AdSense pId="pub-6615680210839928"/>
+        <head>
+          <AdSense
+            pId="pub-6615680210839928"
+          />
+        </head>
         <body className="antialiased">
           <SpeedInsights />
           <ThemeProvider
@@ -76,7 +80,7 @@ export default async function RootLayout({
             <Navbar />
             {children}
             <Analytics />
-            <Footer/>
+            <Footer />
             <Toaster />
           </ThemeProvider>
         </body>
