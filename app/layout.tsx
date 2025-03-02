@@ -13,6 +13,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./my_components/Footer";
 
 import { Analytics } from "@vercel/analytics/react"
+import AdSense from "./my_components/googleAdd/AdSense";
 
 export const metadata = {
   title: "IIT KIRBA (VeerPreps)",
@@ -63,6 +64,7 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+        <AdSense pId="pub-6615680210839928"/>
         <body className="antialiased">
           <SpeedInsights />
           <ThemeProvider
