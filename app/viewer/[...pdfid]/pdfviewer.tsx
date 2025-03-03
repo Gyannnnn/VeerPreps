@@ -19,7 +19,7 @@ import { ToastAction } from "@radix-ui/react-toast";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-const MAX_WIDTH = 1150;
+const MAX_WIDTH = 1151;
 const MIN_WIDTH = 400;
 
 interface PdfRendererProps {
