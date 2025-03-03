@@ -58,7 +58,7 @@ export default function PdfRenderer({
   useEffect(() => {
     const fetchSavedStatus = async () => {
       try {
-        const savedStatus = await isSaved(id, email); 
+        const savedStatus = await isSaved(id, email);
         setSaved(savedStatus);
       } catch (error) {
         console.error("Error checking saved status:", error);
@@ -94,11 +94,11 @@ export default function PdfRenderer({
   const signinfirst = () => {
     toast({
       variant: "destructive",
-      title: "Sign in to save PDF",
-      description: "You need to sign in to save your PDF.",
+      title: "Sign in to download or save PDF",
+      description: "You have to sign first to download and save your PDF.",
       action: (
         <ToastAction altText="Goto schedule to undo">
-          <Link href="/sign-in">Signin</Link>
+          <Link  href="/sign-in">Signin</Link>
         </ToastAction>
       ),
     });
@@ -140,14 +140,19 @@ export default function PdfRenderer({
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
         <div className="fixed top-20 right-3 flex max-lg:flex-col z-10 text-white text-4xl gap-6">
-          <Link
+          <button
             className="bg-blue-500 rounded-full px-2 py-2"
-            href={links}
-            target="_blank"
+            onClick={() => {
+              if (!email) {
+                signinfirst();
+              } else {
+                window.open(links, "_blank");
+              }
+            }}
             aria-label="Download PDF"
           >
             <IoMdDownload />
-          </Link>
+          </button>
 
           <button
             className="bg-blue-500 rounded-full px-2 py-2"
