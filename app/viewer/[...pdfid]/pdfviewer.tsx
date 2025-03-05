@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
 
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const MAX_WIDTH = 1151;
@@ -139,9 +140,9 @@ export default function PdfRenderer({
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <div className="fixed top-20 right-3 flex max-lg:flex-col z-10 text-white text-4xl gap-6">
+        <div className="fixed top-20 max-sm:top-[9vh]  sm:right-6 right-4 max-lg:flex-col flex  z-10 text-white sm:text-4xl text-3xl sm:gap-6 gap-2">
           <button
-            className="bg-blue-500 rounded-full px-2 py-2"
+            className="bg-blue-500 rounded-full px-2 py-2 "
             onClick={() => {
               if (!email) {
                 signinfirst();
@@ -184,7 +185,7 @@ export default function PdfRenderer({
           ))}
         </Document>
 
-        <div className="fixed bottom-4 right-4 flex gap-4 text-blue-500 dark:text-white text-6xl max-lg:hidden">
+        <div className="fixed bottom-4 right-6 flex gap-4 text-blue-500 dark:text-white text-6xl max-lg:hidden ">
           <FaCirclePlus
             onClick={() => adjustWidth(true)}
             className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
