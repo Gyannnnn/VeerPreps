@@ -14,7 +14,7 @@ import Footer from "./my_components/Footer";
 
 import { Analytics } from "@vercel/analytics/react";
 import AdSense from "./my_components/googleAdd/AdSense";
-import { GoogleAnalytics } from '@next/third-parties/google'
+
 
 export const metadata = {
   title: "IIT KIRBA (VeerPreps)",
@@ -85,7 +85,7 @@ export default async function RootLayout({
             <Toaster />
           </ThemeProvider>
         </body>
-        <GoogleAnalytics gaId="G-TZ39FR5E5W" />
+  
       </html>
     </SessionProvider>
   );

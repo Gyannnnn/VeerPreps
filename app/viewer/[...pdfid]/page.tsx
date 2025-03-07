@@ -1,8 +1,11 @@
+
 import axios from "axios";
 import PdfRenderer from "./pdfviewer";
 import { auth } from "@/auth";
 
-interface PageProps {
+
+
+interface Params {
   params: { pdfid: string | string[] };
 }
 
@@ -21,13 +24,14 @@ interface Notes {
   notesname: string;
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: {params:{pdfid:string[]}}) {
   const session = await auth();
+  console.log("parmassssssssssssssssss",params.pdfid)
 
   const email = session?.user?.email as string;
 
-  if (params.pdfid.length == 2) {
-    const notesid = params.pdfid[1];
+  if (params?.pdfid.length == 2) {
+    const notesid = params?.pdfid[1];
 
     try {
       const response = await axios.get<{ note: Notes }>(
@@ -50,7 +54,7 @@ export default async function Page({ params }: PageProps) {
       </div>;
     }
   } else {
-    const pdfid = params.pdfid;
+    const pdfid =  params?.pdfid;
 
     try {
       const response = await axios.get<Pyq>(
