@@ -88,6 +88,7 @@ export default async function RootLayout({
           </ThemeProvider>
         </body>
         <GoogleAnalytics trackPageViews  />
+        
   
       </html>
     </SessionProvider>
