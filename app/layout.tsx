@@ -14,7 +14,6 @@ import Footer from "./my_components/Footer";
 
 import { Analytics } from "@vercel/analytics/react";
 import AdSense from "./my_components/googleAdd/AdSense";
-import { GoogleAnalytics } from "nextjs-google-analytics";
 
 
 export const metadata = {
@@ -87,7 +86,7 @@ export default async function RootLayout({
             <Toaster />
           </ThemeProvider>
         </body>
-        <GoogleAnalytics trackPageViews  />
+      
         
   
       </html>
