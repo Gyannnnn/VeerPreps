@@ -34,7 +34,7 @@ export default function Admincard({}) {
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
             <h1 className="sm:text-2xl text-3xl">Gyanaranjan Patra</h1>
-            <h1 className="text-sm">Information Technology (2027)</h1>
+            <h1 className="text-sm">Information Technology</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
@@ -105,7 +105,7 @@ export default function Admincard({}) {
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
             <h1 className="sm:text-2xl text-3xl">Shibananda Bhatora</h1>
-            <h1 className="text-sm">Information Technology (2027)</h1>
+            <h1 className="text-sm">Information Technology </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
@@ -160,7 +160,7 @@ export default function Admincard({}) {
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
             <h1 className="sm:text-2xl text-3xl text-center">Nitishkumar Subudhi</h1>
-            <h1 className="text-sm">Electrical Engineering (2027)</h1>
+            <h1 className="text-sm">Electrical Engineering </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
@@ -272,7 +272,7 @@ export default function Admincard({}) {
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
             <h1 className="sm:text-2xl text-3xl text-center">Suman Sekhar Mohanty</h1>
-            <h1 className="text-sm">Information Technology (2027)</h1>
+            <h1 className="text-sm">Information Technology </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
