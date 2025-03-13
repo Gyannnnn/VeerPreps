@@ -21,11 +21,11 @@ export default function Footer() {
         </p>
 
         {/* Links */}
-        <div className="flex gap-3 text-sm">
+        <div className="flex gap-2 text-sm">
           <Link href="/privacypolicy" className="underline hover:text-blue-400">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="underline hover:text-blue-400">
+          <Link href="/privacypolicy" className="underline hover:text-blue-400">
             Terms & Conditions
           </Link>
         </div>
