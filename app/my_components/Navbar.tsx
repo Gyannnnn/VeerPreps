@@ -53,7 +53,7 @@ export default function Navbar() {
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
             href="/admin"
           >
-            Admins
+            Contact us
           </Link>
 
           <Link

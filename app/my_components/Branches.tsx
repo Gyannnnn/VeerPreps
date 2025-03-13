@@ -67,10 +67,10 @@ export default function Branches({ session }: BranchProps) {
           {session?.user && (
             <h1
               
-              className="sm:text-2xl max-sm:text-xl text-black flex flex-wrap items-center justify-start gap-2 hover:cursor-pointer dark:text-white"
+              className="sm:text-4xl font-bold max-sm:text-3xl text-black flex flex-wrap items-center justify-start gap-2 hover:cursor-pointer dark:text-white"
             >
-              <span className="text-3xl font-mono">Hello</span>
-              <span className="inline-block animate-wave text-3xl transform-origin-[70%_70%]">
+              <span>Hello</span>
+              <span className="inline-block animate-wave  transform-origin-[70%_70%]">
                 👋
               </span>
               {name ||

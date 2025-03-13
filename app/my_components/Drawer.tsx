@@ -91,7 +91,7 @@ export async function DrawerDemo() {
               className="bg-secondary py-2 w-full flex justify-center rounded-md"
               href="/admin"
             >
-              Admins
+              Contact us
             </Link>
           </DrawerClose>
           <DrawerClose asChild>

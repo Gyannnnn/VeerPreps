@@ -18,22 +18,22 @@ import {
 
 export default function Admincard({}) {
   return (
-    <div className="flex flex-wrap sm:gap-10  gap-4  sm:px-6 justify-center  sm:justify-center ">
-      <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
+    <div className="flex flex-wrap sm:gap-4  gap-2  sm:px-6 justify-center  sm:justify-center ">
+      <Card className="w-60 h-80 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1" variant="destructive">
           Developer
         </Badge>
         <Image
           className="rounded-full"
           src="/images/me.jpeg"
-          width={150}
-          height={200}
+          width={100}
+          height={100}
           alt="me"
           priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-3xl">Gyanaranjan Patra</h1>
+            <h1 className="sm:text-2xl text-xl">Gyanaranjan Patra</h1>
             <h1 className="text-sm">Information Technology</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -92,19 +92,19 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center  justify-center gap-6 relative border border-blue-500 hover:cursor-pointer">
+      <Card className="w-60 h-80  flex flex-col items-center  justify-center gap-6 relative border border-blue-500 hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
           src="/images/shiba.jpg"
-          width={150}
+          width={100}
           height={200}
           alt="shiba"
           priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-3xl">Shibananda Bhatora</h1>
+            <h1 className="sm:text-2xl text-xl">Shibananda Bhatora</h1>
             <h1 className="text-sm">Information Technology </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -147,19 +147,19 @@ export default function Admincard({}) {
         </div>
       </Card>
       
-      <Card className="w-72  h-96 flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
+      <Card className="w-60 h-80  flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
           src="/images/nimtish.jpeg"
-          width={150}
+          width={100}
           height={200}
           priority={true}
           alt="nimtish"
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-3xl text-center">Nitishkumar Subudhi</h1>
+            <h1 className="sm:text-2xl text-xl text-center">Nitishkumar Subudhi</h1>
             <h1 className="text-sm">Electrical Engineering </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -203,19 +203,19 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
+      <Card className="w-60 h-80  flex flex-col items-center border border-blue-500  justify-center gap-6 relative hover:cursor-pointer">
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
           src="/images/ujjwal.jpg"
-          width={150}
+          width={100}
           height={200}
           alt="ujjwal"
           priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-3xl">Ujjwal Barik</h1>
+            <h1 className="sm:text-2xl text-xl">Ujjwal Barik</h1>
             <h1 className="text-sm">Information Technology (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
@@ -257,21 +257,21 @@ export default function Admincard({}) {
           </div>
         </div>
       </Card>
-      <Card className="w-72 h-96 flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
+      <Card className="w-60 h-80  flex flex-col items-center hover:cursor-pointer border border-blue-500  justify-center gap-6 relative">
         <Badge className="absolute top-1 right-1 bg-blue-500" >
           Designer
         </Badge>
         <Image
           className="rounded-full"
           src="/images/suman.jpeg"
-          width={150}
+          width={100}
           height={200}
           alt="me"
           priority={true}
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-3xl text-center">Suman Sekhar Mohanty</h1>
+            <h1 className="sm:text-2xl text-xl text-center">Suman Sekhar Mohanty</h1>
             <h1 className="text-sm">Information Technology </h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
