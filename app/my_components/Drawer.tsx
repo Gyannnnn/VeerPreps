@@ -103,15 +103,7 @@ export async function DrawerDemo() {
               Report Issue
             </Link>
           </DrawerClose>
-          <DrawerClose asChild>
-            <Link
-              className="bg-secondary py-2 w-full flex justify-center rounded-md"
-             
-              href="https://iitkirba-io.vercel.app/db/appfile/Iitkirba.apk"
-            >
-              Download Our App
-            </Link>
-          </DrawerClose>
+          
         </div>
         <DrawerFooter className="w-full flex justify-center items-center mt-5">
           <DrawerClose
