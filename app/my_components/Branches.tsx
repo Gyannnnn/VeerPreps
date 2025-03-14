@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useMemo } from "react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
@@ -30,33 +30,41 @@ export default function Branches({ session }: BranchProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [branches, setBranches] = useState<Branch[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const name = session?.user?.name;
 
-  // Fetch branches on mount
   useEffect(() => {
     const fetchBranches = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const response = await axios.get<{ branches: Branch[] }>(
           "https://iitkirba-api.vercel.app/api/branch/"
         );
         setBranches(response.data.branches);
       } catch (error) {
         console.error("Error fetching branches:", error);
+        setError("Failed to fetch branches. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
+
     fetchBranches();
   }, []);
 
-  // Memoize filtered branches to avoid recalculating
   const filteredBranches = useMemo(() => {
-    return searchTerm
-      ? branches.filter((branch) =>
-          branch.branchname.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      : branches;
+    try {
+      return searchTerm
+        ? branches.filter((branch) =>
+            branch.branchname.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : branches;
+    } catch (error) {
+      console.error("Error filtering branches:", error);
+      return [];
+    }
   }, [branches, searchTerm]);
 
   return (
@@ -65,12 +73,9 @@ export default function Branches({ session }: BranchProps) {
       <div className="w-[91vw] 2xl:w-[87vw] h-10 flex sm:flex-row flex-col gap-2 items-center justify-between sm:mb-10 mb-32">
         <div className="max-sm:w-full max-sm:mb-5">
           {session?.user && (
-            <h1
-              
-              className="sm:text-4xl font-bold max-sm:text-3xl text-black flex flex-wrap items-center justify-start gap-2 hover:cursor-pointer dark:text-white"
-            >
+            <h1 className="sm:text-3xl font-bold max-sm:text-3xl text-black flex flex-wrap items-center justify-start gap-2 hover:cursor-pointer dark:text-white">
               <span>Hello</span>
-              <span className="inline-block animate-wave  transform-origin-[70%_70%]">
+              <span className="inline-block animate-wave transform-origin-[70%_70%]">
                 👋
               </span>
               {name ||
@@ -91,14 +96,16 @@ export default function Branches({ session }: BranchProps) {
         </div>
       </div>
 
+      {/* Error Handling */}
+      {error && <p className="text-red-500">{error}</p>}
+
       {/* Branch Cards */}
       <div className="sm:w-[95vw] w-screen min-h-screen flex justify-center flex-wrap gap-5">
         {loading ? (
-          // Skeleton loader for better UX
           Array.from({ length: 6 }).map((_, index) => (
             <Card
               key={index}
-              className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh]  border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
+              className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
             >
               <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
               <div className="w-1/2 h-20 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
@@ -119,7 +126,7 @@ export default function Branches({ session }: BranchProps) {
                   width={350}
                   src={branch.displayimage}
                   alt={`${branch.branchname} branch`}
-                  priority={index < 2} // Prioritize the first two images
+                  priority={index < 2}
                   loading={index >= 2 ? "lazy" : "eager"}
                   placeholder="blur"
                   blurDataURL="/path-to-placeholder-image.jpg"
