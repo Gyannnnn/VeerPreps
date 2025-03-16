@@ -25,9 +25,13 @@ export default function Footer() {
           <Link href="/privacypolicy" className="underline hover:text-blue-400">
             Privacy Policy
           </Link>
+          <Link href="/about" className="underline hover:text-blue-400">
+            About
+          </Link>
           <Link href="/privacypolicy" className="underline hover:text-blue-400">
             Terms & Conditions
           </Link>
+          
         </div>
       </div>
     </Card>

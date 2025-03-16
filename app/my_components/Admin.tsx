@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { FaTelegramPlane } from "react-icons/fa";
-import { FaDiscord } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import { Badge } from "@/components/ui/badge";
 import { CiGlobe } from "react-icons/ci";
@@ -59,15 +59,16 @@ export default function Admincard({}) {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link
+                    target="_blank"
                       className="flex gap-2 items-center "
-                      href="https://github.com/Gyannnnn"
+                      href="https://www.instagram.com/gyanpatra.dev?igsh=eTNyb3p4Nm1yd293"
                     >
-                      <FaGithub />
+                      <FaInstagram />
                     </Link>
                   </TooltipTrigger>
 
                   <TooltipContent>
-                    <p>Github</p>
+                    <p>Instagram</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -185,6 +186,23 @@ export default function Admincard({}) {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link
+                    target="_blank"
+                      className="flex gap-2 items-center "
+                      href="https://www.instagram.com/nitish_n23?igsh=MXBmOTR0bW54Mzhocg==&utm_source=ig_contact_invite"
+                    >
+                      <FaInstagram />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Instagram</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
                       className="flex gap-2 items-center "
                       target="_blank"
                       href="https://t.me/Nitish_kumar_23_10"
@@ -233,6 +251,23 @@ export default function Admincard({}) {
 
                   <TooltipContent>
                     <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                    target="_blank"
+                      className="flex gap-2 items-center "
+                      href="https://www.instagram.com/ujjwal_barik_2005?igsh=cXF1YnRzd2w2OXFk"
+                    >
+                      <FaInstagram />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Instagram</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -290,6 +325,23 @@ export default function Admincard({}) {
 
                   <TooltipContent>
                     <p>Mail</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                    target="_blank"
+                      className="flex gap-2 items-center "
+                      href="https://www.instagram.com/_sekhar_suman__?igsh=cmFlaGlrcW9qYzNl"
+                    >
+                      <FaInstagram />
+                    </Link>
+                  </TooltipTrigger>
+
+                  <TooltipContent>
+                    <p>Instagram</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
