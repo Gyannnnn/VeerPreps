@@ -327,7 +327,7 @@ export default function Admincard({}) {
                     <p>Mail</p>
                   </TooltipContent>
                 </Tooltip>
-              </div>
+              </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
               <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
                 <Tooltip>
                   <TooltipTrigger asChild>

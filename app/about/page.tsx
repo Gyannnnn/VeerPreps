@@ -2,7 +2,7 @@ export default function Page() {
     return (
       <div className="min-h-[90vh] w-screen flex items-center justify-center mt-16">
         <div className="w-[90vw] min-h-[90vh] flex flex-col gap-4 py-6">
-          <h1 className="text-4xl pt-10">About VeerPreps</h1>
+          <h1 className="text-4xl pt-5">About VeerPreps</h1>
           <p className="text-xl">
             <strong>VeerPreps</strong> (formerly IIT Kirba) is a dedicated study material platform designed exclusively for VSSUT Burla students. It provides previous year question papers, lecture notes, and carefully curated YouTube playlists to help students prepare efficiently for mid-semester, end-semester, and backlog exams. Our goal is to make academic resources easily accessible to every student, saving them valuable time and effort.
           </p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Card className="w-full min-h-16 bg-secondary dark:bg-zinc-950 sm:rounded-t-full rounded-t-3xl drop-shadow-xl flex flex-col items-center justify-center py-4">
+    <Card className="w-full min-h-16 bg-secondary dark:bg-zinc-950 rounded-t-3xl drop-shadow-xl flex flex-col items-center justify-center py-4">
       <div className="w-full flex flex-col items-center justify-center space-y-2">
         {/* Logo / Branding */}
         <Link href="/" className="w-full flex items-center justify-center group">
@@ -21,7 +21,7 @@ export default function Footer() {
         </p>
 
         {/* Links */}
-        <div className="flex gap-2 text-sm">
+        <div className="flex gap-2 max-sm:text-[12px]">
           <Link href="/privacypolicy" className="underline hover:text-blue-400">
             Privacy Policy
           </Link>

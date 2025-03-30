@@ -119,11 +119,12 @@ export default function Branches({ session }: BranchProps) {
               href={`/year/${branch.branch_id}`}
               className="hover:cursor-pointer"
             >
-              <Card className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] flex border flex-col drop-shadow-lg items-center justify-between max-lg:justify-around py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm">
+              
+              <Card className="w-80 max-sm:w-[95vw] min-h-[52vh] max-sm:min-h-[45vh] p-2  flex flex-col justify-between max-lg:justify-around gap-2  ">
                 <Image
                   className="rounded-sm border"
                   height={400}
-                  width={350}
+                  width={450}
                   src={branch.displayimage}
                   alt={`${branch.branchname} branch`}
                   priority={index < 2}
@@ -131,10 +132,11 @@ export default function Branches({ session }: BranchProps) {
                   placeholder="blur"
                   blurDataURL="/path-to-placeholder-image.jpg"
                 />
-                <div className="flex flex-col sm:gap-4 gap-2 items-start w-full">
-                  <h1 className="font-sans sm:text-xl text-[1.4rem] w-full text-center tracking-tighter">
+                <h1 className="font-sans sm:text-xl text-[1.4rem] w-full text-center tracking-tighter">
                     {branch.branchname}
                   </h1>
+                <div className="flex flex-col sm:gap-4 gap-2 items-start w-full">
+                  
                   <Button className="w-full py-6">View Content</Button>
                 </div>
               </Card>
