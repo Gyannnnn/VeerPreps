@@ -225,7 +225,7 @@ export default function Admincard({}) {
         <Badge className="absolute top-1 right-1">Admin</Badge>
         <Image
           className="rounded-full"
-          src="/images/ujjwal.jpg"
+          src="https://res.cloudinary.com/dlm8mel1x/image/upload/v1745393060/kirba/logos/httk5rd681z9cyqydixt.jpg"
           width={100}
           height={200}
           alt="ujjwal"
@@ -233,8 +233,8 @@ export default function Admincard({}) {
         />
         <div className="pt-2 flex flex-col items-center justify-center gap-2">
           <div className="flex flex-col items-center justify-center ">
-            <h1 className="sm:text-2xl text-xl">Ujjwal Barik</h1>
-            <h1 className="text-sm">Information Technology (2027)</h1>
+            <h1 className="sm:text-2xl text-xl">Purav Patnaik</h1>
+            <h1 className="text-sm">Electrical Engineering (2027)</h1>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-2 text-2xl">
             <TooltipProvider>
@@ -243,7 +243,7 @@ export default function Admincard({}) {
                   <TooltipTrigger asChild>
                     <Link
                       className="flex gap-2 items-center "
-                      href="mailto:ujjwalbarik3@gmail.com"
+                      href="mailto:puravpattnaik27@gmail.com"
                     >
                       <BiLogoGmail />
                     </Link>
@@ -260,7 +260,7 @@ export default function Admincard({}) {
                     <Link
                     target="_blank"
                       className="flex gap-2 items-center "
-                      href="https://www.instagram.com/ujjwal_barik_2005?igsh=cXF1YnRzd2w2OXFk"
+                      href="https://www.instagram.com/puravpattnaik?igsh=a3BtbGF3d2JqdDI1"
                     >
                       <FaInstagram />
                     </Link>
@@ -271,22 +271,7 @@ export default function Admincard({}) {
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-secondary   ">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      className="flex gap-2 items-center "
-                      href="https://t.me/Ujjwalbarik"
-                    >
-                      <FaTelegramPlane />
-                    </Link>
-                  </TooltipTrigger>
-
-                  <TooltipContent>
-                    <p>Telegram</p>
-                  </TooltipContent>
-                </Tooltip>
-              </div>
+              
               
             </TooltipProvider>
           </div>
