@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-
 import "./globals.css";
 import Navbar from "@/app/my_components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -66,14 +64,10 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <head>
-          <AdSense
-            pId="pub-6615680210839928"
-          />
-        
-          
+          <AdSense pId="ca-pub-6615680210839928" />
         </head>
         <body className="antialiased">
-        <GoogleAnalyticsClient/>
+          <GoogleAnalyticsClient />
           <SpeedInsights />
           <ThemeProvider
             attribute="class"
@@ -88,9 +82,6 @@ export default async function RootLayout({
             <Toaster />
           </ThemeProvider>
         </body>
-      
-        
-        
       </html>
     </SessionProvider>
   );
