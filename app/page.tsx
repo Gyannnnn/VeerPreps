@@ -2,14 +2,14 @@ import { auth } from "@/auth";
 
 import React from "react";
 
-// import { Playwrite_AR } from "next/font/google";
+
 import Branches from "./my_components/Branches";
 import { Metadata } from "next";
-// const playwright = Playwrite_AR();
+
 
 export default async function page() {
   const session = await auth();
-  // const name = session?.user?.name;
+ 
 
   return (
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex flex-col items-center justify-center">
@@ -26,6 +26,6 @@ export default async function page() {
 
 
 export const metadata:Metadata={
-  title:"IIT KIRBA (VeerPreps)",
+  title:"IIT KIRBA | VeerPreps",
   description:"A page where all branches of vssut burla are listed , the only previous year question paper site for veer surendra sai university of technlogy burla samablpur formely university collage of engineering burla sambalpur"
 }

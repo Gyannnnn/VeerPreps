@@ -6,7 +6,6 @@ import { FaInstagram } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import { Badge } from "@/components/ui/badge";
 import { CiGlobe } from "react-icons/ci";
-import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 import {

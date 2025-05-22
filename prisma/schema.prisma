@@ -82,7 +82,7 @@ model VerificationToken {
   @@id([identifier, token])
 }
  
-// Optional for WebAuthn support
+
 model Authenticator {
   credentialID         String  @unique
   userId               String

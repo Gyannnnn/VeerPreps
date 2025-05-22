@@ -57,17 +57,17 @@ export default async function Contents({ ids }: PageProps) {
     const [notesResponse, pyqResponse, videolinksResponse] = await Promise.all([
       axios
         .get<{ notes: Notes[] }>(
-          `https://iitkirba-api.vercel.app/api/notes/${subjectid}`
+          `https://api-zeta.vercel.app/api/notes/${subjectid}`
         )
         .catch(() => ({ data: { notes: [] } })),
       axios
         .get<{ pyq: Contents[] }>(
-          `https://iitkirba-api.vercel.app/api/pyq/${subjectid}`
+          `https://api-zeta.vercel.app/api/pyq/${subjectid}`
         )
         .catch(() => ({ data: { pyq: [] } })),
       axios
         .get<{ videolinks: VideoLinks[] }>(
-          `https://iitkirba-api.vercel.app/api/videos/${subjectid}`
+          `https://api-zeta.vercel.app/api/videos/${subjectid}`
         )
         .catch(() => ({ data: { videolinks: [] } })),
     ]);

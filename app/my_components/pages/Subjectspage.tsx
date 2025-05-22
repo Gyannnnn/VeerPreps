@@ -37,14 +37,14 @@ export default async function Subjects({ ids }: pageprops) {
     yearid === "40"
   ) {
     const response = await axios.get<{ subjects: Subject[] }>(
-      `https://iitkirba-api.vercel.app/api/subject/common`
+      `https://api-zeta.vercel.app/api/subject/common`
     );
     data = response.data.subjects;
    
   } else {
     try {
       const response = await axios.get<{ subjects: Subject[] }>(
-        `https://iitkirba-api.vercel.app/api/subject/${branchId}/${yearid}`
+        `https://api-zeta.vercel.app/api/subject/${branchId}/${yearid}`
       );
       data = response.data.subjects;
     } catch (error) {

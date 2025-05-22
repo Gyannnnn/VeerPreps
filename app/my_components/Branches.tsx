@@ -7,13 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import axios from "axios";
 import getName from "@/utils/Name";
-import localFont from "next/font/local";
+
 import { Session } from "next-auth";
 
-const myfont = localFont({
-  src: "../../font/PlaywriteVN-Regular.ttf",
-  display: "swap",
-});
 
 interface Branch {
   branch_id: string;
@@ -40,7 +36,7 @@ export default function Branches({ session }: BranchProps) {
         setLoading(true);
         setError(null);
         const response = await axios.get<{ branches: Branch[] }>(
-          "https://iitkirba-api.vercel.app/api/branch/"
+          "https://api-zeta.vercel.app/api/branch/"
         );
         setBranches(response.data.branches);
       } catch (error) {

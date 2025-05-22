@@ -23,7 +23,7 @@ export default function Allnotes() {
     const fetchNotes = async () => {
       try {
         const response = await axios.get<{ notes: Notes[] }>(
-          "https://iitkirba-api.vercel.app/api/notes/"
+          "https://api-zeta.vercel.app/api/notes/"
         );
         setNotes(response.data.notes);
       } catch (err) {

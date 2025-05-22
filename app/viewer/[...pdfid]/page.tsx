@@ -35,7 +35,7 @@ export default async function Page({ params }: {params:{pdfid:string[]}}) {
 
     try {
       const response = await axios.get<{ note: Notes }>(
-        `https://iitkirba-api.vercel.app/api/notes/getone/${notesid}`
+        `https://api-zeta.vercel.app/api/notes/getone/${notesid}`
       );
       const data = response.data.note;
 
@@ -58,7 +58,7 @@ export default async function Page({ params }: {params:{pdfid:string[]}}) {
 
     try {
       const response = await axios.get<Pyq>(
-        `https://iitkirba-api.vercel.app/api/pyq/id/${pdfid}`
+        `https://api-zeta.vercel.app/api/pyq/id/${pdfid}`
       );
 
       const data = response.data;

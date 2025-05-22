@@ -23,7 +23,7 @@ export default function Page() {
     const fetchPyqs = async () => {
       try {
         const response = await axios.get<{ allpyqs: Allpyqs[] }>(
-          "https://iitkirba-api.vercel.app/api/pyq/"
+          "https://api-zeta.vercel.app/api/pyq/"
         );
         setPyqs(response.data.allpyqs);
       } catch (err) {

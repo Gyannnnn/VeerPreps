@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default async function Yearpage({ branchId }: { branchId: number }) {
   try {
     const years = await axios.get<{ requiredyear: year[] }>(
-      `https://iitkirba-api.vercel.app/api/year/${branchId}`
+      `https://api-zeta.vercel.app/api/year/${branchId}`
     );
 
     const requiredyears = years.data.requiredyear;
