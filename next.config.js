@@ -16,6 +16,11 @@ const nextConfig = {
         hostname: "res.cloudinary.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "veerpreps.s3.ap-south-1.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
 };
