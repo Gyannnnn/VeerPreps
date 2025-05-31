@@ -27,10 +27,15 @@ export default {
 				'0%, 100%': { transform: 'translateY(-12px)' }, // Increased bounce height
 				'50%': { transform: 'translateY(0)' },
 			  },
+			  swing: {
+				'0%, 100%': { transform: 'translateY(0px)' },
+				'50%': { transform: 'translateY(10px)' },
+			  },
 		  },
 		  animation: {
 			wave: 'wave 2s infinite',
 			load: 'load 2s infinite',
+			swing: 'swing 1s ease-in-out infinite',
 		  },
 		fontFamily: {
 			sans: ['var(--font-geist-sans)'],

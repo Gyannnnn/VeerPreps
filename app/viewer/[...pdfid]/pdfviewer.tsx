@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -10,7 +10,6 @@ import { savepdf } from "@/actions/savepdf";
 import { isSaved } from "@/actions/issavedpdf"; // Import your isSaved function
 import { unsavePdf } from "@/actions/unsavepdf";
 
-import { IoMdDownload } from "react-icons/io";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
 import { FiSave, FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
@@ -18,11 +17,10 @@ import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
 import { FaCircleDown } from "react-icons/fa6";
 import { SiWhatsapp } from "react-icons/si";
-import { FaPaperclip } from "react-icons/fa";
+import { FaArrowDown, FaPaperclip } from "react-icons/fa";
 import { TiClipboard } from "react-icons/ti";
-
-
-
+import { FaArrowUp } from "react-icons/fa";
+import { IoCloudDownload } from "react-icons/io5";
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -51,6 +49,33 @@ export default function PdfRenderer({
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [saved, setSaved] = useState(false); // Track if PDF is saved
+
+  const [atBottom, setAtBottom] = useState(false);
+
+  const toggleScroll = () => {
+    if (atBottom) {
+      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      scrollRef.current?.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = scrollRef.current;
+      if (el) {
+        const isAtBottom =
+          el.scrollTop + el.clientHeight >= el.scrollHeight - 20;
+        setAtBottom(isAtBottom);
+      }
+    };
+
+    scrollRef.current?.addEventListener("scroll", handleScroll);
+    return () => scrollRef.current?.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -168,10 +193,19 @@ export default function PdfRenderer({
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    scrollRef.current?.scrollTo({
+      top: scrollRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <div className="fixed top-20 max-sm:top-[9vh]    h-52 w-20  sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 rounded-lg">
+        <div className="fixed  top-[10vh]     sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 rounded-lg">
           <button
             className=" "
             onClick={() => {
@@ -183,7 +217,7 @@ export default function PdfRenderer({
             }}
             aria-label="Download PDF"
           >
-            <FaCircleDown className="dark:text-white text-blue-500" />
+            <IoCloudDownload className="text-blue-500" />
           </button>
 
           <button
@@ -192,11 +226,11 @@ export default function PdfRenderer({
             aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
             {isLoading ? (
-              <AiOutlineLoading className="animate-spin dark:text-white text-blue-500" />
+              <AiOutlineLoading className="animate-spin  text-blue-500" />
             ) : saved ? (
-              <FiCheck className="text-blue-500 dark:text-white" />
+              <FiCheck className="text-blue-500 " />
             ) : (
-              <FiSave className="text-blue-500 dark:text-white" />
+              <FiSave className="text-blue-500 " />
             )}
           </button>
           <button
@@ -204,7 +238,7 @@ export default function PdfRenderer({
             onClick={handleWhatsAppShare}
             aria-label="Share on WhatsApp"
           >
-            <SiWhatsapp className="text-green-500"/>
+            <SiWhatsapp className="text-green-500" />
           </button>
 
           <button
@@ -212,33 +246,46 @@ export default function PdfRenderer({
             onClick={handleCopyToClipboard}
             aria-label="Copy Link"
           >
-            <TiClipboard className="dark:text-white text-blue-500"/>
+            <TiClipboard className=" text-blue-500" />
+          </button>
+          <button
+            onClick={toggleScroll}
+            className="fixed bottom-10 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
+            aria-label="Scroll"
+          >
+            {atBottom ? (
+              <FaArrowUp className="text-2xl  animate-swing" />
+            ) : (
+              <FaArrowDown className="text-2xl animate-swing" />
+            )}
           </button>
         </div>
 
-        <Document
-          className="flex flex-col items-center justify-center gap-2"
-          renderMode="canvas"
-          file={links}
-          onLoadSuccess={onDocumentLoadSuccess}
+        <div
+          ref={scrollRef}
+          className="h-[90vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
         >
-          {Array.from({ length: numPages }, (_, index) => (
-            <div
-              key={index}
-              className="relative flex flex-col items-center mb-4"
-            >
-              <Page
-                width={isSmallScreen ? 400 : width}
-                pageNumber={index + 1}
-              />
-              <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                Page {index + 1} of {numPages}
+          <Document
+            className="flex flex-col items-center justify-center  "
+            renderMode="canvas"
+            file={links}
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            {Array.from({ length: numPages }, (_, index) => (
+              <div key={index} className="relative flex flex-col items-center">
+                <Page
+                  width={isSmallScreen ? 400 : width}
+                  pageNumber={index + 1}
+                />
+                <div className="text-blue-500 font-bold">
+                  Page {index + 1} of {numPages}
+                </div>
               </div>
-            </div>
-          ))}
-        </Document>
+            ))}
+          </Document>
+        </div>
 
-        <div className="fixed bottom-4 right-6 flex gap-4 text-blue-500 dark:text-white text-6xl max-lg:hidden ">
+        <div className="fixed bottom-28 right-6 z-20 flex flex-col gap-4 text-blue-500 text-5xl max-lg:hidden">
           <FaCirclePlus
             onClick={() => adjustWidth(true)}
             className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
@@ -249,7 +296,6 @@ export default function PdfRenderer({
             className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
             aria-label="Decrease Width"
           />
-          
         </div>
       </div>
     </div>
