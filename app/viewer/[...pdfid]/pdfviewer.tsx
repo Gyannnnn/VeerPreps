@@ -16,6 +16,13 @@ import { FiSave, FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
+import { FaCircleDown } from "react-icons/fa6";
+import { SiWhatsapp } from "react-icons/si";
+import { FaPaperclip } from "react-icons/fa";
+import { TiClipboard } from "react-icons/ti";
+
+
+
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -99,7 +106,7 @@ export default function PdfRenderer({
       description: "You have to sign first to download and save your PDF.",
       action: (
         <ToastAction altText="Goto schedule to undo">
-          <Link  href="/sign-in">Signin</Link>
+          <Link href="/sign-in">Signin</Link>
         </ToastAction>
       ),
     });
@@ -137,12 +144,36 @@ export default function PdfRenderer({
     }
   };
 
+  const handleCopyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast({
+        title: "Link Copied",
+        description: "Page link copied to clipboard!",
+      });
+    } catch (err) {
+      toast({
+        variant: "destructive",
+        title: "Copy Failed",
+        description: "Could not copy the link. Try again.",
+      });
+      console.error(err);
+    }
+  };
+
+  const handleWhatsAppShare = () => {
+    const text = encodeURIComponent(
+      `Hey! Check out this document: ${window.location.href}`
+    );
+    window.open(`https://wa.me/?text=${text}`, "blank");
+  };
+
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <div className="fixed top-20 max-sm:top-[9vh]  sm:right-6 right-4 max-lg:flex-col flex  z-10 text-white sm:text-4xl text-3xl sm:gap-6 gap-2">
+        <div className="fixed top-20 max-sm:top-[9vh]    h-52 w-20  sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 rounded-lg">
           <button
-            className="bg-blue-500 rounded-full px-2 py-2 "
+            className=" "
             onClick={() => {
               if (!email) {
                 signinfirst();
@@ -152,21 +183,36 @@ export default function PdfRenderer({
             }}
             aria-label="Download PDF"
           >
-            <IoMdDownload />
+            <FaCircleDown className="dark:text-white text-blue-500" />
           </button>
 
           <button
-            className="bg-blue-500 rounded-full px-2 py-2"
+            className=""
             onClick={email ? handleToggleSavePdf : signinfirst}
             aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
             {isLoading ? (
-              <AiOutlineLoading className="animate-spin" />
+              <AiOutlineLoading className="animate-spin dark:text-white text-blue-500" />
             ) : saved ? (
-              <FiCheck />
+              <FiCheck className="text-blue-500 dark:text-white" />
             ) : (
-              <FiSave />
+              <FiSave className="text-blue-500 dark:text-white" />
             )}
+          </button>
+          <button
+            className=""
+            onClick={handleWhatsAppShare}
+            aria-label="Share on WhatsApp"
+          >
+            <SiWhatsapp className="text-green-500"/>
+          </button>
+
+          <button
+            className=""
+            onClick={handleCopyToClipboard}
+            aria-label="Copy Link"
+          >
+            <TiClipboard className="dark:text-white text-blue-500"/>
           </button>
         </div>
 
@@ -177,11 +223,18 @@ export default function PdfRenderer({
           onLoadSuccess={onDocumentLoadSuccess}
         >
           {Array.from({ length: numPages }, (_, index) => (
-            <Page
+            <div
               key={index}
-              width={isSmallScreen ? 400 : width}
-              pageNumber={index + 1}
-            />
+              className="relative flex flex-col items-center mb-4"
+            >
+              <Page
+                width={isSmallScreen ? 400 : width}
+                pageNumber={index + 1}
+              />
+              <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                Page {index + 1} of {numPages}
+              </div>
+            </div>
           ))}
         </Document>
 
@@ -196,6 +249,7 @@ export default function PdfRenderer({
             className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
             aria-label="Decrease Width"
           />
+          
         </div>
       </div>
     </div>
