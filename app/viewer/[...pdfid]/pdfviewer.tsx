@@ -45,6 +45,12 @@ export default function PdfRenderer({
   notes,
   email,
 }: PdfRendererProps) {
+  
+  console.log(links,
+    name,
+    id,
+    notes,
+    email,)
   const [numPages, setNumPages] = useState<number>(0);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [width, setWidth] = useState<number>(1000);
@@ -190,7 +196,7 @@ export default function PdfRenderer({
 
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
-      `Hey! Check out this document: ${window.location.href}`
+      `Hey! Check out this ${notes?"Notes":"Pyq"} from VeerPreps: ${window.location.href}`
     );
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
@@ -207,9 +213,9 @@ export default function PdfRenderer({
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <div className="fixed  top-[12vh]     sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 max-sm:gap-1 rounded-lg">
+        <div className="fixed  top-[12vh]  max-sm:top-[10vh]    sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 max-sm:gap-1 rounded-lg">
           <button
-            className=" bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className=" dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={() => {
               if (!email) {
                 signinfirst();
@@ -219,11 +225,11 @@ export default function PdfRenderer({
             }}
             aria-label="Download PDF"
           >
-            <MdDownloadForOffline className="text-blue-500 max-sm:text-white  rounded-full w-10 h-10" />
+            <MdDownloadForOffline className="dark:text-blue-500 max-sm:text-white  rounded-full w-10 h-10" />
           </button>
 
           <button
-            className="bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={email ? handleToggleSavePdf : signinfirst}
             aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
@@ -232,27 +238,27 @@ export default function PdfRenderer({
             ) : saved ? (
               <FiCheck className="text-blue-500 max-sm:text-white " />
             ) : (
-              <MdOutlineDataSaverOn className="text-blue-500 max-sm:text-white " />
+              <MdOutlineDataSaverOn className="dark:text-blue-500 max-sm:text-white " />
             )}
           </button>
           <button
-            className="bg-white max-sm:bg-black max-sm:text-white w-12 h-12 rounded-full flex items-center justify-center"
+            className="dark:bg-white bg-black max-sm:bg-black max-sm:text-white w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleWhatsAppShare}
             aria-label="Share on WhatsApp"
           >
-            <SiWhatsapp className="text-green-500 max-sm:text-white" />
+            <SiWhatsapp className="dark:text-green-500 max-sm:text-white" />
           </button>
 
           <button
-            className="bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleCopyToClipboard}
             aria-label="Copy Link"
           >
-            <TiClipboard className=" text-blue-500 max-sm:text-white" />
+            <TiClipboard className=" darK:text-blue-500 max-sm:text-white" />
           </button>
           <button
             onClick={toggleScroll}
-            className="fixed bottom-10 max-sm:bottom-14 max-sm:right-1 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
+            className="fixed bottom-12 max-sm:bottom-14 max-sm:right-1 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
             aria-label="Scroll"
           >
             {atBottom ? (
@@ -287,17 +293,22 @@ export default function PdfRenderer({
           </Document>
         </div>
 
-        <div className="fixed bottom-28 right-6 z-20 flex flex-col gap-4 text-blue-500 text-5xl max-lg:hidden">
+        <div className="fixed bottom-28 right-6 z-20 flex flex-col gap-4  text-4xl max-lg:hidden">
+          <div className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center">
           <FaCirclePlus
             onClick={() => adjustWidth(true)}
-            className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
+            className="dark:text-blue-500 text-white"
             aria-label="Increase Width"
           />
+          </div>
+          
+          <div className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center">
           <FaCircleMinus
             onClick={() => adjustWidth(false)}
-            className="hover:cursor-pointer hover:text-blue-400 dark:hover:text-gray-300"
+            className="dark:text-blue-500 text-white"
             aria-label="Decrease Width"
           />
+          </div>
         </div>
       </div>
     </div>
