@@ -215,7 +215,7 @@ export default function PdfRenderer({
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
         <div className="fixed  top-[12vh]  max-sm:top-[10vh]    sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 max-sm:gap-1 rounded-lg">
           <button
-            className=" dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className=" sm:dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={() => {
               if (!email) {
                 signinfirst();
@@ -225,24 +225,24 @@ export default function PdfRenderer({
             }}
             aria-label="Download PDF"
           >
-            <MdDownloadForOffline className="dark:text-blue-500 max-sm:text-white  rounded-full w-10 h-10" />
+            <MdDownloadForOffline className="sm:dark:text-blue-500 max-sm:text-white  rounded-full w-10 h-10" />
           </button>
 
           <button
-            className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="sm:dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={email ? handleToggleSavePdf : signinfirst}
             aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
             {isLoading ? (
               <AiOutlineLoading className="animate-spin  text-blue-500" />
             ) : saved ? (
-              <FiCheck className="text-blue-500 max-sm:text-white " />
+              <FiCheck className="sm:dark:text-blue-500  " />
             ) : (
-              <MdOutlineDataSaverOn className="dark:text-blue-500 max-sm:text-white " />
+              <MdOutlineDataSaverOn className="sm:dark:text-blue-500 max-sm:text-white " />
             )}
           </button>
           <button
-            className="dark:bg-white bg-black max-sm:bg-black max-sm:text-white w-12 h-12 rounded-full flex items-center justify-center"
+            className="sm:dark:bg-white bg-black max-sm:bg-black max-sm:text-white w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleWhatsAppShare}
             aria-label="Share on WhatsApp"
           >
@@ -250,11 +250,11 @@ export default function PdfRenderer({
           </button>
 
           <button
-            className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="sm:dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleCopyToClipboard}
             aria-label="Copy Link"
           >
-            <TiClipboard className=" darK:text-blue-500 max-sm:text-white" />
+            <TiClipboard className=" sm:dark:text-blue-500 max-sm:text-white" />
           </button>
           <button
             onClick={toggleScroll}
@@ -271,7 +271,7 @@ export default function PdfRenderer({
 
         <div
           ref={scrollRef}
-          className="h-[90vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
+          className="h-[95vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
         >
           <Document
             className="flex flex-col items-center justify-center  "
@@ -285,7 +285,7 @@ export default function PdfRenderer({
                   width={isSmallScreen ? 400 : width}
                   pageNumber={index + 1}
                 />
-                <div className="text-blue-500 font-bold">
+                <div className="text-blue-500 max-sm:text-sm font-bold">
                   Page {index + 1} of {numPages}
                 </div>
               </div>
