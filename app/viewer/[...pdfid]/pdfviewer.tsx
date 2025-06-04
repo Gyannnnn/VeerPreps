@@ -15,7 +15,9 @@ import { FiSave, FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
-import { FaCircleDown } from "react-icons/fa6";
+import { MdDownloadForOffline } from "react-icons/md";
+import { MdOutlineDataSaverOn } from "react-icons/md";
+
 import { SiWhatsapp } from "react-icons/si";
 import { FaArrowDown, FaPaperclip } from "react-icons/fa";
 import { TiClipboard } from "react-icons/ti";
@@ -205,9 +207,9 @@ export default function PdfRenderer({
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
-        <div className="fixed  top-[10vh]     sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 rounded-lg">
+        <div className="fixed  top-[12vh]     sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 max-sm:gap-1 rounded-lg">
           <button
-            className=" "
+            className=" bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={() => {
               if (!email) {
                 signinfirst();
@@ -217,40 +219,40 @@ export default function PdfRenderer({
             }}
             aria-label="Download PDF"
           >
-            <IoCloudDownload className="text-blue-500" />
+            <MdDownloadForOffline className="text-blue-500 max-sm:text-white  rounded-full w-10 h-10" />
           </button>
 
           <button
-            className=""
+            className="bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={email ? handleToggleSavePdf : signinfirst}
             aria-label={saved ? "Unsave PDF" : "Save PDF"}
           >
             {isLoading ? (
               <AiOutlineLoading className="animate-spin  text-blue-500" />
             ) : saved ? (
-              <FiCheck className="text-blue-500 " />
+              <FiCheck className="text-blue-500 max-sm:text-white " />
             ) : (
-              <FiSave className="text-blue-500 " />
+              <MdOutlineDataSaverOn className="text-blue-500 max-sm:text-white " />
             )}
           </button>
           <button
-            className=""
+            className="bg-white max-sm:bg-black max-sm:text-white w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleWhatsAppShare}
             aria-label="Share on WhatsApp"
           >
-            <SiWhatsapp className="text-green-500" />
+            <SiWhatsapp className="text-green-500 max-sm:text-white" />
           </button>
 
           <button
-            className=""
+            className="bg-white max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
             onClick={handleCopyToClipboard}
             aria-label="Copy Link"
           >
-            <TiClipboard className=" text-blue-500" />
+            <TiClipboard className=" text-blue-500 max-sm:text-white" />
           </button>
           <button
             onClick={toggleScroll}
-            className="fixed bottom-10 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
+            className="fixed bottom-10 max-sm:bottom-14 max-sm:right-1 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
             aria-label="Scroll"
           >
             {atBottom ? (
