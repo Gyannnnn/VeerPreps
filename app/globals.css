@@ -11,6 +11,18 @@ html, body {
   display: none;
 }
 
+.progress-bar{
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #3B82F6;
+  transform-origin: 0%;
+  z-index: 9; 
+  border-radius: 0 50px 50px 0;
+}
+
 
 
 @layer base {
@@ -79,3 +91,5 @@ html, body {
     @apply bg-background text-foreground;
   }
 }
+
+

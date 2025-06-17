@@ -13,6 +13,9 @@ import Footer from "./my_components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import AdSense from "./my_components/googleAdd/AdSense";
 import GoogleAnalyticsClient from "./my_components/Analytics/GoogleAnalyticsClient";
+import {ReactLenis} from "@/utils/lenis/lenis"
+
+
 
 export const metadata = {
   title: "IIT KIRBA (VeerPreps)",
@@ -66,7 +69,8 @@ export default async function RootLayout({
         <head>
           <AdSense pId="ca-pub-6615680210839928" />
         </head>
-        <body className="antialiased">
+        <ReactLenis root>
+          <body className="antialiased">
           <GoogleAnalyticsClient />
           <SpeedInsights />
           <ThemeProvider
@@ -82,6 +86,7 @@ export default async function RootLayout({
             <Toaster />
           </ThemeProvider>
         </body>
+        </ReactLenis>
       </html>
     </SessionProvider>
   );

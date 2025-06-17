@@ -6,8 +6,7 @@ import Pdf from "../my_components/pdf";
 import SomethingWentWrong from "../my_components/SomethingWentWrong";
 import { CiSearch } from "react-icons/ci";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import {motion,useScroll} from 'framer-motion'
 
 interface Allpyqs {
   pyqname: string;
@@ -45,9 +44,10 @@ export default function Page() {
       </div>
     );
   }
-
+const {scrollYProgress} = useScroll()
   return (
     <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-secondary dark:bg-zinc-950 mt-14">
+                  <motion.div className="progress-bar" style={{scaleX:scrollYProgress}} />
       <div className="w-[95vw]    min-h-screen">
         <div className="flex  sm:flex-row  flex-col sm:items-center  sm:justify-between mt-10 mb-5 sm:pr-5 max-sm:gap-2  ">
               <h1 className="sm:pl-6 sm:text-3xl  text-xl py-3">

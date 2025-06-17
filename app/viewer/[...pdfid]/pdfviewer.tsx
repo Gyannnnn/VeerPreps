@@ -11,7 +11,7 @@ import { isSaved } from "@/actions/issavedpdf"; // Import your isSaved function
 import { unsavePdf } from "@/actions/unsavepdf";
 
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
-import { FiSave, FiCheck } from "react-icons/fi";
+import {  FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
@@ -21,9 +21,8 @@ import { MdOutlineDataSaverOn } from "react-icons/md";
 import { SiWhatsapp } from "react-icons/si";
 import { FaArrowDown, FaPaperclip } from "react-icons/fa";
 import { TiClipboard } from "react-icons/ti";
-import { FaArrowUp } from "react-icons/fa";
-import { IoCloudDownload } from "react-icons/io5";
 
+import {motion,useScroll} from 'framer-motion'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -58,32 +57,11 @@ export default function PdfRenderer({
   const [isLoading, setIsLoading] = useState(false);
   const [saved, setSaved] = useState(false); // Track if PDF is saved
 
-  const [atBottom, setAtBottom] = useState(false);
+  
 
-  const toggleScroll = () => {
-    if (atBottom) {
-      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      scrollRef.current?.scrollTo({
-        top: scrollRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  };
+ 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const el = scrollRef.current;
-      if (el) {
-        const isAtBottom =
-          el.scrollTop + el.clientHeight >= el.scrollHeight - 20;
-        setAtBottom(isAtBottom);
-      }
-    };
-
-    scrollRef.current?.addEventListener("scroll", handleScroll);
-    return () => scrollRef.current?.removeEventListener("scroll", handleScroll);
-  }, []);
+ 
 
   useEffect(() => {
     const handleResize = () => {
@@ -201,18 +179,14 @@ export default function PdfRenderer({
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
 
-  const scrollRef = useRef<HTMLDivElement>(null);
+  
 
-  const scrollToBottom = () => {
-    scrollRef.current?.scrollTo({
-      top: scrollRef.current.scrollHeight,
-      behavior: "smooth",
-    });
-  };
+  const {scrollYProgress} = useScroll()
 
   return (
     <div className="min-h-screen w-screen flex justify-center items-center">
       <div className="mt-16 bg-white dark:bg-zinc-950 w-full relative">
+        
         <div className="fixed  top-[12vh]  max-sm:top-[10vh]    sm:right-6 right-4 max-sm:right-1 flex flex-col items-center justify-center   z-10 text-white sm:text-4xl text-3xl  gap-2 max-sm:gap-1 rounded-lg">
           <button
             className=" sm:dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center"
@@ -256,22 +230,12 @@ export default function PdfRenderer({
           >
             <TiClipboard className=" sm:dark:text-blue-500 max-sm:text-white" />
           </button>
-          <button
-            onClick={toggleScroll}
-            className="fixed bottom-12 max-sm:bottom-14 max-sm:right-1 right-6 bg-blue-500 text-white p-[12px] rounded-full shadow-lg z-50"
-            aria-label="Scroll"
-          >
-            {atBottom ? (
-              <FaArrowUp className="text-2xl  animate-swing" />
-            ) : (
-              <FaArrowDown className="text-2xl animate-swing" />
-            )}
-          </button>
+          
         </div>
-
+            <motion.div className="progress-bar" style={{scaleX:scrollYProgress}} />
         <div
-          ref={scrollRef}
-          className="h-[95vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
+          
+          className="min-h-[200vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
         >
           <Document
             className="flex flex-col items-center justify-center  "
