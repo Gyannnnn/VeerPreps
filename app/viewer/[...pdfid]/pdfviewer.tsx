@@ -233,10 +233,7 @@ export default function PdfRenderer({
           
         </div>
             <motion.div className="progress-bar" style={{scaleX:scrollYProgress}} />
-        <div
-          
-          className="min-h-[200vh] overflow-y-scroll px-2 scroll-smooth snap-y snap-mandatory"
-        >
+        
           <Document
             className="flex flex-col items-center justify-center  "
             renderMode="canvas"
@@ -255,7 +252,7 @@ export default function PdfRenderer({
               </div>
             ))}
           </Document>
-        </div>
+        
 
         <div className="fixed bottom-28 right-6 z-20 flex flex-col gap-4  text-4xl max-lg:hidden">
           <div className="dark:bg-white bg-black max-sm:bg-black w-12 h-12 rounded-full flex items-center justify-center">
