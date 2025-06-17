@@ -19,7 +19,7 @@ export async function generateMetadata({
   const subjectId = params.ids[4];
   if (!subjectId) {
     return {
-      title: "Subjects | iitkirba",
+      title: "IIT KIRBA | VEERPREPS",
       description: "The requested subject does not exist.",
     };
   }

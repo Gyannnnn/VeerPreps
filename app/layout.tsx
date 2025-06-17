@@ -52,7 +52,7 @@ export const metadata = {
     "Gyanranjan Patra vssut",
   ],
   openGraph: {
-    title: "iitkirba - VSSUT Burla Question Papers & Notes",
+    title: "IIT KIRBA VSSUT Burla Question Papers & Notes",
     description:
       "Download VSSUT Burla PYQs & notes , mid sem, end sem, back, and supply papers. 100% free. Start preparing smarter today at iitkirba.xyz!",
     url: "https://www.iitkirba.xyz",
