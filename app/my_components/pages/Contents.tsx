@@ -5,6 +5,7 @@ import Link from "next/link";
 import NothingFound from "../NothingFound";
 import { Button } from "@/components/ui/button";
 import { FaYoutube } from "react-icons/fa";
+import { Metadata } from "next";
 
 interface Subject {
   subject_id: number;
@@ -41,6 +42,45 @@ interface PageProps {
   ids: string[];
 }
 
+
+
+
+export async function generateMetadata(props: Contents): Promise<Metadata> {
+  const subjectName = props.subject.subjectname;
+  const branchName = props.subject.branchname === "common" ? "First Year" : props.subject.branchname;
+
+
+  const title = `Download Previous Year Questions for ${subjectName} - ${branchName} | iitkirba`;
+  const description = `Get free access to previous year question papers for ${subjectName} (${branchName}) including mid-sem, end-sem, back, and supplementary exams.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: "https://www.iitkirba.xyz",
+      type: "website",
+      siteName: "iitkirba",
+      images: [
+        {
+          url: "https://www.iitkirba.xyz/og/og_image.png",
+          width: 1200,
+          height: 630,
+          alt: "iitkirba - VSSUT Question Papers & Notes",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://www.iitkirba.xyz/og/og_image.png"],
+    },
+  };
+}
+
+
 export default async function Contents({ ids }: PageProps) {
   const subjectid = ids.length > 4 ? ids[4] : null;
   if (!subjectid) {
@@ -75,10 +115,13 @@ export default async function Contents({ ids }: PageProps) {
     const notes: Notes[] = notesResponse?.data?.notes || [];
     const pyqs: Contents[] = pyqResponse?.data?.pyq || [];
     const videolinks: VideoLinks[] = videolinksResponse?.data?.videolinks || [];
+    
 
     if (notes.length === 0 && pyqs.length === 0 && videolinks.length === 0) {
       return <NothingFound />;
     }
+
+    generateMetadata(pyqs[0])
 
     return (
       <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">

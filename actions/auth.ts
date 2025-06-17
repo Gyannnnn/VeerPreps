@@ -14,7 +14,8 @@ const getUserByEmail = async (email: string) => {
     });
     return user;
   } catch (error) {
-    console.log(error);
+    const err = error as Error
+    console.log(err.message);
     return null;
   }
 };

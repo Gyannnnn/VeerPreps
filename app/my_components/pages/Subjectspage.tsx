@@ -40,6 +40,7 @@ export default async function Subjects({ ids }: pageprops) {
       `https://api-zeta.vercel.app/api/subject/common`
     );
     data = response.data.subjects;
+    
    
   } else {
     try {
@@ -53,7 +54,7 @@ export default async function Subjects({ ids }: pageprops) {
   }
 
   if (!data || data.length === 0) {
-    console.log("No subjects available");
+    
     return (
       <div className="h-screen w-screen flex flex-col items-center justify-center text-3xl">
         <h1 >Coming Soon !</h1>

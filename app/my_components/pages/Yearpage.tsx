@@ -24,6 +24,7 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
     );
 
     const requiredyears = years.data.requiredyear;
+    
   
     return (
       <div className="w-screen min-h-screen flex justify-center bg-secondary dark:bg-zinc-950">

@@ -26,7 +26,7 @@ interface Notes {
 
 export default async function Page({ params }: {params:{pdfid:string[]}}) {
   const session = await auth();
-  console.log("parmassssssssssssssssss",params.pdfid)
+  
 
   const email = session?.user?.email as string;
 

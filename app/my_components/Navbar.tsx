@@ -24,12 +24,7 @@ export default function Navbar() {
           <Logo/>
         </Link>
         <div className="flex gap-2 items-center  text-[14px] text-nav-text font-sans">
-          <Link
-            className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"
-            href="/"
-          >
-            Home
-          </Link>
+              
 
           <Link
             className="hover:bg-primary-foreground  lg:px-2 px-1 py-1 rounded-xl underline-offset-2"

@@ -45,11 +45,7 @@ export default function PdfRenderer({
   email,
 }: PdfRendererProps) {
   
-  console.log(links,
-    name,
-    id,
-    notes,
-    email,)
+  
   const [numPages, setNumPages] = useState<number>(0);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const [width, setWidth] = useState<number>(1000);
