@@ -170,7 +170,7 @@ export default function PdfRenderer({
 
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
-      `Check this ${notes?"Notes":"Pyq"}    ${window.location.href}`
+      `Check this ${notes?"Notes":"Pyq"} From VeerPreps : ${window.location.href}`
     );
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
