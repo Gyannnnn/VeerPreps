@@ -9,7 +9,7 @@ import axios from "axios";
 import getName from "@/utils/Name";
 
 import { Session } from "next-auth";
-
+import { Input } from "@/components/ui/input";
 
 interface Branch {
   branch_id: string;
@@ -74,21 +74,20 @@ export default function Branches({ session }: BranchProps) {
               <span className="inline-block animate-wave transform-origin-[70%_70%]">
                 👋
               </span>
-              {name ||
-                getName(session?.user?.email as string)?.toLowerCase()}
+              {name || getName(session?.user?.email as string)?.toLowerCase()}
             </h1>
           )}
         </div>
-        <div className="flex sm:w-1/3 w-full items-center justify-between hover:cursor-pointer border-2 rounded-md px-2 py-3">
-          <input
+        <div className="flex sm:w-1/3 w-full items-center justify-between hover:cursor-pointer ">
+          <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             type="text"
-            placeholder="Search branches ..."
-            className="px-2 w-full bg-transparent outline-none rounded-lg"
+            placeholder="Search Branches ..."
             aria-label="Search branches"
+            className="outline outline-1 outline-blue-500"
           />
-          <Search className="text-gray-400 hover:text-gray-500" />
+          
         </div>
       </div>
 
@@ -115,7 +114,6 @@ export default function Branches({ session }: BranchProps) {
               href={`/year/${branch.branch_id}`}
               className="hover:cursor-pointer"
             >
-              
               <Card className="w-80 max-sm:w-[95vw] min-h-[52vh] max-sm:min-h-[45vh] p-2  flex flex-col justify-between max-lg:justify-around gap-2  ">
                 <Image
                   className="rounded-sm border"
@@ -129,10 +127,9 @@ export default function Branches({ session }: BranchProps) {
                   blurDataURL="/path-to-placeholder-image.jpg"
                 />
                 <h1 className="font-sans sm:text-xl text-[1.4rem] w-full text-center tracking-tighter">
-                    {branch.branchname}
-                  </h1>
+                  {branch.branchname}
+                </h1>
                 <div className="flex flex-col sm:gap-4 gap-2 items-start w-full">
-                  
                   <Button className="w-full py-6">View Content</Button>
                 </div>
               </Card>

@@ -79,7 +79,7 @@ export default function Allnotes() {
               />
             ))
           ) : (
-            <h1 className="text-center pl-4">No notes found 🥲</h1>
+            <div className="w-full h-1/2 flex items-center justify-center"><h1 className="">No notes found 🥲</h1></div>
           )}
         </div>
       </div>
