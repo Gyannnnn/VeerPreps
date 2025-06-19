@@ -25,7 +25,7 @@ export default async function page() {
     <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex flex-col items-center">
       
       {/* Hero Section */}
-      <div className="w-full min-h-screen flex flex-col items-center justify-center pt-24 md:pt-16 pb-10 px-4">
+      <div className="w-full min-h-screen flex flex-col items-center justify-center pt-32 md:pt-16 pb-10 px-4">
         
         {/* Hero Content */}
         <div className="sm:w-[90vw] w-screen flex flex-col items-center justify-center text-center space-y-8">
@@ -36,7 +36,7 @@ export default async function page() {
               Your Complete Study Resource Hub for{" "}
               <span className="text-blue-600 dark:text-blue-400">VSSUT Burla</span>
             </h1>
-            <p className="sm:text-xl text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="sm:text-xl text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto max-sm:px-2">
               Access previous year question papers, handwritten notes, and curated YouTube playlists. 
               Everything you need to excel in your academics, all in one place.
             </p>
@@ -58,7 +58,7 @@ export default async function page() {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl mt-12 max-sm:px-4">
             <Card className="p-6 text-center bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
               <div className="flex flex-col items-center space-y-2">
                 <FileText className="h-8 w-8 text-blue-600" />
@@ -92,8 +92,8 @@ export default async function page() {
       </div>
 
       {/* Features Section */}
-      <div className="w-full py-16 px-4 bg-white/30 dark:bg-zinc-900/30">
-        <div className="sm:w-[90vw] w-screen max-w-6xl mx-auto">
+      <div className="w-full py-16 px-4 bg-white/30 dark:bg-zinc-900/30 items-center justify-center ">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="sm:text-4xl text-3xl font-bold text-black dark:text-white mb-4">
               Why Choose VeerPreps?
@@ -205,7 +205,7 @@ export default async function page() {
 
       {/* What We Offer Section */}
       <div className="w-full py-16 px-4">
-        <div className="sm:w-[90vw] w-screen max-w-6xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="sm:text-4xl text-3xl font-bold text-black dark:text-white mb-4">
               What We Offer
