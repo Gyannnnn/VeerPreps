@@ -62,7 +62,7 @@ export default async function page() {
             <Card className="p-6 text-center bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
               <div className="flex flex-col items-center space-y-2">
                 <FileText className="h-8 w-8 text-blue-600" />
-                <h3 className="text-2xl font-bold text-black dark:text-white">1000+</h3>
+                <h3 className="text-2xl font-bold text-black dark:text-white">650+</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Question Papers</p>
               </div>
             </Card>
@@ -83,7 +83,7 @@ export default async function page() {
             <Card className="p-6 text-center bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
               <div className="flex flex-col items-center space-y-2">
                 <Users className="h-8 w-8 text-purple-600" />
-                <h3 className="text-2xl font-bold text-black dark:text-white">5000+</h3>
+                <h3 className="text-2xl font-bold text-black dark:text-white">900+</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Students</p>
               </div>
             </Card>
