@@ -213,7 +213,7 @@ export default function Allnotes() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-8">
+                <div className="flex flex-row items-center justify-center gap-2 mt-8 w-full">
                   <Button
                     variant="outline"
                     size="sm"
@@ -225,18 +225,30 @@ export default function Allnotes() {
                     Previous
                   </Button>
 
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <Button
-                        key={page}
-                        variant={currentPage === page ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => handlePageChange(page)}
-                        className="w-10 h-10"
-                      >
-                        {page}
-                      </Button>
-                    ))}
+                  {/* Responsive page numbers: show all on sm+, only 2-3 on mobile */}
+                  <div className="flex flex-row items-center gap-1">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1)
+                      .filter(page => {
+                        if (typeof window !== 'undefined' && window.innerWidth < 640) {
+                          // Show only 2-3 page numbers around currentPage on mobile
+                          if (totalPages <= 3) return true;
+                          if (currentPage === 1) return page <= 3;
+                          if (currentPage === totalPages) return page >= totalPages - 2;
+                          return Math.abs(page - currentPage) <= 1;
+                        }
+                        return true;
+                      })
+                      .map((page) => (
+                        <Button
+                          key={page}
+                          variant={currentPage === page ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => handlePageChange(page)}
+                          className="w-10 h-10 max-sm:w-8 max-sm:h-8 max-sm:text-xs"
+                        >
+                          {page}
+                        </Button>
+                      ))}
                   </div>
 
                   <Button

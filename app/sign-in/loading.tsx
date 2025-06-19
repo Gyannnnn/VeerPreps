@@ -34,7 +34,7 @@ export default function Loading() {
         </div>
 
         {/* Progress Dots */}
-        <div className="flex space-x-2">
+      <div className="flex space-x-2">
           {[0, 1, 2, 3].map((index) => (
             <div
               key={index}

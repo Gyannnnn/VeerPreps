@@ -20,9 +20,9 @@ export default function Pdf({
     >
       <div className="relative mb-3">
         <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <Image
-            priority={true}
-            src={notes ? `/images/file.png` : `/images/pdf.png`}
+        <Image
+          priority={true}
+          src={notes ? `/images/file.png` : `/images/pdf.png`}
             width={40}
             height={40}
             alt={notes ? "Notes icon" : "PDF icon"}

@@ -119,13 +119,13 @@ export default function AllPyqs() {
       <div className="w-full py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-8">
-            <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex items-center justify-center gap-3 max-sm:gap-1 mb-4 ">
               <FileText className="h-12 w-12 text-blue-600" />
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-4xl max-sm:text-3xl md:text-5xl font-bold text-gray-900 dark:text-white w-1/2">
                 Previous Year Questions
               </h1>
             </div>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto max-sm:text-center">
               Access a comprehensive collection of VSSUT Burla's previous year question papers. 
               Find exactly what you need to ace your exams.
             </p>
@@ -211,30 +211,42 @@ export default function AllPyqs() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-8">
+                <div className="flex items-center justify-center gap-2 mt-8 flex-wrap sm:flex-nowrap sm:gap-2 max-sm:flex-col max-sm:gap-2">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 max-sm:w-full max-sm:justify-center"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Previous
                   </Button>
 
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <Button
-                        key={page}
-                        variant={currentPage === page ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => handlePageChange(page)}
-                        className="w-10 h-10"
-                      >
-                        {page}
-                      </Button>
-                    ))}
+                  {/* Responsive page numbers: show all on sm+, only 2-3 on mobile */}
+                  <div className="flex items-center gap-1 max-sm:gap-1 max-sm:w-full max-sm:justify-center max-sm:flex-wrap">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1)
+                      .filter(page => {
+                        if (typeof window !== 'undefined' && window.innerWidth < 640) {
+                          // Show only 2-3 page numbers around currentPage on mobile
+                          if (totalPages <= 3) return true;
+                          if (currentPage === 1) return page <= 3;
+                          if (currentPage === totalPages) return page >= totalPages - 2;
+                          return Math.abs(page - currentPage) <= 1;
+                        }
+                        return true;
+                      })
+                      .map((page) => (
+                        <Button
+                          key={page}
+                          variant={currentPage === page ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => handlePageChange(page)}
+                          className="w-10 h-10 max-sm:w-8 max-sm:h-8 max-sm:text-xs"
+                        >
+                          {page}
+                        </Button>
+                      ))}
                   </div>
 
                   <Button
@@ -242,7 +254,7 @@ export default function AllPyqs() {
                     size="sm"
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 max-sm:w-full max-sm:justify-center"
                   >
                     Next
                     <ChevronRight className="h-4 w-4" />

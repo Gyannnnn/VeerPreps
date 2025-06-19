@@ -63,12 +63,12 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
 
           {/* Year Cards */}
           <div className="w-full flex flex-col gap-5">
-            {requiredyears.map((year) => (
-              <Link
-                key={year.year_id}
-                href={`/year/${branchId}/subjects/${year.year_id}`}
+          {requiredyears.map((year) => (
+            <Link
+              key={year.year_id}
+              href={`/year/${branchId}/subjects/${year.year_id}`}
                 className="block"
-              >
+            >
                 <Card className="flex items-center justify-between px-6 py-6 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl group cursor-pointer">
                   <div className="flex flex-col">
                     <span className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{year.yearName}</span>
@@ -77,9 +77,9 @@ export default async function Yearpage({ branchId }: { branchId: number }) {
                   <span className="flex items-center gap-2 text-blue-600 group-hover:text-blue-800 dark:group-hover:text-blue-400 text-base font-medium transition-colors duration-200">
                     Explore subjects <FaArrowRight className="ml-1" />
                   </span>
-                </Card>
-              </Link>
-            ))}
+              </Card>
+            </Link>
+          ))}
           </div>
         </div>
       </div>

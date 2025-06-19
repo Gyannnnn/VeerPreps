@@ -221,7 +221,7 @@ export default async function Contents({ ids }: PageProps) {
               </Link>
             </div>
             
-            {pyqs.length > 0 ? (
+              {pyqs.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {pyqs.map((pyq) => (
                   <Card key={pyq.pyq_id} className="p-4 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -233,8 +233,8 @@ export default async function Contents({ ids }: PageProps) {
                     />
                   </Card>
                 ))}
-              </div>
-            ) : (
+                  </div>
+              ) : (
               <Card className="p-8 text-center bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg">
                 <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No PYQs Available</h3>
@@ -271,7 +271,7 @@ export default async function Contents({ ids }: PageProps) {
               </Link>
             </div>
             
-            {notes.length > 0 ? (
+              {notes.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {notes.map((note) => (
                   <Card key={note.notes_id} className="p-4 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -283,17 +283,17 @@ export default async function Contents({ ids }: PageProps) {
                     />
                   </Card>
                 ))}
-              </div>
-            ) : (
+                  </div>
+              ) : (
               <Card className="p-8 text-center bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg">
                 <div className="flex flex-col items-center justify-center">
-                  <Image
-                    src="/loader/alert.gif"
+                      <Image
+                        src="/loader/alert.gif"
                     height={60}
                     width={100}
-                    alt="alert"
+                        alt="alert"
                     className="mb-4"
-                  />
+                      />
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No Notes Found!</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">Help others by sharing your notes</p>
                   <Link target="_blank" href="https://forms.gle/Ro31WGz1TKpp3ybX9">
@@ -301,10 +301,10 @@ export default async function Contents({ ids }: PageProps) {
                       <Upload className="mr-2 h-4 w-4" />
                       Send Your Notes
                     </Button>
-                  </Link>
+                    </Link>
                 </div>
               </Card>
-            )}
+              )}
           </div>
 
           {/* YouTube Videos Section */}
@@ -323,20 +323,20 @@ export default async function Contents({ ids }: PageProps) {
               </div>
             </div>
             
-            {videolinks.length > 0 ? (
+              {videolinks.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {videolinks.map((videolink) => (
                   <Card key={videolink.subjectId} className="p-6 text-center bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                     <Link href={videolink.link} target="_blank" className="block">
                       <div className="relative mb-4">
-                        <Image
+                      <Image
                           src="/images/youtube.png"
-                          alt="youtube"
-                          width={80}
-                          height={80}
+                        alt="youtube"
+                        width={80}
+                        height={80}
                           className="mx-auto group-hover:scale-110 transition-transform duration-300"
-                          priority={true}
-                        />
+                        priority={true}
+                      />
                         <div className="absolute inset-0 bg-red-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300">
@@ -349,8 +349,8 @@ export default async function Contents({ ids }: PageProps) {
                     </Link>
                   </Card>
                 ))}
-              </div>
-            ) : (
+                  </div>
+              ) : (
               <Card className="p-8 text-center bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg">
                 <FaYoutube className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Coming Soon!</h3>

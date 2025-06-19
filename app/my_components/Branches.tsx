@@ -83,14 +83,14 @@ export default function Branches({ session }: BranchProps) {
         <div className="flex sm:w-1/3 w-full items-center">
           <div className="relative w-full">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 h-5 w-5" />
-            <Input
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              type="text"
+          <Input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            type="text"
               placeholder="Search branches..."
-              aria-label="Search branches"
+            aria-label="Search branches"
               className="pl-12 pr-4 h-12 rounded-xl font-medium bg-white/80 dark:bg-zinc-900/80 border-2 border-blue-200 dark:border-blue-800 shadow focus:border-blue-500 focus:ring-2 focus:ring-blue-400/30 transition-all duration-200 text-base placeholder:text-gray-400 dark:placeholder:text-gray-500"
-            />
+          />
           </div>
         </div>
       </div>
@@ -127,24 +127,24 @@ export default function Branches({ session }: BranchProps) {
                 
                 {/* Branch Image */}
                 <div className="relative overflow-hidden rounded-lg">
-                  <Image
+                <Image
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    height={400}
-                    width={450}
-                    src={branch.displayimage}
-                    alt={`${branch.branchname} branch`}
+                  height={400}
+                  width={450}
+                  src={branch.displayimage}
+                  alt={`${branch.branchname} branch`}
                     priority={index < 4}
                     loading={index >= 4 ? "lazy" : "eager"}
-                    placeholder="blur"
-                    blurDataURL="/path-to-placeholder-image.jpg"
-                  />
+                  placeholder="blur"
+                  blurDataURL="/path-to-placeholder-image.jpg"
+                />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
                 {/* Branch Name */}
                 <div className="text-center">
                   <h2 className="font-bold sm:text-xl text-lg text-black dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                    {branch.branchname}
+                  {branch.branchname}
                   </h2>
                 </div>
 

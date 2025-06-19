@@ -178,11 +178,11 @@ export default function PdfRenderer({
   };
 
   const handleDownload = () => {
-    if (!email) {
-      signinfirst();
-    } else {
-      window.open(links, "_blank");
-    }
+              if (!email) {
+                signinfirst();
+              } else {
+                window.open(links, "_blank");
+              }
   };
 
   const {scrollYProgress} = useScroll()
@@ -312,8 +312,8 @@ export default function PdfRenderer({
                   max={numPages}
                   value={jumpInput}
                   onChange={e => setJumpInput(e.target.value)}
-                  placeholder="Page #"
-                  className="w-20 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-zinc-900/80 text-base focus:outline-none focus:ring-2 focus:ring-blue-400/30"
+                  placeholder="Page number"
+                  className="w-24 sm:w-36 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-zinc-900/80 text-base focus:outline-none focus:ring-2 focus:ring-blue-400/30"
                 />
                 <TooltipProvider>
                   <Tooltip>
@@ -334,7 +334,7 @@ export default function PdfRenderer({
                   <TooltipTrigger asChild>
                     <button
                       onClick={handleScrollTop}
-                      className="p-2 rounded-lg bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
+                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                       type="button"
                     >↑</button>
                   </TooltipTrigger>
@@ -346,7 +346,7 @@ export default function PdfRenderer({
                   <TooltipTrigger asChild>
                     <button
                       onClick={handleScrollEnd}
-                      className="p-2 rounded-lg bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
+                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                       type="button"
                     >↓</button>
                   </TooltipTrigger>
@@ -364,7 +364,7 @@ export default function PdfRenderer({
                         type="button"
                       >
                         <MdDownloadForOffline className="h-5 w-5" />
-                      </button>
+          </button>
                     </TooltipTrigger>
                     <TooltipContent>Download PDF</TooltipContent>
                   </Tooltip>
@@ -372,19 +372,19 @@ export default function PdfRenderer({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button
-                        onClick={email ? handleToggleSavePdf : signinfirst}
+          <button
+            onClick={email ? handleToggleSavePdf : signinfirst}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                         type="button"
-                      >
-                        {isLoading ? (
+          >
+            {isLoading ? (
                           <AiOutlineLoading className="h-5 w-5 animate-spin" />
-                        ) : saved ? (
+            ) : saved ? (
                           <FiCheck className="h-5 w-5 text-green-600" />
-                        ) : (
+            ) : (
                           <MdOutlineDataSaverOn className="h-5 w-5" />
-                        )}
-                      </button>
+            )}
+          </button>
                     </TooltipTrigger>
                     <TooltipContent>{saved ? "Unsave PDF" : "Save PDF"}</TooltipContent>
                   </Tooltip>
@@ -392,8 +392,8 @@ export default function PdfRenderer({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button
-                        onClick={handleWhatsAppShare}
+          <button
+            onClick={handleWhatsAppShare}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-green-600"
                         type="button"
                       >
@@ -410,7 +410,7 @@ export default function PdfRenderer({
                         onClick={handleCopyToClipboard}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                         type="button"
-                      >
+          >
                         <TiClipboard className="h-5 w-5" />
                       </button>
                     </TooltipTrigger>
@@ -503,10 +503,10 @@ export default function PdfRenderer({
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {saved ? "Unsave PDF" : "Save PDF"}
                 </span>
-              </button>
+          </button>
 
               {/* Share Button */}
-              <button
+          <button
                 onClick={() => {
                   handleWhatsAppShare();
                   setIsMenuOpen(false);
@@ -517,8 +517,8 @@ export default function PdfRenderer({
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Share on WhatsApp
                 </span>
-              </button>
-
+          </button>
+          
               {/* Copy Link Button */}
               <button
                 onClick={() => {
@@ -542,7 +542,7 @@ export default function PdfRenderer({
         className="fixed top-0 left-0 right-0 h-1 bg-blue-500 origin-left z-50"
         style={{scaleX: scrollYProgress}}
       />
-
+        
       {/* Main Content */}
       <div id="pdf-main-content" className="pt-8 lg:pt-24 pb-8" ref={pdfContainerRef}>
         <div className="max-w-7xl mx-auto px-4">
@@ -558,10 +558,11 @@ export default function PdfRenderer({
               </div>
             }
           >
+            {/* Multi-page scroll for all devices */}
             {Array.from({ length: numPages }, (_, index) => (
               <div
                 key={index}
-                className="relative flex flex-col items-center mb-2"
+                className="relative flex flex-col items-center mb-1"
                 ref={el => { pageRefs.current[index] = el || null; }}
               >
                 <div className="shadow-2xl rounded-lg overflow-hidden bg-white">
@@ -570,10 +571,8 @@ export default function PdfRenderer({
                     {...(isSmallScreen && pageWidth ? { width: pageWidth } : { scale })}
                   />
                 </div>
-                <div className="mt-4 px-4 py-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-zinc-700">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Page {index + 1} of {numPages}
-                  </span>
+                <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 text-center">
+                  Page {index + 1} of {numPages}
                 </div>
               </div>
             ))}
@@ -581,7 +580,7 @@ export default function PdfRenderer({
         </div>
       </div>
 
-      {/* Zoom Controls */}
+      {/* Zoom Controls: floating on mobile, fixed on desktop */}
       {!isSmallScreen && (
         <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-2 max-lg:hidden">
           <TooltipProvider>
