@@ -106,13 +106,13 @@ export default async function Subjects({ ids }: pageprops) {
         <div className="w-full flex flex-col gap-5">
           {data.map((subject) => (
             <Link
-              className="block"
+              className="block relative"
               href={`/year/${branchId}/subjects/${yearid}/contents/${subject.subject_id}`}
               key={subject.subject_id}
             >
               <Card className="flex items-center justify-between px-6 py-6 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl group cursor-pointer">
                 <span className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">{subject.subjectname}</span>
-                <span className="flex items-center gap-2 text-blue-600 group-hover:text-blue-800 dark:group-hover:text-blue-400 text-base font-medium transition-colors duration-200">
+                <span className="flex items-center gap-2 text-blue-600 group-hover:text-blue-800 dark:group-hover:text-blue-400 text-base font-medium transition-colors duration-200 absolute bottom-1 right-2 max-sm:text-md">
                   Explore materials <FaArrowRight className="ml-1" />
                 </span>
               </Card>

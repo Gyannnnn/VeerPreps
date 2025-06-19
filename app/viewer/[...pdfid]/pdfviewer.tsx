@@ -68,6 +68,7 @@ export default function PdfRenderer({
   const MIN_SCALE = 0.5;
   const MAX_SCALE = 3;
   const [scale, setScale] = useState<number>(1);
+  const [pageWidth, setPageWidth] = useState<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -267,6 +268,18 @@ export default function PdfRenderer({
       container.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
+
+  // Responsive: set page width for mobile
+  useEffect(() => {
+    if (isSmallScreen) {
+      // 16px padding on each side
+      setPageWidth(window.innerWidth - 32 > 0 ? window.innerWidth - 32 : window.innerWidth);
+      setScale(1); // Reset scale for mobile
+    } else {
+      setPageWidth(null);
+      setScale(1); // Reset scale for desktop
+    }
+  }, [isSmallScreen]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950">
@@ -554,7 +567,7 @@ export default function PdfRenderer({
                 <div className="shadow-2xl rounded-lg overflow-hidden bg-white">
                   <Page
                     pageNumber={index + 1}
-                    scale={scale}
+                    {...(isSmallScreen && pageWidth ? { width: pageWidth } : { scale })}
                   />
                 </div>
                 <div className="mt-4 px-4 py-2 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-zinc-700">
@@ -569,40 +582,42 @@ export default function PdfRenderer({
       </div>
 
       {/* Zoom Controls */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-2 max-lg:hidden">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white dark:bg-zinc-800 shadow-lg rounded-full border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-200"
-                onClick={() => adjustScale(true)}
-                aria-label="Zoom In"
-              >
-                <FaCirclePlus className="h-6 w-6 text-blue-600" />
-              </motion.button>
-            </TooltipTrigger>
-            <TooltipContent>Zoom In</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white dark:bg-zinc-800 shadow-lg rounded-full border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-200"
-                onClick={() => adjustScale(false)}
-                aria-label="Zoom Out"
-              >
-                <FaCircleMinus className="h-6 w-6 text-blue-600" />
-              </motion.button>
-            </TooltipTrigger>
-            <TooltipContent>Zoom Out</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
+      {!isSmallScreen && (
+        <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-2 max-lg:hidden">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-white dark:bg-zinc-800 shadow-lg rounded-full border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-200"
+                  onClick={() => adjustScale(true)}
+                  aria-label="Zoom In"
+                >
+                  <FaCirclePlus className="h-6 w-6 text-blue-600" />
+                </motion.button>
+              </TooltipTrigger>
+              <TooltipContent>Zoom In</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 bg-white dark:bg-zinc-800 shadow-lg rounded-full border border-gray-200 dark:border-zinc-700 hover:shadow-xl transition-all duration-200"
+                  onClick={() => adjustScale(false)}
+                  aria-label="Zoom Out"
+                >
+                  <FaCircleMinus className="h-6 w-6 text-blue-600" />
+                </motion.button>
+              </TooltipTrigger>
+              <TooltipContent>Zoom Out</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+      )}
     </div>
   );
 }
