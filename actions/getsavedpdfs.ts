@@ -13,14 +13,11 @@ export const getSavedPdfs = async(email:string)=>{
                 useremail:email
             }
         })
-        if(savedpdfs.length === 0){
-            throw new Error("No saved PDFs found");
-        }
         return savedpdfs;
         
     } catch (error) {
         const err = error as Error;
-        console.error("Error saving PDF:", err.message);
+        console.error("Error fetching saved PDFs:", err.message);
         throw err.message;  // Rethrow the error to be caught by the handler
         
     }

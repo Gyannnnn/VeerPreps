@@ -31,11 +31,18 @@ export default {
 				'0%, 100%': { transform: 'translateY(0px)' },
 				'50%': { transform: 'translateY(10px)' },
 			  },
+			  float: {
+				'0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+				'25%': { transform: 'translateY(-20px) rotate(90deg)' },
+				'50%': { transform: 'translateY(-10px) rotate(180deg)' },
+				'75%': { transform: 'translateY(-30px) rotate(270deg)' },
+			  },
 		  },
 		  animation: {
 			wave: 'wave 2s infinite',
 			load: 'load 2s infinite',
 			swing: 'swing 1s ease-in-out infinite',
+			float: 'float 4s ease-in-out infinite',
 		  },
 		fontFamily: {
 			sans: ['var(--font-geist-sans)'],

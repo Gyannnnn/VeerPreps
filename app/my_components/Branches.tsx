@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, BookOpen } from "lucide-react";
 import axios from "axios";
 import getName from "@/utils/Name";
 
@@ -64,12 +64,12 @@ export default function Branches({ session }: BranchProps) {
   }, [branches, searchTerm]);
 
   return (
-    <div className="sm:w-[95vw] w-screen flex flex-col gap-2 items-center">
+    <div className="w-full flex flex-col gap-6 items-center">
       {/* Search and Welcome */}
-      <div className="w-[91vw] 2xl:w-[87vw] h-10 flex sm:flex-row flex-col gap-2 items-center justify-between sm:mb-10 mb-32">
-        <div className="max-sm:w-full max-sm:mb-5">
+      <div className="w-full max-w-6xl flex sm:flex-row flex-col gap-4 items-center justify-between">
+        <div className="max-sm:w-full max-sm:mb-2">
           {session?.user && (
-            <h1 className="sm:text-3xl font-bold max-sm:text-3xl text-black flex flex-wrap items-center justify-start gap-2 hover:cursor-pointer dark:text-white">
+            <h1 className="sm:text-3xl font-bold max-sm:text-2xl text-black dark:text-white flex flex-wrap items-center justify-start gap-2">
               <span>Hello</span>
               <span className="inline-block animate-wave transform-origin-[70%_70%]">
                 👋
@@ -78,33 +78,42 @@ export default function Branches({ session }: BranchProps) {
             </h1>
           )}
         </div>
-        <div className="flex sm:w-1/3 w-full items-center justify-between hover:cursor-pointer ">
-          <Input
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            type="text"
-            placeholder="Search Branches ..."
-            aria-label="Search branches"
-            className="outline outline-1 outline-blue-500"
-          />
-          
+        
+        {/* Search Input */}
+        <div className="flex sm:w-1/3 w-full items-center">
+          <div className="relative w-full">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 h-5 w-5" />
+            <Input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              type="text"
+              placeholder="Search branches..."
+              aria-label="Search branches"
+              className="pl-12 pr-4 h-12 rounded-xl font-medium bg-white/80 dark:bg-zinc-900/80 border-2 border-blue-200 dark:border-blue-800 shadow focus:border-blue-500 focus:ring-2 focus:ring-blue-400/30 transition-all duration-200 text-base placeholder:text-gray-400 dark:placeholder:text-gray-500"
+            />
+          </div>
         </div>
       </div>
 
       {/* Error Handling */}
-      {error && <p className="text-red-500">{error}</p>}
+      {error && (
+        <Card className="w-full max-w-6xl p-4 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
+          <p className="text-red-600 dark:text-red-400 text-center">{error}</p>
+        </Card>
+      )}
 
       {/* Branch Cards */}
-      <div className="sm:w-[95vw] w-screen min-h-screen flex justify-center flex-wrap gap-5">
+      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4">
         {loading ? (
-          Array.from({ length: 6 }).map((_, index) => (
+          // Loading skeleton
+          Array.from({ length: 8 }).map((_, index) => (
             <Card
               key={index}
-              className="w-80 sm:min-h-[48vh] max-sm:min-h-[50vh] border flex flex-col drop-shadow-lg items-center justify-between py-2 sm:gap-2 gap-6 max-sm:w-[96vw] px-2 rounded-sm animate-pulse"
+              className="w-full min-h-[52vh] border flex flex-col drop-shadow-lg items-center justify-between py-4 sm:gap-4 gap-6 px-4 rounded-xl animate-pulse"
             >
-              <div className="w-full h-40 bg-gray-200 dark:bg-gray-700 rounded-sm"></div>
-              <div className="w-1/2 h-20 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
-              <div className="w-full h-8 bg-gray-300 dark:bg-gray-600 rounded-sm"></div>
+              <div className="w-full h-48 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+              <div className="w-3/4 h-8 bg-gray-300 dark:bg-gray-600 rounded-lg"></div>
+              <div className="w-full h-12 bg-gray-300 dark:bg-gray-600 rounded-lg"></div>
             </Card>
           ))
         ) : filteredBranches.length > 0 ? (
@@ -112,31 +121,62 @@ export default function Branches({ session }: BranchProps) {
             <Link
               key={branch.branch_id}
               href={`/year/${branch.branch_id}`}
-              className="hover:cursor-pointer"
+              className="hover:cursor-pointer group"
             >
-              <Card className="w-80 max-sm:w-[95vw] min-h-[52vh] max-sm:min-h-[45vh] p-2  flex flex-col justify-between max-lg:justify-around gap-2  ">
-                <Image
-                  className="rounded-sm border"
-                  height={400}
-                  width={450}
-                  src={branch.displayimage}
-                  alt={`${branch.branchname} branch`}
-                  priority={index < 2}
-                  loading={index >= 2 ? "lazy" : "eager"}
-                  placeholder="blur"
-                  blurDataURL="/path-to-placeholder-image.jpg"
-                />
-                <h1 className="font-sans sm:text-xl text-[1.4rem] w-full text-center tracking-tighter">
-                  {branch.branchname}
-                </h1>
-                <div className="flex flex-col sm:gap-4 gap-2 items-start w-full">
-                  <Button className="w-full py-6">View Content</Button>
+              <Card className="w-full min-h-[52vh] p-4 flex flex-col justify-between gap-4 rounded-xl border-2 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                
+                {/* Branch Image */}
+                <div className="relative overflow-hidden rounded-lg">
+                  <Image
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    height={400}
+                    width={450}
+                    src={branch.displayimage}
+                    alt={`${branch.branchname} branch`}
+                    priority={index < 4}
+                    loading={index >= 4 ? "lazy" : "eager"}
+                    placeholder="blur"
+                    blurDataURL="/path-to-placeholder-image.jpg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                {/* Branch Name */}
+                <div className="text-center">
+                  <h2 className="font-bold sm:text-xl text-lg text-black dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {branch.branchname}
+                  </h2>
+                </div>
+
+                {/* Action Button */}
+                <div className="flex flex-col gap-2 items-center w-full">
+                  <Button className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium group-hover:bg-blue-700 transition-colors duration-300">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Explore Content
+                  </Button>
                 </div>
               </Card>
             </Link>
           ))
         ) : (
-          <h1 className="text-xl">No Branches Found 🥲</h1>
+          <Card className="col-span-full max-w-md mx-auto p-8 text-center bg-white/50 dark:bg-zinc-900/50">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="text-6xl">🥲</div>
+              <h2 className="text-2xl font-bold text-black dark:text-white">No Branches Found</h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {searchTerm ? `No branches match "${searchTerm}"` : "Unable to load branches"}
+              </p>
+              {searchTerm && (
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSearchTerm("")}
+                  className="mt-2"
+                >
+                  Clear Search
+                </Button>
+              )}
+            </div>
+          </Card>
         )}
       </div>
     </div>

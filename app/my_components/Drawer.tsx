@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
@@ -28,11 +30,11 @@ import {
 
 import { LogIn } from "lucide-react";
 import { LogOut } from "lucide-react";
-import { auth } from "@/auth";
+import { useSession } from "next-auth/react";
 import Logout from "./Logout";
 
-export async function DrawerDemo() {
-  const session = await auth();
+export default function DrawerDemo() {
+  const { data: session } = useSession();
 
   return (
     <Drawer>

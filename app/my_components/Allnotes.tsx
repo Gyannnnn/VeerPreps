@@ -1,11 +1,32 @@
 "use client";
 
-import { CiSearch } from "react-icons/ci";
 import Pdf from "../my_components/pdf";
 import axios from "axios";
 import SomethingWentWrong from "../my_components/SomethingWentWrong";
-import { useState, useEffect } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Search, 
+  BookOpen, 
+  Download, 
+  ChevronLeft, 
+  ChevronRight,
+  FileText,
+  TrendingUp,
+  PenTool
+} from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, useScroll } from "framer-motion";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface Notes {
   notes_id: number;
@@ -18,69 +39,267 @@ export default function Allnotes() {
   const [notes, setNotes] = useState<Notes[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage] = useState<number>(12);
 
   useEffect(() => {
     const fetchNotes = async () => {
       try {
+        setLoading(true);
         const response = await axios.get<{ notes: Notes[] }>(
           "https://api-zeta.vercel.app/api/notes/"
         );
         setNotes(response.data.notes);
       } catch (err) {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchNotes();
   }, []);
 
-  const filteredNotes = notes.filter((note) =>
-    note.notesname.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredNotes = useMemo(() => {
+    return notes.filter((note) =>
+      note.notesname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [notes, searchTerm]);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredNotes.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentNotes = filteredNotes.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+    setCurrentPage(1); // Reset to first page when searching
+  };
 
   if (error) {
     return (
-      <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pt-32">
+      <div className="h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950">
         <SomethingWentWrong />
       </div>
     );
   }
+
   const { scrollYProgress } = useScroll();
+
   return (
-    <div className="min-h-screen w-screen bg-secondary dark:bg-zinc-950 flex justify-center pt-14">
+    <div className="min-h-screen w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 pt-20">
       <motion.div
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
       />
-      <div className="sm:w-[95vw] w-[99vw] min-h-screen pt-10">
-        <div className="flex sm:flex-row  flex-col sm:items-center sm:justify-between  sm:px-6 px-2  w-full">
-          <h1 className="text-3xl py-2 ">All Notes</h1>
+      
+      {/* Breadcrumb Navigation */}
+      <div className="w-full py-4 px-4">
+        <div className="max-w-7xl mx-auto">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Lecture Notes</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      </div>
+      
+      {/* Hero Section */}
+      <div className="w-full py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center space-y-6 mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <BookOpen className="h-12 w-12 text-green-600" />
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                Lecture Notes
+              </h1>
+            </div>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Access comprehensive handwritten and typed notes from VSSUT Burla. 
+              Find detailed study materials for every subject and topic.
+            </p>
+          </div>
 
-          <div className="sm:w-1/3 w-full border-2 px-2 py-2 rounded-sm flex items-center">
-            <input
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="outline-none bg-transparent w-full"
-              type="text"
-              placeholder="Search notes ..."
-            />
-            <CiSearch className="text-xl hover:cursor-pointer" />
+          {/* Search and Stats */}
+          <div className="grid md:grid-cols-3 gap-6 mb-6 items-center">
+            {/* Search */}
+            <div className="md:col-span-2">
+              <div className="relative max-w-2xl">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-400 h-5 w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search notes by subject, branch, or topic..."
+                  className="pl-12 pr-4 h-12 rounded-xl font-medium bg-white/80 dark:bg-zinc-900/80 border-2 border-green-200 dark:border-green-800 shadow focus:border-green-500 focus:ring-2 focus:ring-green-400/30 transition-all duration-200 text-base placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="flex gap-4">
+              <Card className="flex-1 p-4 text-center bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border-0 shadow-lg">
+                <PenTool className="h-6 w-6 text-green-600 mx-auto mb-2" />
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{notes.length}</h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Total Notes</p>
+              </Card>
+              <Card className="flex-1 p-4 text-center bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm border-0 shadow-lg">
+                <TrendingUp className="h-6 w-6 text-blue-600 mx-auto mb-2" />
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{filteredNotes.length}</h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Found</p>
+              </Card>
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between max-sm:justify-between max-sm:px-4  pt-10">
-          {filteredNotes.length > 0 ? (
-            filteredNotes.map((note) => (
-              <Pdf
-                key={note.notes_id}
-                links={note.link}
-                notes={true}
-                pyqid={note.notes_id}
-                pyqname={note.notesname}
-              />
-            ))
+      </div>
+
+      {/* Notes Grid */}
+      <div className="w-full py-4 px-4">
+        <div className="max-w-7xl mx-auto">
+          {loading ? (
+            // Loading skeleton
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {Array.from({ length: 12 }).map((_, index) => (
+                <Card key={index} className="p-4 animate-pulse">
+                  <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg mx-auto mb-3"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2"></div>
+                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mx-auto"></div>
+                </Card>
+              ))}
+            </div>
+          ) : currentNotes.length > 0 ? (
+            <>
+              {/* Results info */}
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-gray-600 dark:text-gray-400">
+                  Showing {startIndex + 1}-{Math.min(endIndex, filteredNotes.length)} of {filteredNotes.length} Notes
+                </p>
+                {searchTerm && (
+                  <Badge variant="secondary" className="px-3 py-1">
+                    "{searchTerm}" found in {filteredNotes.length} results
+                  </Badge>
+                )}
+              </div>
+
+              {/* Notes Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {currentNotes.map((note) => (
+                  <Card 
+                    key={note.notes_id}
+                    className="group p-4 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <Pdf
+                      notes={true}
+                      pyqid={note.notes_id}
+                      pyqname={note.notesname}
+                      links={note.link}
+                    />
+                  </Card>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-2 mt-8">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="flex items-center gap-2"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                    Previous
+                  </Button>
+
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <Button
+                        key={page}
+                        variant={currentPage === page ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => handlePageChange(page)}
+                        className="w-10 h-10"
+                      >
+                        {page}
+                      </Button>
+                    ))}
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="flex items-center gap-2"
+                  >
+                    Next
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+            </>
           ) : (
-            <div className="w-full h-1/2 flex items-center justify-center"><h1 className="">No notes found 🥲</h1></div>
+            // No results
+            <Card className="w-full max-w-md mx-auto p-12 text-center bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg">
+              <div className="space-y-4">
+                <div className="text-6xl">📝</div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {searchTerm ? "No Notes Found" : "No Notes Available"}
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {searchTerm 
+                    ? `No notes match "${searchTerm}". Try a different search term.`
+                    : "Notes are being uploaded. Check back soon!"
+                  }
+                </p>
+                {searchTerm && (
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleSearch("")}
+                    className="mt-4"
+                  >
+                    Clear Search
+                  </Button>
+                )}
+              </div>
+            </Card>
           )}
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="w-full py-16 px-4 bg-white/50 dark:bg-zinc-900/50">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Can't find the notes you need?
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Help us expand our collection by contributing your notes
+          </p>
+          <Button 
+            size="lg" 
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+            asChild
+          >
+            <a href="https://forms.gle/Ro31WGz1TKpp3ybX9" target="_blank" rel="noopener noreferrer">
+              <Download className="mr-2 h-5 w-5" />
+              Upload Your Notes
+            </a>
+          </Button>
         </div>
       </div>
     </div>
