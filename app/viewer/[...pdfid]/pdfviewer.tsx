@@ -566,10 +566,10 @@ export default function PdfRenderer({
                 ref={el => { pageRefs.current[index] = el || null; }}
               >
                 <div className="shadow-2xl rounded-lg overflow-hidden bg-white">
-                  <Page
-                    pageNumber={index + 1}
+                <Page
+                  pageNumber={index + 1}
                     {...(isSmallScreen && pageWidth ? { width: pageWidth } : { scale })}
-                  />
+                />
                 </div>
                 <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 text-center">
                   Page {index + 1} of {numPages}

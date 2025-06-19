@@ -63,8 +63,8 @@ export default function Allnotes() {
 
   const filteredNotes = useMemo(() => {
     return notes.filter((note) =>
-      note.notesname.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    note.notesname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   }, [notes, searchTerm]);
 
   // Pagination logic
@@ -143,7 +143,7 @@ export default function Allnotes() {
                   type="text"
                   placeholder="Search notes by subject, branch, or topic..."
                   className="pl-12 pr-4 h-12 rounded-xl font-medium bg-white/80 dark:bg-zinc-900/80 border-2 border-green-200 dark:border-green-800 shadow focus:border-green-500 focus:ring-2 focus:ring-green-400/30 transition-all duration-200 text-base placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                  value={searchTerm}
+              value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
@@ -198,13 +198,13 @@ export default function Allnotes() {
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {currentNotes.map((note) => (
                   <Card 
-                    key={note.notes_id}
+                key={note.notes_id}
                     className="group p-4 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
                     <Pdf
-                      notes={true}
-                      pyqid={note.notes_id}
-                      pyqname={note.notesname}
+                notes={true}
+                pyqid={note.notes_id}
+                pyqname={note.notesname}
                       links={note.link}
                     />
                   </Card>

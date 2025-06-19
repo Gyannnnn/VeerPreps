@@ -211,20 +211,20 @@ export default function AllPyqs() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-8 flex-wrap sm:flex-nowrap sm:gap-2 max-sm:flex-col max-sm:gap-2">
+                <div className="flex flex-row items-center justify-center gap-2 mt-8 w-full">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="flex items-center gap-2 max-sm:w-full max-sm:justify-center"
+                    className="flex items-center gap-2"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Previous
                   </Button>
 
                   {/* Responsive page numbers: show all on sm+, only 2-3 on mobile */}
-                  <div className="flex items-center gap-1 max-sm:gap-1 max-sm:w-full max-sm:justify-center max-sm:flex-wrap">
+                  <div className="flex flex-row items-center gap-1">
                     {Array.from({ length: totalPages }, (_, i) => i + 1)
                       .filter(page => {
                         if (typeof window !== 'undefined' && window.innerWidth < 640) {
@@ -254,7 +254,7 @@ export default function AllPyqs() {
                     size="sm"
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="flex items-center gap-2 max-sm:w-full max-sm:justify-center"
+                    className="flex items-center gap-2"
                   >
                     Next
                     <ChevronRight className="h-4 w-4" />
