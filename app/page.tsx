@@ -43,7 +43,7 @@ export default async function page() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center max-sm:px-1">
             <Link href="#branches">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
                 <BookOpen className="mr-2 h-5 w-5" />
