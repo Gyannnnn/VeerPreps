@@ -172,11 +172,7 @@ export default function PdfRenderer({
   };
 
   const handleWhatsAppShare = () => {
-    const text = encodeURIComponent(
-      `Check this ${notes ? "Notes" : "Pyq"} : ${
-        window.location.href
-      }`
-    );
+    const text = encodeURIComponent(window.location.href);
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
 
@@ -211,7 +207,10 @@ export default function PdfRenderer({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const handleScrollEnd = () => {
-    window.scrollTo({ top: document.body.scrollHeight-1100, behavior: "smooth" });
+    window.scrollTo({
+      top: document.body.scrollHeight - 1100,
+      behavior: "smooth",
+    });
   };
 
   // Ctrl+Scroll for desktop
@@ -350,7 +349,7 @@ export default function PdfRenderer({
                       className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600 flex items-center justify-center"
                       type="button"
                     >
-                      <FaArrowUp/>
+                      <FaArrowUp />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>Scroll to Top</TooltipContent>
@@ -364,7 +363,7 @@ export default function PdfRenderer({
                       className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600 flex items-center justify-center"
                       type="button"
                     >
-                      <FaArrowDown/>
+                      <FaArrowDown />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>Scroll to End</TooltipContent>
@@ -607,7 +606,7 @@ export default function PdfRenderer({
                   />
                 </div>
                 <div className="mt-1 sm:text-xs text-[12px] text-blue-500  dark:text-blue-500 text-center">
-                  Page {index + 1} of {numPages} 
+                  Page {index + 1} of {numPages}
                 </div>
               </div>
             ))}
