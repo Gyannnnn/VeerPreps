@@ -11,7 +11,7 @@ import { isSaved } from "@/actions/issavedpdf"; // Import your isSaved function
 import { unsavePdf } from "@/actions/unsavepdf";
 
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
-import {  FiCheck } from "react-icons/fi";
+import { FiCheck } from "react-icons/fi";
 import { useToast } from "@/hooks/use-toast";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastAction } from "@radix-ui/react-toast";
@@ -19,11 +19,11 @@ import { MdDownloadForOffline } from "react-icons/md";
 import { MdOutlineDataSaverOn } from "react-icons/md";
 
 import { SiWhatsapp } from "react-icons/si";
-import { FaArrowDown, FaPaperclip } from "react-icons/fa";
+import { FaArrowDown, FaPaperclip, FaArrowUp } from "react-icons/fa";
 import { TiClipboard } from "react-icons/ti";
 import { FileText, Eye, Share2, Menu, X, Sun, Moon } from "lucide-react";
 
-import {motion,useScroll} from 'framer-motion'
+import { motion, useScroll } from "framer-motion";
 import { useTheme } from "next-themes";
 import {
   Tooltip,
@@ -52,7 +52,6 @@ export default function PdfRenderer({
   notes,
   email,
 }: PdfRendererProps) {
-  
   const [numPages, setNumPages] = useState<number>(0);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const { toast } = useToast();
@@ -61,7 +60,9 @@ export default function PdfRenderer({
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu state
   const [currentPage, setCurrentPage] = useState(1);
   const [jumpInput, setJumpInput] = useState("");
-  const { theme, setTheme } = useTheme ? useTheme() : { theme: "light", setTheme: () => {} };
+  const { theme, setTheme } = useTheme
+    ? useTheme()
+    : { theme: "light", setTheme: () => {} };
   const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const pdfContainerRef = useRef<HTMLDivElement | null>(null);
@@ -172,20 +173,22 @@ export default function PdfRenderer({
 
   const handleWhatsAppShare = () => {
     const text = encodeURIComponent(
-      `Check this ${notes?"Notes":"Pyq"} From VeerPreps : ${window.location.href}`
+      `Check this ${notes ? "Notes" : "Pyq"} : ${
+        window.location.href
+      }`
     );
     window.open(`https://wa.me/?text=${text}`, "blank");
   };
 
   const handleDownload = () => {
-              if (!email) {
-                signinfirst();
-              } else {
-                window.open(links, "_blank");
-              }
+    if (!email) {
+      signinfirst();
+    } else {
+      window.open(links, "_blank");
+    }
   };
 
-  const {scrollYProgress} = useScroll()
+  const { scrollYProgress } = useScroll();
 
   // Scroll to a specific page
   const handleJumpToPage = (e?: React.FormEvent) => {
@@ -194,7 +197,10 @@ export default function PdfRenderer({
     if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= numPages) {
       setCurrentPage(pageNum);
       setTimeout(() => {
-        pageRefs.current[pageNum - 1]?.scrollIntoView({ behavior: "smooth", block: "start" });
+        pageRefs.current[pageNum - 1]?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 50);
     }
     setJumpInput("");
@@ -205,7 +211,7 @@ export default function PdfRenderer({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const handleScrollEnd = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    window.scrollTo({ top: document.body.scrollHeight-1100, behavior: "smooth" });
   };
 
   // Ctrl+Scroll for desktop
@@ -273,7 +279,9 @@ export default function PdfRenderer({
   useEffect(() => {
     if (isSmallScreen) {
       // 16px padding on each side
-      setPageWidth(window.innerWidth - 32 > 0 ? window.innerWidth - 32 : window.innerWidth);
+      setPageWidth(
+        window.innerWidth - 32 > 0 ? window.innerWidth - 32 : window.innerWidth
+      );
       setScale(1); // Reset scale for mobile
     } else {
       setPageWidth(null);
@@ -285,7 +293,7 @@ export default function PdfRenderer({
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950">
       {/* Header: fixed on large screens, static on small screens */}
       <div className="w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 lg:fixed lg:top-0 lg:left-0 lg:right-0">
-        <div className="max-w-7xl mx-auto px-2 py-4">
+        <div className="max-w-7xl mx-auto px-2 py-4 max-sm:mt-16 ">
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-4 min-w-0 pl-0 sm:pl-1">
               <div className="flex items-center gap-3 ml-[-4px] sm:ml-0">
@@ -305,13 +313,16 @@ export default function PdfRenderer({
             {/* Action Buttons & Theme Toggler */}
             <div className="flex items-center gap-2 flex-wrap">
               {/* Jump to Page */}
-              <form onSubmit={handleJumpToPage} className="flex items-center gap-1">
+              <form
+                onSubmit={handleJumpToPage}
+                className="flex items-center gap-1"
+              >
                 <input
                   type="number"
                   min={1}
                   max={numPages}
                   value={jumpInput}
-                  onChange={e => setJumpInput(e.target.value)}
+                  onChange={(e) => setJumpInput(e.target.value)}
                   placeholder="Page number"
                   className="w-24 sm:w-36 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 bg-white/80 dark:bg-zinc-900/80 text-base focus:outline-none focus:ring-2 focus:ring-blue-400/30"
                 />
@@ -322,7 +333,9 @@ export default function PdfRenderer({
                         type="submit"
                         className="px-3 py-1 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
                         disabled={!jumpInput}
-                      >Go</button>
+                      >
+                        Go
+                      </button>
                     </TooltipTrigger>
                     <TooltipContent>Go to page</TooltipContent>
                   </Tooltip>
@@ -334,9 +347,11 @@ export default function PdfRenderer({
                   <TooltipTrigger asChild>
                     <button
                       onClick={handleScrollTop}
-                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
+                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600 flex items-center justify-center"
                       type="button"
-                    >↑</button>
+                    >
+                      <FaArrowUp/>
+                    </button>
                   </TooltipTrigger>
                   <TooltipContent>Scroll to Top</TooltipContent>
                 </Tooltip>
@@ -346,9 +361,11 @@ export default function PdfRenderer({
                   <TooltipTrigger asChild>
                     <button
                       onClick={handleScrollEnd}
-                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
+                      className="h-10 w-10 rounded-xl bg-gray-100 dark:bg-zinc-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600 flex items-center justify-center"
                       type="button"
-                    >↓</button>
+                    >
+                      <FaArrowDown/>
+                    </button>
                   </TooltipTrigger>
                   <TooltipContent>Scroll to End</TooltipContent>
                 </Tooltip>
@@ -364,7 +381,7 @@ export default function PdfRenderer({
                         type="button"
                       >
                         <MdDownloadForOffline className="h-5 w-5" />
-          </button>
+                      </button>
                     </TooltipTrigger>
                     <TooltipContent>Download PDF</TooltipContent>
                   </Tooltip>
@@ -372,28 +389,30 @@ export default function PdfRenderer({
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-          <button
-            onClick={email ? handleToggleSavePdf : signinfirst}
+                      <button
+                        onClick={email ? handleToggleSavePdf : signinfirst}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                         type="button"
-          >
-            {isLoading ? (
+                      >
+                        {isLoading ? (
                           <AiOutlineLoading className="h-5 w-5 animate-spin" />
-            ) : saved ? (
+                        ) : saved ? (
                           <FiCheck className="h-5 w-5 text-green-600" />
-            ) : (
+                        ) : (
                           <MdOutlineDataSaverOn className="h-5 w-5" />
-            )}
-          </button>
+                        )}
+                      </button>
                     </TooltipTrigger>
-                    <TooltipContent>{saved ? "Unsave PDF" : "Save PDF"}</TooltipContent>
+                    <TooltipContent>
+                      {saved ? "Unsave PDF" : "Save PDF"}
+                    </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-          <button
-            onClick={handleWhatsAppShare}
+                      <button
+                        onClick={handleWhatsAppShare}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-green-600"
                         type="button"
                       >
@@ -410,7 +429,7 @@ export default function PdfRenderer({
                         onClick={handleCopyToClipboard}
                         className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-blue-600"
                         type="button"
-          >
+                      >
                         <TiClipboard className="h-5 w-5" />
                       </button>
                     </TooltipTrigger>
@@ -423,11 +442,17 @@ export default function PdfRenderer({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
-                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      onClick={() =>
+                        setTheme(theme === "dark" ? "light" : "dark")
+                      }
                       className="p-2 rounded-lg bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 text-yellow-500"
                       type="button"
                     >
-                      {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                      {theme === "dark" ? (
+                        <Sun className="h-5 w-5" />
+                      ) : (
+                        <Moon className="h-5 w-5" />
+                      )}
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>Toggle Theme</TooltipContent>
@@ -456,7 +481,7 @@ export default function PdfRenderer({
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 sm:hidden">
-          <div 
+          <div
             className="absolute inset-0 bg-black/50"
             onClick={() => setIsMenuOpen(false)}
           />
@@ -503,10 +528,10 @@ export default function PdfRenderer({
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   {saved ? "Unsave PDF" : "Save PDF"}
                 </span>
-          </button>
+              </button>
 
               {/* Share Button */}
-          <button
+              <button
                 onClick={() => {
                   handleWhatsAppShare();
                   setIsMenuOpen(false);
@@ -517,8 +542,8 @@ export default function PdfRenderer({
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   Share on WhatsApp
                 </span>
-          </button>
-          
+              </button>
+
               {/* Copy Link Button */}
               <button
                 onClick={() => {
@@ -538,13 +563,17 @@ export default function PdfRenderer({
       )}
 
       {/* Progress Bar */}
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-blue-500 origin-left z-50"
-        style={{scaleX: scrollYProgress}}
+        style={{ scaleX: scrollYProgress }}
       />
-        
+
       {/* Main Content */}
-      <div id="pdf-main-content" className="pt-8 lg:pt-24 pb-8" ref={pdfContainerRef}>
+      <div
+        id="pdf-main-content"
+        className="pt-8 lg:pt-24 pb-8"
+        ref={pdfContainerRef}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <Document
             className="flex flex-col items-center justify-center"
@@ -554,7 +583,9 @@ export default function PdfRenderer({
             loading={
               <div className="flex flex-col items-center justify-center py-20">
                 <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-                <p className="mt-4 text-gray-600 dark:text-gray-400">Loading PDF...</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">
+                  Loading PDF...
+                </p>
               </div>
             }
           >
@@ -563,16 +594,20 @@ export default function PdfRenderer({
               <div
                 key={index}
                 className="relative flex flex-col items-center mb-1"
-                ref={el => { pageRefs.current[index] = el || null; }}
+                ref={(el) => {
+                  pageRefs.current[index] = el || null;
+                }}
               >
-                <div className="shadow-2xl rounded-lg overflow-hidden bg-white">
-                <Page
-                  pageNumber={index + 1}
-                    {...(isSmallScreen && pageWidth ? { width: pageWidth } : { scale })}
-                />
+                <div className="overflow-hidden bg-black">
+                  <Page
+                    pageNumber={index + 1}
+                    {...(isSmallScreen && pageWidth
+                      ? { width: pageWidth }
+                      : { scale })}
+                  />
                 </div>
-                <div className="mt-1 text-xs text-gray-500 dark:text-gray-400 text-center">
-                  Page {index + 1} of {numPages}
+                <div className="mt-1 sm:text-xs text-[12px] text-blue-500  dark:text-blue-500 text-center">
+                  Page {index + 1} of {numPages} 
                 </div>
               </div>
             ))}

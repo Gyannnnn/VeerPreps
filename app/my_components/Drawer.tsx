@@ -99,6 +99,14 @@ export default function DrawerDemo() {
           <DrawerClose asChild>
             <Link
               className="bg-secondary py-2 w-full flex justify-center rounded-md"
+              href="/admin"
+            >
+              About us
+            </Link>
+          </DrawerClose>
+          <DrawerClose asChild>
+            <Link
+              className="bg-secondary py-2 w-full flex justify-center rounded-md"
               target="_blank"
               href="https://forms.gle/FKpY6r34xN4Gu6X86"
             >

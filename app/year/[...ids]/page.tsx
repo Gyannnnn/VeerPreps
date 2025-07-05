@@ -41,7 +41,8 @@ export async function generateMetadata({
     const subjectName = pyq.subject.subjectname;
     const branchName = pyq.subject.branchname === "common" ? "First Year" : pyq.subject.branchname;
 
-    const title = `Download Previous Year Questions for ${subjectName} - ${branchName} of Vssut Burla | iitkirba`;
+    const title = `Download ${subjectName} PYQ and Lecture notes | ${branchName} - VSSUT Burla | iitkirba`;
+
     const description = `Free access to previous year question papers for ${subjectName} (${branchName}) at VSSUT Burla. Includes mid-semester, end-semester, back, and supplementary exams.`;
 
     return {

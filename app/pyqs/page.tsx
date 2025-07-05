@@ -8,31 +8,32 @@ interface Allpyqs {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = " Download Vssut burla previous year Questions";
+  const title = "Download VSSUT Burla Previous Year Question Papers All Years";
   const description =
-    "Download Vsst burla previous year questions from iitkirba";
+    "Get VSSUT Burla previous year question papers  for 1st, 2nd, 3rd, and Final Year. Access all PYQs and resources at iitkirba.xyz Your trusted source for VSSUT materials.";
 
   return {
     title,
     description,
     keywords: [
-      "Vssut pyqs",
-      "Vssut burla",
-      "Vssut Burla previous year questions",
-      "Vssut",
-      "Vssut burla pyqs",
-      "vssut burla",
-      "pyqs",      
-      "vssut first year notes",
-      "vssut burla 2nd year notes",
-      "vssut burla 3rd year notes",
-      "vssut burla final year notes",
-      "iit kirba",
-      "veerPreps",
-      "burla",
-      "Gyanranjan Patra",
-      "gyanranjan patra",
-      "gyanranjan patra linkedin",
+      "VSSUT previous year questions",
+      "VSSUT Burla PYQs",
+      "VSSUT question papers",
+      "VSSUT first year question papers",
+      "VSSUT 2nd year notes",
+      "VSSUT 3rd year question papers",
+      "VSSUT final year PYQs",
+      "VSSUT study materials",
+      "VSSUT notes PDF",
+      "VSSUT branch-wise questions",
+      "iitkirba",
+      "VeerPreps",
+      "Burla engineering notes",
+      "Gyanaranjan Patra",
+      "Gyanaranjan Patra LinkedIn",
+      "VSSUT Burla study resources",
+      "vssut semester wise questions",
+      "VSSUT Burla old question papers"
     ],
     openGraph: {
       title,
@@ -45,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "https://www.iitkirba.xyz/og/og_image.png",
           width: 1200,
           height: 630,
-          alt: "iitkirba Notes Page",
+          alt: "Download VSSUT Notes and PYQs from iitkirba",
         },
       ],
     },
@@ -57,6 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
+
 
 export default async function Page() {
   return <AllPyqs/>

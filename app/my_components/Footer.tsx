@@ -1,4 +1,6 @@
-import { Card } from "@/components/ui/card";
+import { FcAbout } from "react-icons/fc";
+import { FaHeart } from "react-icons/fa";
+
 import React from "react";
 import Link from "next/link";
 import { 
@@ -109,6 +111,13 @@ export default function Footer() {
                 <GraduationCap className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                 Contact Us
               </Link>
+              <Link 
+                href="/about" 
+                className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 group"
+              >
+                <FcAbout className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                About Us
+              </Link>
             </div>
           </div>
 
@@ -191,7 +200,7 @@ export default function Footer() {
             {/* Made with Love */}
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
               <span>Designed for VSSUT students with</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+              <FaHeart className="w-4 h-4 text-red-500 animate-pulse" />
               <span>by students</span>
             </div>
           </div>

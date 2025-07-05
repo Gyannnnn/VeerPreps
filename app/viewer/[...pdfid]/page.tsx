@@ -1,12 +1,10 @@
-
 import axios from "axios";
 import PdfRenderer from "./pdfviewer";
 import { auth } from "@/auth";
-
-
+import { Metadata } from "next";
 
 interface Params {
-  params: { pdfid: string | string[] };
+  params: { pdfid: string[] };
 }
 
 interface Pyq {
@@ -24,14 +22,53 @@ interface Notes {
   notesname: string;
 }
 
-export default async function Page({ params }: {params:{pdfid:string[]}}) {
-  const session = await auth();
-  
+// 🧠 SEO Metadata generation
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  if (params.pdfid.length === 2) {
+    const notesid = params.pdfid[1];
+    try {
+      const res = await axios.get<{ note: Notes }>(
+        `https://api-zeta.vercel.app/api/notes/getone/${notesid}`
+      );
+      const data = res.data.note;
+      return {
+        title: `${data.notesname} Vssut Burla`,
+        description: `View and download notes: ${data.notesname}. Curated for VSSUT students.`,
+        openGraph: {
+          title: `${data.notesname} Vssut Burla`,
+          description: `Download notes for ${data.notesname}.`,
+        },
+      };
+    } catch {
+      return { title: "Notes Not Found | VeerPreps" };
+    }
+  } else {
+    const pyqid = params.pdfid;
+    try {
+      const res = await axios.get<Pyq>(
+        `https://api-zeta.vercel.app/api/pyq/id/${pyqid}`
+      );
+      const data = res.data;
+      return {
+        title: `${data.pyqname} Vssut Burla`,
+        description: `Download Previous Year Question: ${data.pyqname}. Useful for VSSUT exam prep.`,
+        openGraph: {
+          title: `${data.pyqname} Vssut Burla`,
+          description: `Download question paper: ${data.pyqname}.`,
+        },
+      };
+    } catch {
+      return { title: "PYQ Not Found | VeerPreps" };
+    }
+  }
+}
 
+export default async function Page({ params }: Params) {
+  const session = await auth();
   const email = session?.user?.email as string;
 
-  if (params?.pdfid.length == 2) {
-    const notesid = params?.pdfid[1];
+  if (params?.pdfid.length === 2) {
+    const notesid = params.pdfid[1];
 
     try {
       const response = await axios.get<{ note: Notes }>(
@@ -49,18 +86,19 @@ export default async function Page({ params }: {params:{pdfid:string[]}}) {
         />
       );
     } catch (error) {
-      <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <h1>Not Found</h1>
-      </div>;
+      return (
+        <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
+          <h1>Not Found</h1>
+        </div>
+      );
     }
   } else {
-    const pdfid =  params?.pdfid;
+    const pdfid = params.pdfid;
 
     try {
       const response = await axios.get<Pyq>(
         `https://api-zeta.vercel.app/api/pyq/id/${pdfid}`
       );
-
       const data = response.data;
 
       return (
@@ -73,9 +111,11 @@ export default async function Page({ params }: {params:{pdfid:string[]}}) {
         />
       );
     } catch (error) {
-      <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
-        <h1>Not Found</h1>
-      </div>;
+      return (
+        <div className="min-h-screen w-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 pt-14">
+          <h1>Not Found</h1>
+        </div>
+      );
     }
   }
 }

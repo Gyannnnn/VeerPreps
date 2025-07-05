@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+
 
 export default function Page() {
   const { scrollYProgress } = useScroll();
