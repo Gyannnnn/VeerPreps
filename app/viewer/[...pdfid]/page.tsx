@@ -24,19 +24,28 @@ interface Notes {
 
 // 🧠 SEO Metadata generation
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  // Construct the canonical URL for the viewer page
+  const baseUrl = "https://www.iitkirba.xyz";
+  const pageUrl = `${baseUrl}/viewer/${params.pdfid.join("/")}`;
+  // Default thumbnail for all PDFs
+  const defaultThumbnailUrl = `${baseUrl}/images/pdfprv.png`;
   if (params.pdfid.length === 2) {
     const notesid = params.pdfid[1];
     try {
-      const res = await axios.get<{ note: Notes }>(
+      const res = await axios.get<{ note: any }>(
         `https://api-zeta.vercel.app/api/notes/getone/${notesid}`
       );
       const data = res.data.note;
+      // Use data.thumbnail if available, else fallback
+      const thumbnailUrl = data.thumbnail ? data.thumbnail : defaultThumbnailUrl;
       return {
         title: `${data.notesname} Vssut Burla`,
         description: `View and download notes: ${data.notesname}. Curated for VSSUT students.`,
         openGraph: {
           title: `${data.notesname} Vssut Burla`,
           description: `Download notes for ${data.notesname}.`,
+          images: [thumbnailUrl],
+          url: pageUrl,
         },
       };
     } catch {
@@ -45,16 +54,20 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   } else {
     const pyqid = params.pdfid;
     try {
-      const res = await axios.get<Pyq>(
+      const res = await axios.get<any>(
         `https://api-zeta.vercel.app/api/pyq/id/${pyqid}`
       );
       const data = res.data;
+      // Use data.thumbnail if available, else fallback
+      const thumbnailUrl = data.thumbnail ? data.thumbnail : defaultThumbnailUrl;
       return {
         title: `${data.pyqname} Vssut Burla`,
         description: `Download Previous Year Question: ${data.pyqname}. Useful for VSSUT exam prep.`,
         openGraph: {
           title: `${data.pyqname} Vssut Burla`,
           description: `Download question paper: ${data.pyqname}.`,
+          images: [thumbnailUrl],
+          url: pageUrl,
         },
       };
     } catch {

@@ -15,6 +15,7 @@ export default function Pdf({
 }) {
   return (
     <Link
+    target="_blank"
       className="flex flex-col items-center justify-center text-center group"      
       href={notes ? `/viewer/notes/${pyqid}` : `/viewer/${pyqid}`}
     >

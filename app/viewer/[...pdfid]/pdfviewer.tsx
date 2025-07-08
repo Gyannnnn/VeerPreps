@@ -172,8 +172,10 @@ export default function PdfRenderer({
   };
 
   const handleWhatsAppShare = () => {
-    const text = encodeURIComponent(window.location.href);
-    window.open(`https://wa.me/?text=${text}`, "blank");
+    // Always share the current viewer page URL for OG preview
+    const pageUrl = window.location.href;
+    const text = encodeURIComponent(pageUrl);
+    window.open(`https://wa.me/?text=${text}`, "_blank");
   };
 
   const handleDownload = () => {
