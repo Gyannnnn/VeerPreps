@@ -289,15 +289,15 @@ export default function PdfRenderer({
       setScale(1); // Reset scale for desktop
     }
   }, [isSmallScreen]);
-
+console.log(links)
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950">
       {/* Header: fixed on large screens, static on small screens */}
       <div className="w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border-b border-gray-200 dark:border-zinc-800 lg:fixed lg:top-0 lg:left-0 lg:right-0">
         <div className="max-w-7xl mx-auto px-2 py-4 max-sm:mt-16 ">
           <div className="flex items-center justify-between gap-4 flex-wrap">
-            <div className="flex items-center gap-4 min-w-0 pl-0 sm:pl-1">
-              <div className="flex items-center gap-3 ml-[-4px] sm:ml-0">
+            <div className="flex items-center gap-4 min-w-0 pl-0 sm:pl-1 bg-black">
+              <div className="flex items-center gap-3 ml-[-4px] sm:ml-0 ">
                 <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
                   <FileText className="h-5 w-5 text-blue-600" />
                 </div>
@@ -471,7 +471,7 @@ export default function PdfRenderer({
                 {isMenuOpen ? (
                   <X className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 ) : (
-                  <Menu className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                  <Menu className="h-10 w-10 text-gray-600 dark:text-gray-400" />
                 )}
               </button>
             </div>

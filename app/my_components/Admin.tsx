@@ -43,7 +43,7 @@ export default function Admincard({}) {
       badge: "Developer",
       badgeColor: "destructive",
       socials: [
-        { icon: CiGlobe, href: "https://me.iitkirba.xyz/", label: "Portfolio" },
+        { icon: CiGlobe, href: "https://gyanpatra.dev.iitkirba.xyz/", label: "Portfolio" },
         { icon: FaInstagram, href: "https://www.instagram.com/gyanpatra.dev?igsh=eTNyb3p4Nm1yd293", label: "Instagram" },
         { icon: FaLinkedin, href: "https://www.linkedin.com/in/higyan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" }
       ]

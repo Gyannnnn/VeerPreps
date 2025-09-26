@@ -75,6 +75,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     }
   }
 }
+console.log("=============================================")
+
 
 export default async function Page({ params }: Params) {
   const session = await auth();
@@ -88,7 +90,7 @@ export default async function Page({ params }: Params) {
         `https://api-zeta.vercel.app/api/notes/getone/${notesid}`
       );
       const data = response.data.note;
-
+      console.log(data.link)
       return (
         <PdfRenderer
           email={email}
