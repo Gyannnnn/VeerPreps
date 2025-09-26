@@ -471,7 +471,7 @@ console.log(links)
                 {isMenuOpen ? (
                   <X className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 ) : (
-                  <Menu className="h-10 w-10 text-gray-600 dark:text-gray-400" />
+                  <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
                 )}
               </button>
             </div>
